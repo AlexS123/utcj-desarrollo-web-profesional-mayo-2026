@@ -1,0 +1,2 @@
+#Diego Perez 
+Soy una persona de 27 años originaria de Ciudad Juárez, Chihuahua. Actualmente me desempeño como Técnico de Automatización en Pegatron, donde trabajo en áreas relacionadas con sistemas automatizados

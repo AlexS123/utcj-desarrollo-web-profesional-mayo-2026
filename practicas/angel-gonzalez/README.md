@@ -1,0 +1,8 @@
+#ANGEL GONZALEZ
+Mi nombre es Luis Ángel Gómez González, nací el 10 de febrero de 1998 en Ciudad Juárez, Chihuahua. Actualmente estudio la carrera de Ingeniería en Sistemas Computacionales en la Universidad Tecnológica de Ciudad Juárez (UTCJ), donde curso el segundo cuatrimestre de ingeniería.
+
+Mi interés por la tecnología surgió desde joven gracias a mi curiosidad por comprender cómo se desarrollan los videojuegos y las aplicaciones informáticas. Esta inquietud me motivó a elegir una carrera enfocada en el desarrollo de software y las tecnologías de la información, con el objetivo de adquirir los conocimientos necesarios para crear soluciones tecnológicas innovadoras.
+
+En el ámbito laboral, cuento con experiencia como proveedor de insumos industriales y en el área de mecánica, actividades que me han permitido desarrollar habilidades de responsabilidad, organización, trabajo en equipo y resolución de problemas. Además, poseo conocimientos en programación, desarrollo web y lectura de diagramas de cableado, competencias que complementan mi formación académica y fortalecen mi perfil profesional.
+
+Me considero una persona comprometida con su aprendizaje, con disposición para enfrentar nuevos retos y seguir desarrollando mis habilidades técnicas y profesionales. Mi meta es continuar creciendo en el área de sistemas computacionales y participar en proyectos que contribuyan al desarrollo tecnológico y a la mejora de los procesos en las organizaciones.
