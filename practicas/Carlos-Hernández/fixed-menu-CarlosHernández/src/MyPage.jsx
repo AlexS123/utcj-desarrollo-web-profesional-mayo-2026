@@ -23,6 +23,87 @@ function MyPage() {
           rápida y cómoda.
         </p>
 
+                <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+                        <p>
+          Somos tu mejor opción para viajar de manera segura,
+          rápida y cómoda.
+        </p>
+
+
       </section>
     </>
   )
