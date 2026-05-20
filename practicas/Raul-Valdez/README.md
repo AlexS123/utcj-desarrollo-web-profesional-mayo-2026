@@ -1,3 +1,3 @@
-Raul Valdez
+Raul valdez
 
-Tego 27 anios, trabajo en wistron como tecnico de pruebas actualmente, me gusta el box y actualmente estoy a punto de mudarme junto con mi esposa a otra casa.
+Tengo 27 anios, me gusta el boxeo, actualmente estudio en la UTCJ y trabajo en wsitron como tecnico de pruebas, tengo un perrito llamado willy que es un chihuauha, espero terminar mi carrera el proximo anio para poder irme a trabajar a EUA.
