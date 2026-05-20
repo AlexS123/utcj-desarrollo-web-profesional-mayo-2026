@@ -1,0 +1,4 @@
+#JOSHUA AGUILERA 
+me llamo Joshua Aguilera Grajeda, tengo 21 años de edad, soy nacido en Cd juarez, Chihuahua.
+Mi fecha de nacimiento es el 2 de octubre del 2004, actualmente estudio Ing.Desarrollo de software en la Universidad tecnologica de Ciudad Juarez, estoy en segundo cuatrimestre de la ingeneria.
+Actualmente soy ing jr en una empresa llamada pegatron, estoy en el departamento de pruebas de ict, me llamo la atencion lo que es la electronica y la programacion mezclada para mi trabajo, pienso cambiarme de trabajo para una mejor oferta salarial, lo que me motiva a seguir aprendiendo mas sobre lo que es mi carrera en la universidad, y por mi parte, me gustaria aprender mas sobre otras ramas que complementan mi carrera como la electronica, la automatizacion, la hidraulica, la neumatica, entre otras mas ramas que ayudan a que crezca tanto laboralmente como personalmente.
