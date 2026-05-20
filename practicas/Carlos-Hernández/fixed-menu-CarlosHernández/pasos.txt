@@ -1,0 +1,7 @@
+Crear app con Next.js: npx create-next-app@latest.
+Iniciar app:cd my-app.
+    - npm run dev
+
+Crear app react sin framework con vite:
+
+1. npm create vite@latest my-app -- --template react //Salir de la carpeta my app
