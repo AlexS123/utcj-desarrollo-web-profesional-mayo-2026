@@ -13,7 +13,7 @@ function Mypage() {
 
             <div
                 style={{
-                    paddingTop: "120px",
+                    marginTop: "100px",
                     paddingLeft: "40px",
                     paddingRight: "40px",
                     textAlign: "center",
