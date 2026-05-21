@@ -35,7 +35,7 @@ function MyPage() {
 </h1>
 
         <p>
-          Sistema web de Diego Abel Perez Montes.
+          Mi pagina web: Diego Abel Perez Montes.
         </p>
       </section>
 
