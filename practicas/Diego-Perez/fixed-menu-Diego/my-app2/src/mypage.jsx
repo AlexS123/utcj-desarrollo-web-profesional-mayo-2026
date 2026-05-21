@@ -85,39 +85,45 @@ const styles = {
     top: 0,
     left: 0,
     width: "100%",
-    height: "70px",
+    height: "85px",
 
-    background: "linear-gradient(90deg, #0f172a, #1e293b)",
+    background: "#111827",
 
-    color: "white",
+    color: "#ffffff",
 
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
 
-    padding: "0 30px",
+    padding: "0 45px",
 
     zIndex: 1000,
 
-    boxShadow: "0 4px 18px rgba(0,0,0,.35)",
+    borderBottom: "4px solid #f59e0b",
+
+    boxShadow: "0 8px 25px rgba(0,0,0,.35)",
   },
 
-logo: {
-  margin: 0,
-  fontSize: "30px",
-  color: "#22c55e",
+  logo: {
+    margin: 0,
 
-  fontFamily: "'Poppins', sans-serif",
+    fontSize: "34px",
 
-  letterSpacing: "2px",
+    color: "#0bf56d",
 
-  textShadow: "0 0 15px rgba(34,197,94,.45)",
-},
+    fontFamily: "Georgia, serif",
+
+    fontWeight: "bold",
+
+    letterSpacing: "5px",
+
+    textTransform: "uppercase",
+  },
 
   menu: {
     display: "flex",
 
-    gap: "25px",
+    gap: "18px",
 
     listStyle: "none",
 
@@ -127,21 +133,25 @@ logo: {
   },
 
   link: {
-    color: "#f8fafc",
+    color: "#ffffff",
 
     textDecoration: "none",
 
-    fontSize: "18px",
+    fontSize: "17px",
 
-    fontWeight: "600",
+    fontFamily: "Verdana, sans-serif",
 
-    padding: "8px 14px",
+    fontWeight: "bold",
 
-    borderRadius: "10px",
+    padding: "12px 20px",
 
-    backgroundColor: "rgba(255,255,255,0.06)",
+    borderRadius: "25px",
 
-    border: "1px solid rgba(255,255,255,0.08)",
+    backgroundColor: "#374151",
+
+    border: "2px solid #4b5563",
+
+    boxShadow: "0 4px 10px rgba(0,0,0,.25)",
 
     transition: "0.3s",
   },
@@ -149,28 +159,32 @@ logo: {
   section: {
     height: "100vh",
 
-    paddingTop: "100px",
+    paddingTop: "130px",
 
-    paddingLeft: "40px",
+    paddingLeft: "60px",
 
     background:
-      "linear-gradient(135deg, #e0f2fe, #dbeafe)",
+      "linear-gradient(135deg, #fff7ed, #fde68a)",
 
-    color: "#0f172a",
+    color: "#1f2937",
+
+    fontFamily: "Trebuchet MS, sans-serif",
   },
 
   section2: {
     height: "100vh",
 
-    paddingTop: "100px",
+    paddingTop: "130px",
 
-    paddingLeft: "40px",
+    paddingLeft: "60px",
 
     background:
-      "linear-gradient(135deg, #cbd5e1, #94a3b8)",
+      "linear-gradient(135deg, #0f172a, #1e3a8a)",
 
-    color: "#0f172a",
+    color: "#f8fafc",
+
+    fontFamily: "Trebuchet MS, sans-serif",
   },
-};
 
+};
 export default MyPage;
