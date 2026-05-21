@@ -35,7 +35,7 @@ function MyPage() {
 </h1>
 
         <p>
-          Bienvenido al sistema web de Diego Abel Perez Montes.
+          Sistema web de Diego Abel Perez Montes.
         </p>
       </section>
 
