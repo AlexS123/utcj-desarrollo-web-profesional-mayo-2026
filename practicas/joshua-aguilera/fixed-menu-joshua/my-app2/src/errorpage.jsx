@@ -21,7 +21,7 @@ function ErrorPage({ onBack }) {
           style={styles.button}
           onClick={onBack || (() => (window.location.hash = "#inicio"))}
         >
-          Regresar a MyPage
+          Regresar a la pagina principal
         </button>
       </div>
     </div>
