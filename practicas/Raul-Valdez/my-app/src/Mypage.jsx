@@ -1,87 +1,119 @@
+// Mypage.jsx
+
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
 
-const Mypage = () => {
-  const styles = {
-    errorContainer: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      padding: '20px',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
-      backgroundColor: '#0a0f1d',
-      color: '#ffffff',
-    },
-    errorContent: {
-      textAlign: 'center',
-      maxWidth: '550px',
-      padding: '40px 20px',
-    },
-    errorCode: {
-      fontSize: '10rem',
-      fontWeight: '900',
-      margin: 0,
-      lineHeight: 0.9,
-      color: '#ff4a5a',
-      letterSpacing: '-4px',
-      textShadow: '0px 0px 30px rgba(255, 74, 90, 0.2)',
-    },
-    errorMessage: {
-      fontSize: '2.2rem',
-      fontWeight: '700',
-      margin: '20px 0 10px 0',
-      color: '#e2e8f0',
-    },
-    errorDescription: {
-      fontSize: '1.1rem',
-      color: '#94a3b8',
-      marginBottom: '35px',
-      lineHeight: 1.6,
-    },
-    backHomeBtn: {
-      display: 'inline-block',
-      padding: '14px 28px',
-      backgroundColor: '#1e293b',
-      color: '#ffffff',
-      textDecoration: 'none',
-      borderRadius: '8px',
-      fontWeight: '600',
-      cursor: 'pointer',
-      border: '1px solid #334155',
-      fontSize: '1rem',
-      transition: 'all 0.2s ease',
-    }
-  };
+import Error from './Error.jsx';
 
-  const handleBackHome = () => {
-    window.location.pathname = '/';
+const Home = () => {
+  const containerStyle = {
+    paddingTop: '80px',
+    fontFamily: 'system-ui, sans-serif',
+    backgroundColor: '#0f172a',
+    color: '#ffffff',
+    minHeight: '160vh',
   };
 
   return (
-    <div style={styles.errorContainer}>
-      <div style={styles.errorContent}>
-        <h1 style={styles.errorCode}>404</h1>
-        <h2 style={styles.errorMessage}>Pagina no encontrada</h2>
-        <p style={styles.errorDescription}>
-          Lo sentimos, el recurso que estas buscando no existe o fue movido a otra direccion permanentemente.
-        </p>
-        <button 
-          onClick={handleBackHome}
-          style={styles.backHomeBtn}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#ff4a5a';
-            e.target.style.borderColor = '#ff4a5a';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = '#1e293b';
-            e.target.style.borderColor = '#334155';
+    <div style={containerStyle}>
+      <div
+        style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          padding: '20px',
+        }}
+      >
+        <h1>Panel de Control</h1>
+
+        <p>Dale para abajo.</p>
+
+        <div
+          style={{
+            height: '900px',
+            margin: '30px 0',
+            border: '1px dashed #334155',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#64748b',
           }}
         >
-          Volver al Inicio
-        </button>
+          Contenido de la aplicación...
+        </div>
+
+        <p>Fin</p>
       </div>
     </div>
   );
 };
 
-export default Mypage;
+export default function Mypage() {
+  const styles = {
+    navbar: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '60px',
+      backgroundColor: '#1e293b',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '0 30px',
+      boxSizing: 'border-box',
+      borderBottom: '1px solid #334155',
+      zIndex: 1000,
+      fontFamily: 'system-ui, sans-serif',
+    },
+
+    logo: {
+      color: '#ffffff',
+      fontWeight: '700',
+      fontSize: '1.2rem',
+    },
+
+    navLinks: {
+      display: 'flex',
+      gap: '20px',
+    },
+
+    link: {
+      color: '#94a3b8',
+      textDecoration: 'none',
+      fontWeight: '500',
+      fontSize: '0.95rem',
+    },
+  };
+
+  return (
+    <Router>
+      <nav style={styles.navbar}>
+        <div style={styles.logo}>Dashboard</div>
+
+        <div style={styles.navLinks}>
+          <Link to="http://localhost:5173/algo" style={styles.link}>
+            Inicio
+          </Link>
+
+          {/* Ruta falsa para mostrar error */}
+          <Link to="/help-center/docs" style={styles.link}>
+            Ayuda
+          </Link>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </Router>
+  );
+}
