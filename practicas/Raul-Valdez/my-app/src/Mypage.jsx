@@ -1,71 +1,119 @@
-import React from 'react';
+// Mypage.jsx
 
-const MyPage = () => {
-  // Estilos en objetos de JS para mantener todo en un solo archivo
-  const styles = {
-    // ── NAVBAR FIJO ──
-    navbar: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: '60px',
-      backgroundColor: '#111111', // El negro premium de tu RentGuard
-      color: '#FAFAF8',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'between',
-      padding: '0 2rem',
-      zIndex: 1000, // Evita que otros elementos pasen por encima al dar scroll
-      borderBottom: '1px solid #E2E0DA',
-    },
-    logo: {
-      fontWeight: 'bold',
-      fontSize: '1.2rem',
-    },
-    navLinks: {
-      display: 'flex',
-      gap: '1.5rem',
-      listStyle: 'none',
-    },
-    // ── CONTENEDOR PRINCIPAL ──
-    mainContent: {
-      // CRUCIAL: Como el menu es 'fixed', no ocupa espacio en el flujo. 
-      // Necesitamos un padding-top igual o mayor a la altura del navbar (60px)
-      // para que el contenido no se quede escondido detrás del menú.
-      paddingTop: '80px', 
-      paddingLeft: '2rem',
-      paddingRight: '2rem',
-      minHeight: '200vh', // Altura simulada para forzar el scroll down
-      fontFamily: 'sans-serif',
-    }
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
+
+import Error from './Error.jsx';
+
+const Home = () => {
+  const containerStyle = {
+    paddingTop: '80px',
+    fontFamily: 'system-ui, sans-serif',
+    backgroundColor: '#0f172a',
+    color: '#ffffff',
+    minHeight: '160vh',
   };
 
   return (
-    <div>
-      {/* MENU SUPERIOR */}
-      <nav style={styles.navbar}>
-        <div style={styles.logo}>RentGuard</div>
-        <ul style={styles.navLinks}>
-          <li><a href="#home" style={{ color: '#FAFAF8', textDecoration: 'none' }}>Inicio</a></li>
-          <li><a href="#props" style={{ color: '#FAFAF8', textDecoration: 'none' }}>Propiedades</a></li>
-          <li><a href="#out" style={{ color: '#FAFAF8', textDecoration: 'none' }}>Salir</a></li>
-        </ul>
-      </nav>
+    <div style={containerStyle}>
+      <div
+        style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          padding: '20px',
+        }}
+      >
+        <h1>Panel de Control</h1>
 
-      {/* CONTENIDO DE LA PÁGINA */}
-      <main style={styles.mainContent}>
-        <h2>Bienvenido a tu Dashboard</h2>
-        <p>Continua bajando</p>
-        
-        {/* Relleno para generar el scroll */}
-        <div style={{ marginTop: '500px', backgroundColor: '#F0EFEB', padding: '2rem' }}>
-          <h3>Continua hacia abajo</h3>
-          <p>UTCJ</p>
+        <p>Dale para abajo.</p>
+
+        <div
+          style={{
+            height: '900px',
+            margin: '30px 0',
+            border: '1px dashed #334155',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#64748b',
+          }}
+        >
+          Contenido de la aplicación...
         </div>
-      </main>
+
+        <p>Fin</p>
+      </div>
     </div>
   );
 };
 
-export default MyPage;
+export default function Mypage() {
+  const styles = {
+    navbar: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '60px',
+      backgroundColor: '#1e293b',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '0 30px',
+      boxSizing: 'border-box',
+      borderBottom: '1px solid #334155',
+      zIndex: 1000,
+      fontFamily: 'system-ui, sans-serif',
+    },
+
+    logo: {
+      color: '#ffffff',
+      fontWeight: '700',
+      fontSize: '1.2rem',
+    },
+
+    navLinks: {
+      display: 'flex',
+      gap: '20px',
+    },
+
+    link: {
+      color: '#94a3b8',
+      textDecoration: 'none',
+      fontWeight: '500',
+      fontSize: '0.95rem',
+    },
+  };
+
+  return (
+    <Router>
+      <nav style={styles.navbar}>
+        <div style={styles.logo}>Dashboard</div>
+
+        <div style={styles.navLinks}>
+          <Link to="http://localhost:5173/algo" style={styles.link}>
+            Inicio
+          </Link>
+
+          {/* Ruta falsa para mostrar error */}
+          <Link to="/help-center/docs" style={styles.link}>
+            Ayuda
+          </Link>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </Router>
+  );
+}

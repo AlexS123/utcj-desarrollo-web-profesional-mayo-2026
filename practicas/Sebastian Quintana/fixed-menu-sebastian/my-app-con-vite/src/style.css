@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* --- VARIABLES CSS GLOBALES --- */
 :root {
   --bg-color: #1a1a1a;
@@ -125,27 +127,26 @@ body {
   font-weight: 700;
 }
 
-/* El truco de magia: Grid para los servicios */
+/* Grid para los servicios */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales en PC */
-  gap: 24px; /* Espacio entre tarjetas */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-top: 32px;
 }
 
-/* Ajustamos las tarjetas para que se organicen bien con el Grid */
+/* Tarjetas de servicios */
 .service-card {
   background: var(--code-bg);
   border: 1px solid var(--border);
   padding: 30px 25px;
-  border-radius: 12px; /* Esquinas un poco más suaves */
+  border-radius: 12px;
   text-align: left;
-  margin: 0; /* Quitamos el 'margin: 20px 0' viejo ya que el Grid maneja el espacio */
+  margin: 0;
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Un pequeño efecto visual interactivo al pasar el mouse */
 .service-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent-border);
@@ -175,10 +176,10 @@ body {
   text-decoration: underline;
 }
 
-/* --- RESPONSIVE DESIGN (Celulares y Tablets) --- */
+/* --- RESPONSIVE DESIGN --- */
 @media (max-width: 1024px) {
   .services-grid {
-    grid-template-columns: 1fr; /* 1 sola columna en pantallas chicas */
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   

@@ -4,7 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
 import ReactDOM from 'react-dom/client'
-import MyPage from './MyPage.jsx'
+import App from './App.jsx'
 
 const root = ReactDOM.createRoot(document.getElementById('app'))
-root.render(<MyPage />)
+root.render(<App />)

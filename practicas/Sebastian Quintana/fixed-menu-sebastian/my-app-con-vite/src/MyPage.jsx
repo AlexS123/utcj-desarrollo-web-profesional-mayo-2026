@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // 1. Movemos los datos fuera del componente para limpiar el render
 const SERVICIOS = [
@@ -19,6 +20,14 @@ const SERVICIOS = [
   }
 ];
 
+const ERRORES = [
+  { code: '400', nombre: 'Solicitud Inválida' },
+  { code: '403', nombre: 'Acceso Prohibido' },
+  { code: '404', nombre: 'No Encontrado' },
+  { code: '500', nombre: 'Error del Servidor' },
+  { code: '503', nombre: 'Servicio No Disponible' }
+];
+
 function MyPage() {
   return (
     <div className="page-container">
@@ -29,6 +38,7 @@ function MyPage() {
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#contacto">Contacto</a></li>
+            <li><Link to="/404">Ver Error 404</Link></li>
           </ul>
         </nav>
       </header>
@@ -62,6 +72,20 @@ function MyPage() {
             <p><strong>Email:</strong> <a href="mailto:Sebastian@utcj.edu.mx">Sebastian@utcj.edu.mx</a></p>
             <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 123 456 789</a></p>
             <p><strong>Dirección:</strong> Calle Toros Bravos, 656</p>
+          </div>
+        </section>
+
+        <section className="content-section">
+          <h2>Páginas de Error (para pruebas)</h2>
+          <div className="services-grid">
+            {ERRORES.map((error) => (
+              <Link key={error.code} to={`/error/${error.code}`} style={{ textDecoration: 'none' }}>
+                <article className="service-card" style={{ cursor: 'pointer' }}>
+                  <h3>Error {error.code}</h3>
+                  <p>{error.nombre}</p>
+                </article>
+              </Link>
+            ))}
           </div>
         </section>
 
