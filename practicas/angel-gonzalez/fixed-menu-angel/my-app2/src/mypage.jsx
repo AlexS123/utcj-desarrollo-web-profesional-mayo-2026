@@ -40,7 +40,6 @@ function MyPage() {
           Contamos con una amplia variedad de automóviles para todas las necesidades y presupuestos.
         </p>
       </section>
-
       {/* SERVICIOS */}
       <section id="servicios" style={styles.section2}>
         <h1>Servicios</h1>

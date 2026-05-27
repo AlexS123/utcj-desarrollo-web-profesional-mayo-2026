@@ -1,71 +1,87 @@
 import React from 'react';
 
-const MyPage = () => {
-  // Estilos en objetos de JS para mantener todo en un solo archivo
+const Mypage = () => {
   const styles = {
-    // ── NAVBAR FIJO ──
-    navbar: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: '60px',
-      backgroundColor: '#111111', // El negro premium de tu RentGuard
-      color: '#FAFAF8',
+    errorContainer: {
       display: 'flex',
+      justifyContent: 'center',
       alignItems: 'center',
-      justifyContent: 'between',
-      padding: '0 2rem',
-      zIndex: 1000, // Evita que otros elementos pasen por encima al dar scroll
-      borderBottom: '1px solid #E2E0DA',
+      minHeight: '100vh',
+      padding: '20px',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      backgroundColor: '#0a0f1d',
+      color: '#ffffff',
     },
-    logo: {
-      fontWeight: 'bold',
-      fontSize: '1.2rem',
+    errorContent: {
+      textAlign: 'center',
+      maxWidth: '550px',
+      padding: '40px 20px',
     },
-    navLinks: {
-      display: 'flex',
-      gap: '1.5rem',
-      listStyle: 'none',
+    errorCode: {
+      fontSize: '10rem',
+      fontWeight: '900',
+      margin: 0,
+      lineHeight: 0.9,
+      color: '#ff4a5a',
+      letterSpacing: '-4px',
+      textShadow: '0px 0px 30px rgba(255, 74, 90, 0.2)',
     },
-    // ── CONTENEDOR PRINCIPAL ──
-    mainContent: {
-      // CRUCIAL: Como el menu es 'fixed', no ocupa espacio en el flujo. 
-      // Necesitamos un padding-top igual o mayor a la altura del navbar (60px)
-      // para que el contenido no se quede escondido detrás del menú.
-      paddingTop: '80px', 
-      paddingLeft: '2rem',
-      paddingRight: '2rem',
-      minHeight: '200vh', // Altura simulada para forzar el scroll down
-      fontFamily: 'sans-serif',
+    errorMessage: {
+      fontSize: '2.2rem',
+      fontWeight: '700',
+      margin: '20px 0 10px 0',
+      color: '#e2e8f0',
+    },
+    errorDescription: {
+      fontSize: '1.1rem',
+      color: '#94a3b8',
+      marginBottom: '35px',
+      lineHeight: 1.6,
+    },
+    backHomeBtn: {
+      display: 'inline-block',
+      padding: '14px 28px',
+      backgroundColor: '#1e293b',
+      color: '#ffffff',
+      textDecoration: 'none',
+      borderRadius: '8px',
+      fontWeight: '600',
+      cursor: 'pointer',
+      border: '1px solid #334155',
+      fontSize: '1rem',
+      transition: 'all 0.2s ease',
     }
   };
 
-  return (
-    <div>
-      {/* MENU SUPERIOR */}
-      <nav style={styles.navbar}>
-        <div style={styles.logo}>RentGuard</div>
-        <ul style={styles.navLinks}>
-          <li><a href="#home" style={{ color: '#FAFAF8', textDecoration: 'none' }}>Inicio</a></li>
-          <li><a href="#props" style={{ color: '#FAFAF8', textDecoration: 'none' }}>Propiedades</a></li>
-          <li><a href="#out" style={{ color: '#FAFAF8', textDecoration: 'none' }}>Salir</a></li>
-        </ul>
-      </nav>
+  const handleBackHome = () => {
+    window.location.pathname = '/';
+  };
 
-      {/* CONTENIDO DE LA PÁGINA */}
-      <main style={styles.mainContent}>
-        <h2>Bienvenido a tu Dashboard</h2>
-        <p>Continua bajando</p>
-        
-        {/* Relleno para generar el scroll */}
-        <div style={{ marginTop: '500px', backgroundColor: '#F0EFEB', padding: '2rem' }}>
-          <h3>Continua hacia abajo</h3>
-          <p>UTCJ</p>
-        </div>
-      </main>
+  return (
+    <div style={styles.errorContainer}>
+      <div style={styles.errorContent}>
+        <h1 style={styles.errorCode}>404</h1>
+        <h2 style={styles.errorMessage}>Pagina no encontrada</h2>
+        <p style={styles.errorDescription}>
+          Lo sentimos, el recurso que estas buscando no existe o fue movido a otra direccion permanentemente.
+        </p>
+        <button 
+          onClick={handleBackHome}
+          style={styles.backHomeBtn}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#ff4a5a';
+            e.target.style.borderColor = '#ff4a5a';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '#1e293b';
+            e.target.style.borderColor = '#334155';
+          }}
+        >
+          Volver al Inicio
+        </button>
+      </div>
     </div>
   );
 };
 
-export default MyPage;
+export default Mypage;
