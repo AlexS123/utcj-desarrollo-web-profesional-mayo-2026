@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 function ErrorPage() {
+  const navigate = useNavigate();
+
   return (
     <div style={styles.container}>
       <h1 style={styles.code}>404</h1>
@@ -15,7 +19,7 @@ function ErrorPage() {
 
       <button
         style={styles.button}
-        onClick={() => window.location.href = "/"}
+        onClick={() => navigate("/")}
       >
         Regresar a AutoMax
       </button>
