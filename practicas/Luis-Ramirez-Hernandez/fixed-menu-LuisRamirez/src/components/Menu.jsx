@@ -4,6 +4,12 @@ function Menu({ cambiarPagina }) {
 
         <nav
             style={{
+                position: "fixed",
+                top: "0",
+                left: "0",
+                width: "100%",
+                zIndex: "1000",
+
                 backgroundColor: "#111",
                 padding: "20px",
                 display: "flex",
