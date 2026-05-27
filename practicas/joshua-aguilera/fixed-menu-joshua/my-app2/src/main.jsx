@@ -1,16 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import Mypage from './assets/mypage.jsx'
 
-function App() {
-  return <Mypage />
-}
-
-export default App
+//import MyPage from './mypage.jsx'
+import ErrorPage from './errorpage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Mypage />
+    <ErrorPage />
   </StrictMode>,
 )

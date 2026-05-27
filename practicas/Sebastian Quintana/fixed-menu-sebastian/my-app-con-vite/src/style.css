@@ -1,0 +1,221 @@
+/* --- VARIABLES CSS GLOBALES --- */
+:root {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --code-bg: #2d2d2d;
+  --border: #444444;
+  --accent: #4a9eff;
+  --accent-border: #2196F3;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* --- RESET Y ESTILOS BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body {
+  line-height: 1.6;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- MENÚ FIJO --- */
+.fixed-menu {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(26, 26, 26, 0.95);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.fixed-menu nav {
+  max-width: 1126px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.fixed-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.fixed-menu ul li {
+  list-style: none;
+}
+
+.fixed-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.fixed-menu a:hover {
+  color: var(--accent);
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.page-content {
+  flex: 1;
+  max-width: 1126px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* --- SECCIÓN HERO --- */
+.hero-section {
+  text-align: center;
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  color: var(--text-color);
+}
+
+.hero-potential {
+  margin-top: 24px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  color: var(--text-color);
+}
+
+/* --- SECCIÓN DE CONTENIDO --- */
+.content-section {
+  margin-bottom: 3rem;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* El truco de magia: Grid para los servicios */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales en PC */
+  gap: 24px; /* Espacio entre tarjetas */
+  margin-top: 32px;
+}
+
+/* Ajustamos las tarjetas para que se organicen bien con el Grid */
+.service-card {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 30px 25px;
+  border-radius: 12px; /* Esquinas un poco más suaves */
+  text-align: left;
+  margin: 0; /* Quitamos el 'margin: 20px 0' viejo ya que el Grid maneja el espacio */
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Un pequeño efecto visual interactivo al pasar el mouse */
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-border);
+}
+
+.service-card h3 {
+  margin: 0 0 12px 0;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+/* Estilos para la sección de contacto */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  font-size: 1.1rem;
+}
+
+.contact-info a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* --- RESPONSIVE DESIGN (Celulares y Tablets) --- */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* 1 sola columna en pantallas chicas */
+    gap: 16px;
+  }
+  
+  .fixed-menu ul {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 1.5rem;
+  }
+
+  .hero-section {
+    padding: 2rem 0;
+  }
+
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .fixed-menu ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .contact-info {
+    font-size: 1rem;
+  }
+}
