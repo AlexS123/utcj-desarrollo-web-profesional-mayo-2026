@@ -1,26 +1,27 @@
-function ErrorPage() {
+function ErrorPage({ onBack }) {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={styles.code}>404</h1>
+        <div style={styles.header}>
+          <span style={styles.tag}>404</span>
+          <div style={styles.status}>Página no encontrada</div>
+        </div>
 
-        <h2 style={styles.title}>Error crítico: recurso no disponible</h2>
-
-        <p style={styles.text}>
-          No se pudo localizar la página solicitada. Esto puede deberse a una
-          ruta incorrecta o a que el contenido fue removido.
+        <p style={styles.description}>
+          Lo sentimos, el recurso que buscas no está disponible. Es posible que
+          la ruta sea incorrecta o que este contenido ya no exista.
         </p>
 
-        <p style={styles.text}>
-          Si el problema persiste, revisa la dirección ingresada o regresa al
-          inicio para continuar desde un punto seguro.
+        <p style={styles.description}>
+          Vuelve a la página principal para continuar navegando desde un punto
+          seguro.
         </p>
 
         <button
           style={styles.button}
-          onClick={() => window.location.href = "/"}
+          onClick={onBack || (() => (window.location.hash = "#inicio"))}
         >
-          Volver al inicio
+          Regresar a MyPage
         </button>
       </div>
     </div>
@@ -33,19 +34,54 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "linear-gradient(135deg, #0f1115 0%, #181c23 55%, #11151b 100%)",
-    color: "#e6e8ef",
-    padding: "24px",
+    background: "linear-gradient(135deg, #11131a 0%, #0b0d12 42%, #11151b 100%)",
+    color: "#e5e9f0",
+    padding: "30px",
   },
 
   card: {
     width: "100%",
-    maxWidth: "560px",
-    padding: "38px 36px",
-    backgroundColor: "#141a22",
+    maxWidth: "580px",
+    padding: "40px 42px",
+    backgroundColor: "#161b24",
     border: "1px solid rgba(255, 255, 255, 0.08)",
-    borderRadius: "24px",
-    boxShadow: "0 30px 90px rgba(0, 0, 0, 0.25)",
+    borderRadius: "26px",
+    boxShadow: "0 40px 120px rgba(0, 0, 0, 0.28)",
+  },
+
+  header: {
+    display: "flex",
+    alignItems: "center",
+    gap: "18px",
+    marginBottom: "22px",
+  },
+
+  tag: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "72px",
+    height: "72px",
+    borderRadius: "22px",
+    backgroundColor: "#ff3b5c",
+    color: "white",
+    fontSize: "28px",
+    fontWeight: 700,
+    boxShadow: "0 14px 30px rgba(255, 59, 92, 0.24)",
+  },
+
+  status: {
+    fontSize: "26px",
+    color: "#f4f7ff",
+    fontWeight: 700,
+    lineHeight: "1.2",
+  },
+
+  description: {
+    margin: "0 0 16px",
+    color: "#b8c2d7",
+    fontSize: "16px",
+    lineHeight: "1.8",
   },
 
   code: {
@@ -71,17 +107,17 @@ const styles = {
   },
 
   button: {
-    marginTop: "24px",
+    marginTop: "12px",
     padding: "14px 28px",
     border: "none",
     borderRadius: "999px",
-    backgroundColor: "#ff3850",
+    backgroundColor: "#ff3b5c",
     color: "white",
     cursor: "pointer",
     fontSize: "16px",
     fontWeight: 600,
-    transition: "transform 0.18s ease, box-shadow 0.18s ease",
-    boxShadow: "0 14px 32px rgba(255, 56, 80, 0.22)",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+    boxShadow: "0 16px 36px rgba(255, 59, 92, 0.22)",
   },
 };
 
