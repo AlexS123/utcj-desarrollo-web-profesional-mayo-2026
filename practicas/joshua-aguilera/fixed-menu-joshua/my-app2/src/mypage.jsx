@@ -1,89 +1,50 @@
-import { useState } from 'react'
 import './App.css'
 
-const menuItems = [
-  { id: 'home', label: 'Inicio' },
-  { id: 'mypage', label: 'Mi página' },
-  { id: 'docs', label: 'Documentación' },
-  { id: 'contact', label: 'Contacto' },
-  { id: 'about', label: 'Acerca de' },
-]
-
 function Mypage() {
-  const [activePage, setActivePage] = useState('mypage')
-
-  const renderPage = () => {
-    switch (activePage) {
-      case 'mypage':
-        return (
-          <div>
-            <h1>Mi Página</h1>
-            <p>Esta es la sección principal de mypage.</p>
-          </div>
-        )
-      case 'docs':
-        return (
-          <div>
-            <h1>Documentación</h1>
-            <p>Encuentra aquí los enlaces y recursos útiles de tu proyecto.</p>
-            <ul>
-              <li>Guía de uso</li>
-              <li>Funciones del menú</li>
-              <li>Cómo editar la interfaz</li>
-            </ul>
-          </div>
-        )
-      case 'contact':
-        return (
-          <div>
-            <h1>Contacto</h1>
-            <p>Escribe a soporte@example.com o visita nuestras redes.</p>
-          </div>
-        )
-      case 'about':
-        return (
-          <div>
-            <h1>Acerca de</h1>
-            <p>Esta aplicación usa Vite y React. El menú es persistente y permite cambiar de secciones.</p>
-          </div>
-        )
-      case 'home':
-      default:
-        return (
-          <div>
-            <h1>Bienvenido</h1>
-            <p>Este es el dashboard principal. Selecciona una opción del menú para cambiar de sección.</p>
-          </div>
-        )
-    }
-  }
-
   return (
-    <div className="app-shell">
-      <aside className="app-menu">
-        <div className="menu-brand">Mi Pagina</div>
+    <>
+      {/* MENU FIJO */}
+      <header className="navbar">
+        <h2 className="logo">Mi pagina usando fixed menu</h2>
+
         <nav>
-          <ul>
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  className={activePage === item.id ? 'menu-button active' : 'menu-button'}
-                  onClick={() => setActivePage(item.id)}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
+          <ul className="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#about">Acerca</a></li>
           </ul>
         </nav>
-      </aside>
+      </header>
 
-      <main className="app-content">
-        {renderPage()}
-      </main>
-    </div>
+      {/* SECCIONES */}
+      <section id="inicio" className="section">
+        <h1>Inicio</h1>
+        <p>Bienvenido a mi página web que no sabia como se hacia profe Solis.</p>
+      </section>
+
+      <section id="servicios" className="section dark">
+        <h1>Servicios</h1>
+        <p>Los servicios que ofrecemos en la utcj son: desarrollo web, diseño gráfico y soporte técnico.</p>
+      </section>
+
+      <section id="galeria" className="section">
+        <h1>Galería</h1>
+        <p>Aqui es para colocar imagenes, proyectos y otros contenidos visuales.</p>
+      </section>
+
+      <section id="contacto" className="section dark">
+        <h1>Contacto</h1>
+        <p>Email: al22311801@utcj.edu.mx</p>
+      </section>
+
+      <section id="about" className="section">
+        <h1>Acerca de</h1>
+        <p>Página creada para la materia usando react y vite.</p>
+      </section>
+    </>
   )
 }
 
-export default Mypage;
+export default Mypage
