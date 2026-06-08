@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-
+import FormularioRegistro from './FormularioRegistro.jsx'
 import {
   BrowserRouter,
   Routes,
@@ -22,6 +22,11 @@ createRoot(document.getElementById('root')).render(
         <Route
           path="/"
           element={<MyPage />}
+        />
+
+        <Route
+          path="/registro"
+          element={<FormularioRegistro  />}
         />
 
         <Route
