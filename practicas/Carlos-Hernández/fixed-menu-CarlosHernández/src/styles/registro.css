@@ -1,0 +1,208 @@
+.registroContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #eaf3ff, #dbe9ff);
+  padding-top: 80px;
+}
+
+.registroCard {
+  width: 100%;
+  max-width: 420px;
+
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.registroCard h1 {
+  margin-bottom: 20px;
+  color: #0b3d91;
+  font-size: 40px;
+}
+
+.registroCard p {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  padding: 10px;
+  gap: 8px;
+  background: #fff;
+}
+
+.inputGroup svg{
+  color: #0b3d91;
+  font-size: 18px;
+  min-width: 20px;
+}
+
+.inputGroup input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+}
+
+.inputGroup select{
+  border: none;
+  outline: none;
+  flex: 1;
+  background: white;
+  color: #333;
+  font-size: 14px;
+}
+
+select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+}
+
+select:focus {
+  outline: none;
+  border-color: #0b3d91;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #0b3d91;
+  border-radius: 4px;
+
+  background-color: white;
+  cursor: pointer;
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #0b3d91;
+}
+
+input[type="checkbox"]:checked::before {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+}
+
+.iconoPassword{
+  color: #0b3d91;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button {
+  padding: 12px;
+  background: #0b3d91;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #062a66;
+}
+
+.errorText{
+  color: #c62828;
+  padding: 0px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+input {
+  background-color: white;
+  color: #333;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #333;
+}
+.toastExito{
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: #198754;/*#1565c0;*/ /*#0b3d91*/
+  color: white;
+
+  padding: 18px 30px;
+
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+  z-index: 9999;
+
+  animation: aparecer 0.3s ease;
+}
+@keyframes aparecer{
+  from{
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+
+  to{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,36 @@
+.menuSuperior {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+
+  background-color: #0b3d91;
+  box-sizing: border-box;
+}
+
+.logo {
+  color: white;
+  margin: 0;
+}
+
+.opcionesMenu {
+  display: flex;
+  gap: 15px;
+}
+
+.opcionesMenu button {
+  background: none;
+  border: none;
+
+  color: white;
+  font-size: 16px;
+
+  cursor: pointer;
+}
