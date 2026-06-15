@@ -221,6 +221,55 @@ body {
     background: #e3f2fd;
 }
 
+.register-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-group label, .checkbox-group label {
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.error-msg {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .menu-btn {
@@ -282,4 +331,6 @@ body {
     .services-grid {
         grid-template-columns: 1fr;
     }
+
+    
 }

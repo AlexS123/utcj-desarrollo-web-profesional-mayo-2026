@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import './index.css'
 
-import MyPage from './assets/MyPage.jsx'
-import ErrorPage from './assets/error.jsx'
+import MyPage from './MyPage.jsx'
+import ErrorPage from './error.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
