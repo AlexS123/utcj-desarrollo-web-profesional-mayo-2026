@@ -1,0 +1,35 @@
+.fondo-toast{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.toast-error{
+    background-color: #e7ecef;
+    padding: 30px;
+    border-radius: 15px;
+    min-width: 350px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
+}
+
+.toast-error h2{
+    color: #274c77;
+}
+
+.toast-error button{
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #274c77;
+    color: white;
+    cursor: pointer;
+}

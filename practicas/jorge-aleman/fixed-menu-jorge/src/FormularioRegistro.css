@@ -1,0 +1,65 @@
+.contenedor-formulario{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e7ecef;
+}
+
+.formulario{
+    width: 450px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,.15);
+}
+
+.formulario h1{
+    text-align: center;
+    color: #274c77;
+    margin-bottom: 25px;
+}
+
+.formulario input,
+.formulario select{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #a3cef1;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.formulario button{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #6096ba;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.grupo-checkbox label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grupo-checkbox input{
+    width: auto;
+}
+
+.formulario button:hover{
+    background-color: #274c77;
+}
+
+.grupo-checkbox{
+    margin-bottom: 15px;
+}
+
+.toast-error p{
+    white-space: pre-line;
+    text-align: left;
+}

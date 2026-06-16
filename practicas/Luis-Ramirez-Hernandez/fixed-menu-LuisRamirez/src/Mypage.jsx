@@ -1,43 +1,49 @@
-import { useState } from "react";
 import Menu from "./components/Menu";
 
 function Mypage() {
-
-    const [pagina, setPagina] = useState("inicio");
 
     return (
 
         <>
 
-            <Menu cambiarPagina={setPagina} />
+            <Menu />
 
             <div
                 style={{
-                    padding: "40px",
-                    textAlign: "center"
+                    marginTop: "100px",
+                    paddingLeft: "40px",
+                    paddingRight: "40px",
+                    textAlign: "center",
+                    lineHeight: "1.8",
+                    color: "white"
                 }}
             >
 
-                {pagina === "inicio" && (
-                    <>
-                        <h1>Pagina de Inicio</h1>
-                        <p>Bienvenido a mi pagina web 😎</p>
-                    </>
-                )}
+                <h1>Pagina de Inicio</h1>
 
-                {pagina === "productos" && (
-                    <>
-                        <h1>Productos</h1>
-                        <p>Aqui van los productos 🚗</p>
-                    </>
-                )}
+                <p>Bienvenido a mi pagina web 😎</p>
 
-                {pagina === "contacto" && (
-                    <>
-                        <h1>Contacto</h1>
-                        <p>Contacto de la empresa 📞</p>
-                    </>
-                )}
+                <p>
+                    Este contenido es para probar que el menu
+                    permanezca fijo mientras haces scroll.
+                </p>
+
+                <p>
+                    Sigue bajando y revisa si el menu se queda arriba.
+                </p>
+
+                <h2>Contenido largo</h2>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
             </div>
 

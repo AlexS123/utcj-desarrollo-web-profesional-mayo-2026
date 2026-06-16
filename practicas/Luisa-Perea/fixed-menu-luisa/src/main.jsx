@@ -4,9 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import Mypage from './Mypage.jsx'
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Mypage />
+    <App />
   </StrictMode>,
 )
