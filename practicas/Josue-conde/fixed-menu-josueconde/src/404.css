@@ -1,0 +1,172 @@
+.not-found-body {
+    position: relative;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px 32px;
+}
+
+.not-found-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(167, 139, 250, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(167, 139, 250, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 30%, transparent 100%);
+    pointer-events: none;
+}
+
+.not-found-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.not-found-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(167, 139, 250, 0.07);
+    top: -100px;
+    left: -80px;
+}
+
+.not-found-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(167, 139, 250, 0.05);
+    bottom: -60px;
+    right: -60px;
+}
+
+.not-found-center {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 560px;
+    width: 100%;
+}
+
+.not-found-code {
+    font-size: clamp(100px, 20vw, 160px);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(167, 139, 250, 0.35) 50%,
+        rgba(255, 255, 255, 0.06) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: not-found-pulse 4s ease-in-out infinite;
+    margin-bottom: 8px;
+}
+
+@keyframes not-found-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.7; }
+}
+
+.not-found-line {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.6), transparent);
+    margin: 0 auto 32px;
+}
+
+.not-found-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.not-found-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 420px;
+}
+
+.not-found-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.not-found-btn-home {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.not-found-btn-back {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 24px;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.not-found-btn-back:hover {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(167, 139, 250, 0.08);
+    border-color: rgba(167, 139, 250, 0.25);
+}
+
+.not-found-quick-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 56px;
+}
+
+.not-found-quick-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.18);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.not-found-quick-link {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 99px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.not-found-quick-link:hover {
+    color: rgba(167, 139, 250, 0.8);
+    border-color: rgba(167, 139, 250, 0.2);
+}
