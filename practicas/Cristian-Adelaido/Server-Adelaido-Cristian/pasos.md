@@ -11,5 +11,5 @@
     - /app.js
     - /public/index.html
     - /models/server.js
-5. Codificar:
-    
+5. Codificar.
+6. Iniciar: node app
