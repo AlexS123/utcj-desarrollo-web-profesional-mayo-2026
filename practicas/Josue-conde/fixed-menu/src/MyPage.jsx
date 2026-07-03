@@ -4,7 +4,7 @@ function MyPage() {
     return (
         <>
             <nav className="fixed-nav">
-                <div className="logo">Misitio</div>
+                <div className="logo">MiSitio</div>
                 <ul className="nav-links">
                     <li><a href="#" className="active">Inicio</a></li>
                     <li><a href="#">Productos</a></li>
@@ -16,8 +16,11 @@ function MyPage() {
 
             <main className="content">
                 <section className="hero">
-                    <h1>Lorem ipsum dolor sit amet</h1>
-                    <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                    <h1>Bienvenido a nuestro sitio web</h1>
+                    <p>
+                        Descubre nuestros productos y servicios de alta calidad. Trabajamos para ofrecer
+                        soluciones innovadoras y una excelente experiencia para todos nuestros clientes.
+                    </p>
                 </section>
 
                 <section className="section">
@@ -25,23 +28,39 @@ function MyPage() {
                     <div className="cards">
                         <div className="card">
                             <h3>Producto Uno</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>
+                                Este producto ofrece un excelente rendimiento y está diseñado para brindar
+                                calidad, confianza y una experiencia satisfactoria.
+                            </p>
                         </div>
                         <div className="card">
                             <h3>Producto Dos</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>
+                                Una opción ideal para quienes buscan innovación, funcionalidad y un diseño
+                                moderno que se adapte a sus necesidades.
+                            </p>
                         </div>
                         <div className="card">
                             <h3>Producto Tres</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <p>
+                                Fabricado con materiales de alta calidad para garantizar durabilidad,
+                                eficiencia y un desempeño excepcional.
+                            </p>
                         </div>
                     </div>
                 </section>
 
                 <section className="section">
                     <h2>Nosotros</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                    <p>
+                        Somos una empresa comprometida con la innovación y el desarrollo de soluciones
+                        que aporten valor a nuestros clientes. Nuestro equipo trabaja con dedicación para
+                        ofrecer productos y servicios de la más alta calidad.
+                    </p>
+                    <p>
+                        Creemos en la mejora continua, el trabajo en equipo y la satisfacción del cliente,
+                        por lo que buscamos superar las expectativas en cada proyecto que realizamos.
+                    </p>
                 </section>
 
                 <section className="section">
@@ -49,23 +68,38 @@ function MyPage() {
                     <div className="cards">
                         <div className="card">
                             <h3>Artículo Uno</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                            <p>
+                                Conoce las últimas novedades, consejos y recomendaciones para aprovechar
+                                al máximo nuestros productos y servicios.
+                            </p>
                         </div>
                         <div className="card">
                             <h3>Artículo Dos</h3>
-                            <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
+                            <p>
+                                Descubre información útil sobre nuevas tecnologías, tendencias y buenas
+                                prácticas que pueden ayudarte en tu día a día.
+                            </p>
                         </div>
                         <div className="card">
                             <h3>Artículo Tres</h3>
-                            <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur vel illum qui dolorem.</p>
+                            <p>
+                                Mantente informado con noticias, actualizaciones y contenido de interés
+                                relacionado con nuestra empresa y el sector.
+                            </p>
                         </div>
                     </div>
                 </section>
 
                 <section className="section">
                     <h2>Contáctanos</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                    <p>
+                        Si tienes alguna duda o deseas obtener más información sobre nuestros productos y
+                        servicios, estaremos encantados de atenderte.
+                    </p>
+                    <p>
+                        Ponte en contacto con nosotros y uno de nuestros asesores responderá tus preguntas
+                        lo antes posible.
+                    </p>
                 </section>
             </main>
         </>
