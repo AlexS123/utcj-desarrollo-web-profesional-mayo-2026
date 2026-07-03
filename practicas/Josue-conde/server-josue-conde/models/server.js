@@ -35,7 +35,7 @@ class Server {
     routes() {
         this.app.get('/consultarUsuarios', (req, res) => {
             res.json({
-                user: 'Aaron',
+                user: 'josue',
                 pass: '12345',
                 rol: 'admin'
             });
