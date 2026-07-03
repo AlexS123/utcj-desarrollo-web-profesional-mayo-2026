@@ -1,61 +1,77 @@
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 
 class Server {
-    constructor(){
+    constructor() {
         this.app = express();
-        this.port = process.env.port
+        this.port = process.env.PORT || 5000;
 
         this.middlewares();
+        this.usersDatabase();
         this.routes();
         this.listen();
-        this.Userdatabase();
-
     }
-    middlewares(){
+
+    middlewares() {
         this.app.use(express.static('public'));
         this.app.use(express.json());
-        this.app.use(express.urlencoded({extended: true}));
+        this.app.use(express.urlencoded({ extended: true }));
     }
-    Userdatabase(){
-            // conexion con la app con el locar de la conexion de la base, nombre de la base //
-        mongoose.connect('mongodb://localhost:27017/Mayo2026_web_prof' );
+
+    usersDatabase() {
+        mongoose.connect('mongodb://localhost:27017/Mayo2026_web_prof');
         let Schema = mongoose.Schema;
-        //deben coincidir con la base de datos que se creo//
         const userSchema = new Schema({
             user: String,
             pass: String,
             rol: String
         });
-        this.userModel = mongoose.model('user', userSchema)
-                            //se debe de poner el nombre en singular ejemplo: users debe ser user//
+
+        this.userModel = mongoose.model('user', userSchema);
     }
-    routes(){
+
+    routes() {
         this.app.get('/consultarUsuarios', (req, res) => {
             res.json({
-                user: 'Alex',
-                pass:'12345',
-                rol:'adm'
+                user: 'Cristian',
+                pass: '12345',
+                rol: 'admin'
             });
         });
-        this.app.post('/registrar', async(req, res) =>{
-            let{user, pass, rol} = req.body;
-            console.log(user, pass, rol);
-            //madandamos a registrar la base de datos//
-            const newUser = new this.userModel({
-                user: user,
-                pass: pass,
-                rol: rol
-            });  //para el await se debe agregar la palabra async
-            const savedUser = await newUser.save();
-            console.log(savedUser);
-            res.send(200);
+
+        this.app.post('/registrar', async (req, res) => {
+            try {
+                let { user, pass, rol } = req.body;
+                console.log(`Usuario: ${user}, Rol: ${rol}`);
+
+                const saltRounds = 10;
+                const hash = await bcrypt.hash(pass, saltRounds);
+                console.log('Contraseña cifrada:', hash);
+
+                const newUser = new this.userModel({
+                    user: user,
+                    pass: hash,
+                    rol: rol
+                });
+
+                const savedUser = await newUser.save();
+                console.log("Usuario guardado:", savedUser);
+
+                res.status(200).json({ ok: true, user: savedUser });
+            } catch (err) {
+                console.error('Error al registrar usuario:', err);
+                res.status(500).json({ ok: false, error: err.message });
+            }
         });
     }
-    listen(){
-        this.app.listen(this.port, ()=>{
-            console.log("http://127.0.0.1:"+this.port);
-        })
+
+    listen() {
+        this.app.listen(this.port, () => {
+            console.log(`Servidor corriendo en puerto ${this.port}`);
+        });
     }
 }
+
 module.exports = Server;
