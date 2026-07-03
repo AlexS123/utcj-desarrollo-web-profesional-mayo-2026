@@ -14,5 +14,11 @@ Crear el servidor
     - /public/index.html
     - /models/server.js
 5.- Configurar.
-6.- Iniciar: 
-    -node app
+6.- Iniciar: node app
+7.- Agregar ruta consultar usuario
+8.- Agregar ruta registrar usuario:
+9.- Agregar base de datos para usuarios y roles en MongoDB
+10.- Instalar Mongoose:
+    -npm i mongoose
+11.- Cifrar contraseñas
+    -instalar bcrypt: npm i bcrypt
