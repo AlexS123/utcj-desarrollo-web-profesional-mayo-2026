@@ -25,20 +25,21 @@ function NotFound() {
                     <div className="not-found-line" />
                     <h1 className="not-found-title">Página no encontrada</h1>
                     <p className="not-found-desc">
-                        ESTA ES LA MERA PAGINA, LA MERA MERA
+                        La página que buscas no existe, fue movida, o simplemente nunca estuvo aquí.
+                        No te preocupes, todo lo demás sí funciona.
                     </p>
                     <div className="not-found-actions">
                         <a href="/" className="nav-cta not-found-btn-home">Ir al inicio</a>
                         <button className="not-found-btn-back" onClick={() => window.history.back()}>
-                            BACK
+                            Regresar
                         </button>
                     </div>
                     <div className="not-found-quick-links">
-                        <span className="not-found-quick-label">VISITA</span>
+                        <span className="not-found-quick-label">O visita</span>
                         <a href="#" className="not-found-quick-link">Productos</a>
-                        <a href="#" className="not-found-quick-link"> ABOUT US</a>
+                        <a href="#" className="not-found-quick-link">Nosotros</a>
                         <a href="#" className="not-found-quick-link">Blog</a>
-                        <a href="#" className="not-found-quick-link">CONTACT</a>
+                        <a href="#" className="not-found-quick-link">Contáctanos</a>
                     </div>
                 </div>
             </main>

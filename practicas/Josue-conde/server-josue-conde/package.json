@@ -1,9 +1,9 @@
 {
-  "name": "server-pacheco-aaron",
+  "name": "server-josue-conde",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
-  "author": "Aaron Pacheco",
+  "author": "Josue Conde",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
