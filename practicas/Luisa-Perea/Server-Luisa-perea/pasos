@@ -1,0 +1,7 @@
+1. inicar servidor : -npm init
+2. instalar dependencias , express , dotenv,mongodb 
+-Instalar :npm i express dotenv mongoose 
+3. agregar carpetas (dentro del server)
+-/public 
+-/models
+-

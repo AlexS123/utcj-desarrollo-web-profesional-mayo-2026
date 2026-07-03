@@ -63,6 +63,11 @@ body{
     gap: 10px;
   }
 
+  .opcionesMenu{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .principal h1{
     font-size: 35px;
   }
@@ -70,6 +75,7 @@ body{
   .principal p{
     font-size: 18px;
   }
+
 }
 
 /* PÁGINA 404 */
