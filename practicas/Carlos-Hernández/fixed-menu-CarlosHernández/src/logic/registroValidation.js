@@ -11,9 +11,33 @@ export function validarFormulario(form) {
     errores.nombre = "Nombre inválido (Unicamente letras)";
   }
 
-  // EDAD
-  if (!form.edad || form.edad < 18) {
-    errores.edad = "Debes ser mayor de 18 años";
+  // FECHA DE NACIMIENTO
+  if (!form.fechaNacimiento) {
+
+    errores.fechaNacimiento =
+      "Selecciona tu fecha de nacimiento.";
+
+  } else {
+
+    const hoy = new Date();
+    const nacimiento = new Date(form.fechaNacimiento);
+
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+
+    const mes = hoy.getMonth() - nacimiento.getMonth();
+
+    if (
+      mes < 0 ||
+      (mes === 0 && hoy.getDate() < nacimiento.getDate())
+    ) {
+      edad--;
+    }
+
+    if (edad < 18) {
+      errores.fechaNacimiento =
+        "Debes ser mayor de 18 años para registrarte.";
+    }
+
   }
 
   // EMAIL
