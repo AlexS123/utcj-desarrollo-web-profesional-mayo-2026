@@ -18,16 +18,18 @@ class Server{
         this.app.use(express.urlencoded({extended: true}));
     }
     UsersDatabase(){
-        mongoose.connect('mongodb://localhost:27017/desarrolloWeb');
+        mongoose.connect('mongodb://localhost:27017/celux');
         let Schema = mongoose.Schema;
         //Las claves y tipos de datos coinciden con la BD
         const userSchema = new Schema({
-            user: String,
-            pass: String,
-            rol: String,
+            correo: String,
+            edad: Number,
+            telefono: String,
+            sexo: String,
+            contrasena: String,
         });
         //Colección users
-        this.userModel = mongoose.model('users', userSchema);
+        this.userModel = mongoose.model('clientes', userSchema);
     }
     routes(){
         this.app.get('/consultarUsuarios', (req, res) => {
@@ -38,8 +40,9 @@ class Server{
             });
         });
         this.app.post('/registrar', async(req, res) => {
-            let {user, pass, rol} = req.body;
-            console.log(user, pass, rol);
+            let {correo, edad, telefono, sexo, contrasena} = req.body;
+
+            console.log(correo, edad, telefono, sexo, contrasena);
             //Cifrar contraseña
             const saltRounds = 10; //Variable para algrotimo de cifrado (entre más grande, más segura, pero ocupa más recursos)
             bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -47,17 +50,19 @@ class Server{
                     return;
                 }
              
-                bcrypt.hash(pass, salt, async (err, hash) => {
+                bcrypt.hash(contrasena, salt, async (err, hash) => {
                     if (err) {
                         //Handle error
                         return;
                     }
                     //Guardar en la BD
                     console.log("Hashed password: " , hash);
-                        const newUser = new this.userModel({
-                        user: user,
-                        pass: hash,
-                        rol: rol
+                    const newUser = new this.userModel({
+                        correo: correo,
+                        edad: edad,
+                        telefono: telefono,
+                        sexo: sexo,
+                        contrasena: hash
                     });  
                     const savedUser = await newUser.save();
                     console.log("Usuario guradado", savedUser); 
