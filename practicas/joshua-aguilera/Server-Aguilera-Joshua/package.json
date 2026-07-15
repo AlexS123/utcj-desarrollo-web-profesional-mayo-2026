@@ -1,18 +1,19 @@
 {
-  "name": "server-hernandez-carlos",
+  "name": "server-aguilera-joshua",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Juan Carlos Hernandez Sanchez",
+  "author": "Joshua Aguilera",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.7.0"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }

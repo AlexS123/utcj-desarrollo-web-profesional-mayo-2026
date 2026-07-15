@@ -137,6 +137,17 @@ input[type="checkbox"]:checked::before {
   font-size: 18px;
 }
 
+.inputGroup input[type="date"]{
+  width: 100%;
+  cursor: pointer;
+}
+
+.inputGroup input[type="date"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+  opacity: 1;
+  margin-left: 10px;
+}
+
 button {
   padding: 12px;
   background: #0b3d91;
