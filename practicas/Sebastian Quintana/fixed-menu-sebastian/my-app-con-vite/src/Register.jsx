@@ -73,7 +73,7 @@ function Register() {
           <div className="register-icon">✦</div>
           <h1>Crea tu usuario</h1>
           <p>
-            Registra a un nuevo usuario con un formulario limpio, moderno y fácil de usar.
+            Nueva interfaz con un flujo más claro y un manejo más sencillo del registro.
           </p>
           <div className="register-highlight-box">
             <p className="register-highlight-title">¿Qué incluye?</p>
