@@ -6,6 +6,9 @@ import heroImg from './assets/hero.png'
 import NotFound from './NotFound'
 import './App.css'
 import Mypage from './Mypage'
+import Register from './Register'
+
+
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -110,6 +113,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Mypage />} />
+        <Route path="/registro" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
