@@ -2,7 +2,18 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    name: {
+    user: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+    },
+    pass: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    rol: {
       type: String,
       required: true,
       trim: true,
@@ -10,6 +21,7 @@ const userSchema = new Schema(
   },
   {
     timestamps: true,
+    collection: 'Users',
   }
 );
 
