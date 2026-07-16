@@ -21,7 +21,7 @@ class Server {
     }
 
     usersDatabase() {
-        mongoose.connect('mongodb://localhost:27017/Mayo2026_web_prof');
+        mongoose.connect('mongodb://localhost:27017/mayo2026_web_prof');
         let Schema = mongoose.Schema;
         const userSchema = new Schema({
             user: String,
@@ -35,8 +35,8 @@ class Server {
     routes() {
         this.app.get('/consultarUsuarios', (req, res) => {
             res.json({
-                user: 'josue',
-                pass: '12345',
+                user: 'admin',
+                pass: '1234',
                 rol: 'admin'
             });
         });
@@ -44,7 +44,7 @@ class Server {
         this.app.post('/registrar', async (req, res) => {
             try {
                 let { user, pass, rol } = req.body;
-                console.log(`Usuario: ${user}, Rol: ${rol}`);
+                console.log(Usuario: ${user}, Rol: ${rol});
 
                 const saltRounds = 10;
                 const hash = await bcrypt.hash(pass, saltRounds);
@@ -69,7 +69,7 @@ class Server {
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`Servidor corriendo en puerto ${this.port}`);
+            console.log(Servidor corriendo en puerto ${this.port});
         });
     }
 }
