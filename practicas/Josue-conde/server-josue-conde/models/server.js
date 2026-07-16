@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
 class Server {
     constructor() {
         this.app = express();
@@ -22,7 +21,9 @@ class Server {
 
     usersDatabase() {
         mongoose.connect('mongodb://localhost:27017/mayo2026_web_prof');
+
         let Schema = mongoose.Schema;
+
         const userSchema = new Schema({
             user: String,
             pass: String,
@@ -44,10 +45,12 @@ class Server {
         this.app.post('/registrar', async (req, res) => {
             try {
                 let { user, pass, rol } = req.body;
-                console.log(Usuario: ${user}, Rol: ${rol});
+
+                console.log(`Usuario: ${user}, Rol: ${rol}`);
 
                 const saltRounds = 10;
                 const hash = await bcrypt.hash(pass, saltRounds);
+
                 console.log('Contraseña cifrada:', hash);
 
                 const newUser = new this.userModel({
@@ -57,19 +60,28 @@ class Server {
                 });
 
                 const savedUser = await newUser.save();
+
                 console.log("Usuario guardado:", savedUser);
 
-                res.status(200).json({ ok: true, user: savedUser });
+                res.status(200).json({
+                    ok: true,
+                    user: savedUser
+                });
+
             } catch (err) {
                 console.error('Error al registrar usuario:', err);
-                res.status(500).json({ ok: false, error: err.message });
+
+                res.status(500).json({
+                    ok: false,
+                    error: err.message
+                });
             }
         });
     }
 
     listen() {
         this.app.listen(this.port, () => {
-            console.log(Servidor corriendo en puerto ${this.port});
+            console.log(`Servidor corriendo en puerto ${this.port}`);
         });
     }
 }
