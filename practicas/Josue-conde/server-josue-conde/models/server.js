@@ -20,7 +20,7 @@ class Server {
     }
 
     usersDatabase() {
-        mongoose.connect('mongodb://localhost:27017/mayo2026_web_prof');
+        mongoose.connect(process.env.MONGODB_URI);
 
         let Schema = mongoose.Schema;
 
@@ -61,7 +61,7 @@ class Server {
 
                 const savedUser = await newUser.save();
 
-                console.log("Usuario guardado:", savedUser);
+                console.log('Usuario guardado:', savedUser);
 
                 res.status(200).json({
                     ok: true,
