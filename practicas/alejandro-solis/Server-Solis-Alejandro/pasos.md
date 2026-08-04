@@ -15,3 +15,9 @@
 6. Iniciar: node app
 
 7. Agregar ruta consultar usuario
+
+8. Agregar ruta registrar usuario:
+9. Agregar base de datos para usuarios y roles en MongoDB.
+10. Instalar mongoose: npm i mongoose.
+11. Cifrar contraseñas.
+    -instalar bcrypt: npm i bcrypt
