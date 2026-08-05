@@ -2,8 +2,90 @@ import { useState } from "react";
 import "./App.css";
 import Registro from "./Registro";
 
+
 function MyPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const [loginOpen, setLoginOpen] = useState(false);
+
+const [loginData, setLoginData] = useState({
+  user: "",
+  pass: "",
+  rol: "",
+  terminos: false,
+});
+const handleLoginChange = (e) => {
+  const { name, value, type, checked } = e.target;
+
+  setLoginData({
+    ...loginData,
+    [name]: type === "checkbox" ? checked : value,
+  });
+};
+
+const handleLogin = async (e) => {
+  e.preventDefault();
+
+  if (!loginData.terminos) {
+    alert("Debes aceptar los términos y condiciones.");
+    return;
+  }
+
+  try {
+
+    const response = await fetch(
+      "http://localhost:5000/registrar",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          user: loginData.user,
+          pass: loginData.pass,
+          rol: loginData.rol,
+        }),
+      }
+    );
+
+
+    const data = await response.json();
+
+
+    if(response.ok){
+
+      alert("Usuario registrado correctamente");
+
+
+      setLoginData({
+        user:"",
+        pass:"",
+        rol:"",
+        terminos:false
+      });
+
+
+      setLoginOpen(false);
+
+
+    }else{
+
+      alert(data.error);
+
+    }
+
+
+  } catch(error){
+
+    console.error(error);
+
+    alert("Error al conectar con el servidor");
+
+  }
+
+};
 
   return (
     <div>
@@ -18,6 +100,7 @@ function MyPage() {
           <li><a href="#cohetes">Cohetes</a></li>
           <li><a href="#equipo">Equipo</a></li>
           <li><a href="#contacto">Contacto</a></li>
+          <li> <button className="btn-nav-user" onClick={() => setLoginOpen(true)}> Iniciar sesión</button></li>
         </ul>
 
         <div
@@ -27,6 +110,86 @@ function MyPage() {
           {menuOpen ? "✕" : "☰"}
         </div>
       </header>
+
+      {loginOpen && (
+  <div className="modal-overlay">
+    <div className="modal-panel">
+
+      <div className="modal-header">
+        <h2>Registrar usuarios</h2>
+
+        <button
+          className="modal-close"
+          onClick={() => setLoginOpen(false)}
+        >
+          ✕
+        </button>
+      </div>
+
+      <form
+        className="user-form"
+        onSubmit={handleLogin}
+      >
+
+        <div className="form-field">
+          <label>Correo electrónico</label>
+
+        <input
+          type="text"
+          name="user"
+          value={loginData.user}
+         onChange={handleLoginChange}
+          placeholder="Nombre de usuario"
+           required
+            />
+        </div>
+
+        <div className="form-field">
+          <label>Contraseña</label>
+
+          <input
+            type="password"
+            name="pass"
+            value={loginData.pass}
+            onChange={handleLoginChange}
+            placeholder="********"
+            required
+            />
+        </div>
+
+        <div className="form-field">
+
+<label>Rol</label>
+
+  <select  name="rol"  value={loginData.rol} onChange={handleLoginChange}  required > <option value=""> Seleccione un rol </option>
+
+    <option value="admin"> Administrador</option>
+
+    <option value="usuario">Usuario </option>
+  </select>
+</div>
+
+        <div className="form-field" style={{display:"flex",alignItems:"center",gap:"10px"}}>
+          <input type="checkbox" name="terminos" checked={loginData.terminos} onChange={handleLoginChange}/>
+
+          <label>
+            Acepto los términos y condiciones
+          </label>
+        </div>
+
+        <div className="modal-actions">
+
+          <button type="button" className="btn-secondary" onClick={() => setLoginOpen(false)}>Cancelar</button>
+
+          <button type="submit" className="btn-primary"> Regsitrar </button>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+)}
 
       <section className="hero" id="inicio">
         <div className="hero-content">
