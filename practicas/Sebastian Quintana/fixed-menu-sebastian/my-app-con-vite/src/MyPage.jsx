@@ -38,6 +38,8 @@ function MyPage() {
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#contacto">Contacto</a></li>
+            <li><Link to="/register">Registro</Link></li>
+            <li><Link to="/login">Login</Link></li>
             <li><Link to="/404">Ver Error 404</Link></li>
           </ul>
         </nav>

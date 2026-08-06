@@ -7,6 +7,7 @@ import Services from './Services.jsx';
 import Contact from './Contact.jsx';
 import Portfolio from './Portfolio.jsx';
 import Register from './Register.jsx';
+import Login from './Login.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         
         {/* Rutas para diferentes códigos de error */}
         <Route path="/error/:code" element={<ErrorPage />} />
