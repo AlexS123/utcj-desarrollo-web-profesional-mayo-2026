@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('./user');
 
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT || 5000;
+        this.JWT_SECRET = process.env.JWT_SECRET || 'mi_clave_secreta_super_segura';
         this.middlewares();
         this.routes();
         this.errorHandler();
@@ -74,6 +76,43 @@ class Server {
     }
 
     routes() {
+        this.app.post('/login', async (req, res) => {
+            try {
+                const body = req.body || {};
+                const { username, password } = body;
+
+                if (!username || !password) {
+                    return res.status(400).json({ error: 'Los campos username y password son obligatorios.' });
+                }
+
+                const userRecord = await User.findOne({ user: username });
+                if (!userRecord) {
+                    return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' });
+                }
+
+                const passwordMatches = await bcrypt.compare(password, userRecord.pass);
+                if (!passwordMatches) {
+                    return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' });
+                }
+
+                const userPayload = {
+                    id: userRecord._id,
+                    username: userRecord.user,
+                    role: userRecord.rol,
+                };
+
+                const token = jwt.sign(userPayload, this.JWT_SECRET, { expiresIn: '2h' });
+
+                return res.json({
+                    mensaje: 'Autenticación exitosa',
+                    token,
+                });
+            } catch (error) {
+                console.error('Error en login:', error);
+                return res.status(500).json({ error: 'Error interno del servidor.' });
+            }
+        });
+
         this.app.get('/consultarUsuarios', async (req, res) => {
             try {
                 const users = await User.find({}, 'user rol createdAt updatedAt');

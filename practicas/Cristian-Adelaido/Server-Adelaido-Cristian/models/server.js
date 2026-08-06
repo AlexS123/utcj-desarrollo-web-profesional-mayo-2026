@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 class Server {
@@ -33,6 +34,9 @@ class Server {
     }
 
     routes() {
+        this.app.post('/login', (req, res) =>{
+            
+        })
         this.app.get('/consultarUsuarios', (req, res) => {
             res.json({
                 user: 'Cristian',
