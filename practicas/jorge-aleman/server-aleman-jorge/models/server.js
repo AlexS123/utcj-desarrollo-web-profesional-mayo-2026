@@ -46,7 +46,7 @@ class Server{
                 };
 
                 // 2. Generar el Token (Expira en 2 horas)
-                const token = jwt.sign(userPayload, JWT_SECRET, { expiresIn: '2h' });
+                const token = jwt.sign(userPayload, this.JWT_SECRET, { expiresIn: '2h' });
 
                 return res.json({
                     mensaje: "Autenticación exitosa",
