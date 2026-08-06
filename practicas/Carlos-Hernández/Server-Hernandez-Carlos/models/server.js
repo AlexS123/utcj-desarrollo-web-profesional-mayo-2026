@@ -3,11 +3,13 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        this.JWT_SECRET = process.env.JWT_SECRET;
         
         this.middlewares();
         this.routes();
@@ -49,28 +51,45 @@ class Server {
         //this.userModel = mongoose.model('user', userSchema);
     }
     routes() {
-        this.app.post('/login', (req, res) => {
-            const { username, password } = req.body;
-            // Validación simulada de usuario (En producción usar Base de Datos + Bcrypt)
-            if (username === "admin" && password === "123456") {
+        this.app.post('/login', async (req, res) => {
+
+            const { email, password } = req.body;
+
+            try {
+                //Validación simulada de usuario (En producción usar Base de Datos + Bcrypt)
+                let consulta = await this.userModel.find({ correo: email });
+                if (consulta.length > 0) {
+                    if (bcrypt.compareSync(password, consulta[0].password)) {
+                        //console.log(consulta);
+                        
+                        // Datos que se guardarán dentro del JWT
+                        const userPayload = {
+                            id: consulta._id,
+                            nombre: consulta.nombre,
+                            correo: consulta.correo,
+                            rol: consulta.rol
+                        };
                 
-                // Datos que se guardarán dentro del JWT
-                const userPayload = {
-                    id: 1,
-                    username: username,
-                    role: "administrator"
-                };
-        
-                // 2. Generar el Token (Expira en 2 horas)
-                const token = jwt.sign(userPayload, JWT_SECRET, { expiresIn: '2h' });
-        
-                return res.json({
-                    mensaje: "Autenticación exitosa",
-                    token: token
+                        // 2. Generar el Token (Expira en 2 horas)
+                        const token = jwt.sign(userPayload, this.JWT_SECRET, {
+                            expiresIn: '2h'
+                        });
+                
+                        return res.json({
+                            mensaje: "Autenticación exitosa",
+                            token: token
+                        });
+                    }
+                    return res.status(401).json({ mensaje: "Correo o contraseña incorrectos" });
+                }
+                return res.status(401).json({ mensaje: "Correo o contraseña incorrectos" });
+            } catch (error) {
+                console.error(error);
+
+                res.status(500).json({
+                    mensaje: "Error del servidor"
                 });
             }
-        
-            return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
         });
         this.app.get('/consultarUsuarios', (req, res) => {
             res.json({
