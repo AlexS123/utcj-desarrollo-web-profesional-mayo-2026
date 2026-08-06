@@ -32,27 +32,31 @@ class Server {
         this.userModel = mongoose.model('user', userSchema);
     }
     routes(){
-        this.app.post('/login', (req, res) => {
+        this.app.post('/login', async(req, res) => {
             const { username, password } = req.body;
             // Validación simulada de usuario (En producción usar Base de Datos + Bcrypt)
-            if (username === "admin" && password === "123456") {
+            let consulta = await this.userModel.find({user: username});
+            if(consulta.length > 0){
+                if(bcrypt.compareSync(password, consulta[0].pass)){
+                //console.log(consulta);
         
-                // Datos que se guardarán dentro del JWT
-                const userPayload = {
-                    id: 1,
-                    username: username,
-                    role: "administrator"
-                };
+                    // Datos que se guardarán dentro del JWT
+                    const userPayload = {
+                        id: 1,
+                        username: username,
+                        role: "administrator"
+                    };
 
-                // 2. Generar el Token (Expira en 2 horas)
-                const token = jwt.sign(userPayload, JWT_SECRET, { expiresIn: '2h' });
+                    // 2. Generar el Token (Expira en 2 horas)
+                    const token = jwt.sign(userPayload, this.JWT_SECRET, { expiresIn: '2h' });
 
-                return res.json({
-                    mensaje: "Autenticación exitosa",
-                    token: token
-                });
+                    return res.json({
+                        mensaje: "Autenticación exitosa",
+                        token: token
+                    });
+                }
+                return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
             }
-
             return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
         });
         
