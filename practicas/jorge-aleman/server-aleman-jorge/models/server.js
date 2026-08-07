@@ -33,27 +33,28 @@ class Server{
         this.userModel = mongoose.model('clientes', userSchema);
     }
     routes(){
-        this.app.post('/login', (req, res) => {
-            const { username, password } = req.body;
+        this.app.post('/login', async(req, res) => {
+            const { correo, contrasena } = req.body;
             // Validación simulada de usuario (En producción usar Base de Datos + Bcrypt)
-            if (username === "admin" && password === "123456") {
-        
-                // Datos que se guardarán dentro del JWT
-                const userPayload = {
-                    id: 1,
-                    username: username,
-                    role: "administrator"
-                };
+            let consulta = await this.userModel.find({correo: correo});
+            if (consulta.length > 0) {
+                if(bcrypt.compareSync(contrasena, consulta[0].contrasena)){
+                    // Datos que se guardarán dentro del JWT
+                    const userPayload = {
+                        id: consulta[0]._id,
+                        correo: consulta[0].correo
+                    };
 
-                // 2. Generar el Token (Expira en 2 horas)
-                const token = jwt.sign(userPayload, this.JWT_SECRET, { expiresIn: '2h' });
+                    // 2. Generar el Token (Expira en 2 horas)
+                    const token = jwt.sign(userPayload, this.JWT_SECRET, { expiresIn: '2h' });
 
-                return res.json({
-                    mensaje: "Autenticación exitosa",
-                    token: token
-                });
+                    return res.json({
+                        mensaje: "Autenticación exitosa",
+                        token: token
+                    });
+                }
+                return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
             }
-
             return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
         });
         this.app.get('/consultarUsuarios', (req, res) => {
