@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const {verificarToken, verificarAdministrador} = require('../middleware/authMiddleware');
 
 class Server {
     constructor() {
@@ -64,12 +64,11 @@ class Server {
                         
                         // Datos que se guardarán dentro del JWT
                         const userPayload = {
-                            id: consulta._id,
-                            nombre: consulta.nombre,
-                            correo: consulta.correo,
-                            rol: consulta.rol
+                            id: consulta[0]._id,
+                            nombre: consulta[0].nombre,
+                            correo: consulta[0].correo,
+                            rol: consulta[0].rol
                         };
-                
                         // 2. Generar el Token (Expira en 2 horas)
                         const token = jwt.sign(userPayload, this.JWT_SECRET, {
                             expiresIn: '2h'
@@ -91,12 +90,68 @@ class Server {
                 });
             }
         });
-        this.app.get('/consultarUsuarios', (req, res) => {
-            res.json({
-                user: 'Juan',
-                pass: '12345',
-                rol: 'admin'
-            });
+        this.app.put('/cambiarRol/:id',verificarToken,verificarAdministrador,async (req, res) => {
+
+            try {
+
+                const { id } = req.params;
+                const { rol } = req.body;
+
+                if (!["pasajero", "admin"].includes(rol)) {
+
+                    return res.status(400).json({
+                        mensaje: "El rol debe ser pasajero o admin."
+                    });
+
+                }
+
+                const usuario = await this.userModel.findByIdAndUpdate(
+                    id,
+                    { rol: rol },
+                    { returnDocument: 'after' }
+                ).select("-password");
+
+                if (!usuario) {
+
+                    return res.status(404).json({
+                        mensaje: "Usuario no encontrado."
+                    });
+
+                }
+
+                res.json({
+                    mensaje: "Rol actualizado correctamente.",
+                    usuario: usuario
+                });
+
+            } catch (error) {
+
+                console.error("Error al cambiar el rol:", error);
+
+                res.status(500).json({
+                    mensaje: "Error del servidor."
+                });
+            }
+        });
+        this.app.get('/consultarUsuarios', verificarToken, verificarAdministrador, async (req, res) => {
+            try {
+                const usuarios = await this.userModel.find(
+                    {},
+                    {
+                        password: 0
+                    }
+                );
+
+                res.json(usuarios);
+
+            } catch (error) {
+
+                console.error('Error al consultar usuarios:', error);
+
+                res.status(500).json({
+                    mensaje: 'Error al consultar los usuarios'
+                });
+            }
         });
         this.app.post('/registrar', async (req, res) => {
             try {
@@ -151,9 +206,21 @@ class Server {
                             rol: rol
                         });*/
                         const savedUser = await newUser.save();
-                        console.log('Usuario guardado:', savedUser);
+
+                        const userPayload = {
+                            id: savedUser._id,
+                            nombre: savedUser.nombre,
+                            correo: savedUser.correo,
+                            rol: savedUser.rol
+                        };
+
+                        const token = jwt.sign(userPayload, this.JWT_SECRET, {
+                            expiresIn: '2h'
+                        });
+
                         res.status(201).json({
-                            mensaje: "Usuario registrado correctamente"
+                            mensaje: "Usuario registrado correctamente",
+                            token: token
                         });
                     });
                 });

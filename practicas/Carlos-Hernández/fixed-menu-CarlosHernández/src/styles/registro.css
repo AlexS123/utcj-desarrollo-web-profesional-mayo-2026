@@ -6,6 +6,7 @@
 
   background: linear-gradient(135deg, #eaf3ff, #dbe9ff);
   padding-top: 80px;
+  padding-bottom: 20px;
 }
 
 .registroCard {
@@ -216,4 +217,27 @@ input:-webkit-autofill:focus {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
+}
+.loginLink {
+  margin-top: 20px;
+
+  margin-bottom: 0 !important;
+
+  font-size: 14px !important;
+
+  color: #555;
+}
+
+.loginLink a {
+  color: #0b3d91;
+
+  font-weight: bold;
+
+  text-decoration: none;
+
+  margin-left: 5px;
+}
+
+.loginLink a:hover {
+  text-decoration: underline;
 }

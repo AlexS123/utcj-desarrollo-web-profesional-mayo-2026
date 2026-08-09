@@ -1,0 +1,1281 @@
+.vuelosHero {
+
+ padding: 90px 7%;
+
+  min-height: 500px;
+
+  display: flex;
+
+  position: relative;
+
+  background-color: #f4f8ff;
+
+  overflow: hidden;
+}
+
+.vuelosHeroImagen {
+
+  width: 55%;
+
+  min-height: 500px;
+}
+
+
+.vuelosHeroImagen img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+.vuelosHeroContenido {
+
+  width: 45%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 60px;
+
+  box-sizing: border-box;
+}
+
+
+.vuelosHeroContenido span,
+.seccionTitulo span,
+.llamadaFinalVuelos span {
+
+  color: #1e88e5;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  letter-spacing: 1.5px;
+}
+
+
+.vuelosHeroContenido h1 {
+
+  color: #0b3d91;
+
+  font-size: 52px;
+
+  line-height: 1.1;
+
+  margin: 18px 0;
+}
+
+
+.vuelosHeroContenido p {
+
+  color: #555;
+
+  font-size: 19px;
+
+  line-height: 1.7;
+
+  max-width: 550px;
+}
+
+
+/* TÍTULOS GENERALES */
+
+.seccionTitulo {
+
+  text-align: center;
+
+  max-width: 750px;
+
+  margin: 0 auto 45px;
+
+}
+
+
+.seccionTitulo h2 {
+
+  color: #0b3d91;
+
+  font-size: 38px;
+
+  margin: 12px 0 15px;
+}
+
+
+.seccionTitulo p {
+
+  color: #666;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+/*BUSCADOR*/
+
+.buscadorSeccion {
+
+  padding: 90px 7%;
+
+  background-color: white;
+}
+
+
+.buscador {
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 20px;
+
+  background-color: #f4f8ff;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+.campoBusqueda {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+
+.campoBusqueda label {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #333;
+
+  font-size: 14px;
+
+  font-weight: bold;
+}
+.campoFecha {
+
+  cursor: pointer;
+}
+.campoFecha input {
+
+  cursor: pointer;
+}
+
+.campoBusqueda label svg {
+
+  color: #0b3d91;
+
+  font-size: 15px;
+}
+
+.campoBusqueda input,
+.campoBusqueda select {
+
+  width: 100%;
+
+  height: 45px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d5dce8;
+
+  border-radius: 7px;
+
+  background-color: white;
+
+  color: #333;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+
+  outline: none;
+}
+
+
+.campoBusqueda input:focus,
+.campoBusqueda select:focus {
+
+  border-color: #1e88e5;
+
+  box-shadow:
+    0 0 0 2px rgba(30, 136, 229, 0.12);
+}
+
+
+.botonesBusqueda {
+
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 5px;
+}
+
+
+.btnBuscar,
+.btnLimpiar {
+
+  padding: 12px 30px;
+
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.btnBuscar {
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  border: none;
+}
+
+
+.btnBuscar:hover {
+
+  background-color: #082f70;
+}
+
+
+.btnLimpiar {
+
+  background-color: white;
+
+  color: #0b3d91;
+
+  border: 1px solid #0b3d91;
+}
+
+
+.btnLimpiar:hover {
+
+  background-color: #f0f5ff;
+}
+
+
+/*RESULTADOS*/
+
+.vuelosResultados {
+
+  padding: 90px 7%;
+
+  background-color: #f4f8ff;
+}
+
+
+.vuelosGrid {
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 30px;
+}
+
+
+.vueloCard {
+
+  background-color: white;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.3s,
+              box-shadow 0.3s;
+}
+
+
+.vueloCard:hover {
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.vueloImagen {
+
+  height: 220px;
+
+  position: relative;
+}
+
+
+.vueloImagen img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+.vueloImagen span {
+
+  position: absolute;
+
+  top: 15px;
+
+  left: 15px;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  background-color: white;
+
+  color: #0b3d91;
+
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+
+.vueloContenido {
+
+  padding: 25px;
+}
+
+
+.ruta {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #e5e9f0;
+}
+
+
+.ruta div:not(.flechaRuta) {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.ruta strong {
+
+  color: #0b3d91;
+
+  font-size: 24px;
+}
+
+
+.ruta small {
+
+  color: #666;
+
+  font-size: 12px;
+}
+
+
+.flechaRuta {
+
+  color: #1e88e5;
+
+  font-size: 25px;
+}
+
+
+.informacionVuelo {
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid #e5e9f0;
+}
+
+
+.informacionVuelo p {
+
+  margin: 7px 0;
+
+  color: #555;
+
+  font-size: 14px;
+}
+
+
+.informacionVuelo strong {
+
+  color: #333;
+}
+
+
+.precioVuelo {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding-top: 20px;
+}
+
+
+.precioVuelo div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.precioVuelo small {
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+
+.precioVuelo strong {
+
+  color: #0b3d91;
+
+  font-size: 22px;
+}
+
+
+.precioVuelo button {
+
+  padding: 10px 18px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.precioVuelo button:hover {
+
+  background-color: #082f70;
+}
+
+
+/*SIN RESULTADOS*/
+
+.sinResultados {
+
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  padding: 50px 30px;
+
+  text-align: center;
+
+  background-color: white;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+
+.sinResultados h3 {
+
+  color: #0b3d91;
+
+  font-size: 25px;
+
+  margin-top: 0;
+}
+
+
+.sinResultados p {
+
+  color: #666;
+
+  margin-bottom: 25px;
+}
+
+
+.sinResultados button {
+
+  padding: 11px 25px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.informacionVuelos {
+
+  padding: 90px 7%;
+
+  background-color: white;
+}
+
+
+.informacionGrid {
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+.informacionItem {
+
+  padding: 30px;
+
+  background-color: #f4f8ff;
+
+  border-radius: 12px;
+
+  border: 1px solid #e2eaf7;
+}
+
+
+.informacionItem h3 {
+
+  color: #0b3d91;
+
+  margin-top: 0;
+
+  font-size: 20px;
+}
+
+
+.informacionItem p {
+
+  color: #666;
+
+  line-height: 1.7;
+
+  font-size: 15px;
+}
+
+
+/*LLAMADA FINAL*/
+
+.llamadaFinalVuelos {
+
+  padding: 90px 20px;
+
+  margin: 0 0 20px;
+
+  text-align: center;
+
+  background-color: #eaf3ff;
+
+  border-top: 1px solid #cddff7;
+
+  border-bottom: 1px solid #cddff7;
+}
+
+
+.llamadaFinalVuelos h2 {
+
+  color: #0b3d91;
+
+  font-size: 38px;
+
+  margin: 15px 0;
+}
+
+
+.llamadaFinalVuelos p {
+
+  color: #555;
+
+  font-size: 17px;
+
+  max-width: 600px;
+
+  margin: 0 auto 25px;
+
+  line-height: 1.7;
+}
+
+
+.llamadaFinalVuelos button {
+
+  padding: 12px 28px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.llamadaFinalVuelos button:hover {
+
+  background-color: #082f70;
+}
+
+
+/*RESPONSIVE*/
+
+@media (max-width: 900px) {
+
+  .vuelosHero {
+
+    flex-direction: column;
+  }
+
+
+  .vuelosHeroImagen {
+
+    width: 100%;
+
+    height: 350px;
+
+    min-height: 0;
+  }
+
+
+  .vuelosHeroContenido {
+
+    width: 100%;
+
+    padding: 50px 30px;
+  }
+
+
+  .vuelosHeroContenido h1 {
+
+    font-size: 40px;
+  }
+
+
+  .buscador {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .vuelosGrid {
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .informacionGrid {
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .buscador {
+
+    grid-template-columns: 1fr;
+
+    padding: 20px;
+  }
+
+
+  .botonesBusqueda {
+
+    flex-direction: column;
+  }
+
+
+  .btnBuscar,
+  .btnLimpiar {
+
+    width: 100%;
+  }
+
+
+  .vuelosResultados,
+  .buscadorSeccion,
+  .informacionVuelos {
+
+    padding: 65px 20px;
+  }
+
+
+  .seccionTitulo h2 {
+
+    font-size: 30px;
+  }
+
+
+  .vuelosHeroContenido h1 {
+
+    font-size: 34px;
+  }
+
+
+  .vueloImagen {
+
+    height: 190px;
+  }
+
+
+  .precioVuelo {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .precioVuelo button {
+
+    width: 100%;
+  }
+
+
+  .llamadaFinalVuelos {
+
+    margin-bottom: 30px;
+
+    padding: 65px 20px;
+  }
+
+
+  .llamadaFinalVuelos h2 {
+
+    font-size: 30px;
+  }
+
+}
+/*MODAL DETALLES DEL VUELO*/
+
+.modalVueloOverlay {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 40px 20px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+
+    z-index: 9999;
+}
+
+.modalVuelo {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 650px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+.cerrarModalVuelo {
+
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    z-index: 2;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.9);
+
+    color: #555;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.cerrarModalVuelo:hover {
+
+    background-color: #f0f0f0;
+
+    color: #0b3d91;
+
+}
+
+
+/* IMAGEN */
+
+.modalVueloImagen {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 220px;
+
+    overflow: hidden;
+
+}
+
+
+.modalVueloImagen img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.modalVueloImagen span {
+
+    position: absolute;
+
+    bottom: 15px;
+    left: 20px;
+
+    padding: 6px 12px;
+
+    background-color: #0b3d91;
+
+    color: white;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+}
+
+
+/* CONTENIDO */
+
+.modalVueloContenido {
+
+    padding: 30px;
+
+}
+
+
+.modalEtiqueta {
+
+    color: #1e88e5;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.modalVueloContenido h2 {
+
+    margin: 10px 0 25px;
+
+    color: #0b3d91;
+
+    font-size: 30px;
+
+}
+
+
+/* RUTA */
+
+.modalRuta {
+
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    background-color: #f4f8ff;
+
+    border-radius: 10px;
+
+}
+
+
+.modalRuta div {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.modalRuta strong {
+
+    color: #0b3d91;
+
+    font-size: 25px;
+
+}
+
+
+.modalRuta span {
+
+    color: #666;
+
+    font-size: 13px;
+
+    margin-top: 4px;
+
+}
+
+
+.modalFlecha {
+
+    color: #1e88e5;
+
+    font-size: 25px;
+
+    text-align: center;
+
+}
+
+
+/* INFORMACIÓN */
+
+.detallesVueloGrid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.detallesVueloGrid div {
+
+    padding: 15px;
+
+    background-color: #f8fbff;
+
+    border: 1px solid #e2eaf7;
+
+    border-radius: 8px;
+
+}
+
+
+.detallesVueloGrid small {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+.detallesVueloGrid strong {
+
+    color: #333;
+
+    font-size: 14px;
+
+}
+
+
+/* PRECIO */
+
+.modalPrecio {
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+    background-color: #eaf3ff;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+}
+
+
+.modalPrecio small {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #666;
+
+}
+
+
+.modalPrecio strong {
+
+    color: #0b3d91;
+
+    font-size: 25px;
+
+}
+
+
+/* NOTA */
+
+.modalNota {
+
+    margin: 20px 0;
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+}
+
+
+/* BOTÓN */
+
+.btnCerrarDetalles {
+
+    display: block;
+
+    margin: 0 auto;
+
+    padding: 11px 30px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #0b3d91;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.btnCerrarDetalles:hover {
+
+    background-color: #082f70;
+
+}
+
+
+/*Modal Responsivo*/
+
+@media (max-width: 600px) {
+
+    .modalVuelo {
+
+      width: 100%;
+
+    }
+
+
+    .modalVueloImagen {
+
+        height: 180px;
+
+    }
+
+
+    .modalVueloContenido {
+
+        padding: 22px;
+
+    }
+
+
+    .modalVueloContenido h2 {
+
+        font-size: 24px;
+
+    }
+
+
+    .modalRuta {
+
+        gap: 10px;
+
+        padding: 15px;
+
+    }
+
+
+    .modalRuta strong {
+
+        font-size: 21px;
+
+    }
+
+
+    .modalRuta span {
+
+        font-size: 11px;
+
+    }
+
+
+    .modalFlecha {
+
+        font-size: 20px;
+
+    }
+
+
+    .detallesVueloGrid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
