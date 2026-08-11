@@ -1,0 +1,817 @@
+/*HERO*/
+
+.destinosHero {
+
+  padding: 90px 7%;
+
+  min-height: 500px;
+
+  display: flex;
+
+  position: relative;
+
+  background-color: #f4f8ff;
+
+  overflow: hidden;
+}
+
+
+.destinosHeroImagen {
+
+  width: 55%;
+
+  min-height: 500px;
+}
+
+
+.destinosHeroImagen img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+.destinosHeroContenido {
+
+  width: 45%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 60px;
+
+  box-sizing: border-box;
+}
+
+
+.destinosHeroContenido span,
+.seccionTituloDestinos span,
+.llamadaFinalDestinos span {
+
+  color: #1e88e5;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  letter-spacing: 1.5px;
+}
+
+
+.destinosHeroContenido h1 {
+
+  color: #0b3d91;
+
+  font-size: 52px;
+
+  line-height: 1.1;
+
+  margin: 18px 0;
+}
+
+
+.destinosHeroContenido p {
+
+  color: #555;
+
+  font-size: 19px;
+
+  line-height: 1.7;
+
+  max-width: 550px;
+}
+
+
+/*TÍTULOS*/
+
+.seccionTituloDestinos {
+
+  text-align: center;
+
+  max-width: 750px;
+
+  margin: 0 auto 45px;
+}
+
+
+.seccionTituloDestinos h2 {
+
+  color: #0b3d91;
+
+  font-size: 38px;
+
+  margin: 12px 0 15px;
+}
+
+
+.seccionTituloDestinos p {
+
+  color: #666;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+/*SECCIONES DE DESTINOS*/
+
+.destinosSeccion {
+
+  padding: 90px 7%;
+
+  background-color: white;
+}
+
+
+.destinosInternacionales {
+
+  background-color: #f4f8ff;
+}
+
+
+/*GRID DE DESTINOS*/
+
+.destinosGrid {
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+
+/*TARJETAS*/
+
+.destinoCard {
+
+  background-color: white;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+
+.destinoCard:hover {
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/*IMAGEN DEL DESTINO*/
+
+.destinoImagen {
+
+  height: 240px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+.destinoImagen img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.4s;
+}
+
+
+.destinoCard:hover .destinoImagen img {
+
+  transform: scale(1.04);
+}
+
+
+.destinoImagen span {
+
+  position: absolute;
+
+  top: 15px;
+
+  left: 15px;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  background-color: white;
+
+  color: #0b3d91;
+
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+
+/*CONTENIDO DE TARJETA*/
+
+.destinoContenido {
+
+  padding: 25px;
+}
+
+
+.destinoContenido small {
+
+  color: #1e88e5;
+
+  font-size: 13px;
+}
+
+
+.destinoContenido h3 {
+
+  color: #0b3d91;
+
+  font-size: 25px;
+
+  margin: 8px 0 12px;
+}
+
+
+.destinoContenido p {
+
+  color: #666;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  margin-bottom: 20px;
+}
+
+
+.destinoContenido button {
+
+  padding: 10px 18px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  transition: 0.3s;
+}
+
+
+.destinoContenido button:hover {
+
+  background-color: #082f70;
+}
+
+
+/*TIPOS DE VIAJE*/
+
+.tiposViaje {
+
+  padding: 90px 7%;
+
+  background-color: white;
+}
+
+
+.tiposViajeGrid {
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+
+.tipoViaje {
+
+  padding: 30px;
+
+  background-color: #f4f8ff;
+
+  border: 1px solid #e2eaf7;
+
+  border-radius: 12px;
+}
+
+
+.tipoViaje h3 {
+
+  color: #0b3d91;
+
+  font-size: 20px;
+
+  margin-top: 0;
+
+  margin-bottom: 12px;
+}
+
+
+.tipoViaje p {
+
+  color: #666;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  margin: 0;
+}
+
+
+/*LLAMADA FINAL*/
+
+.llamadaFinalDestinos {
+
+  padding: 90px 20px;
+
+  margin: 0 0 20px;
+
+  text-align: center;
+
+  background-color: #eaf3ff;
+
+  border-top: 1px solid #cddff7;
+
+  border-bottom: 1px solid #cddff7;
+}
+
+
+.llamadaFinalDestinos h2 {
+
+  color: #0b3d91;
+
+  font-size: 38px;
+
+  margin: 15px 0;
+}
+
+
+.llamadaFinalDestinos p {
+
+  color: #555;
+
+  font-size: 17px;
+
+  max-width: 600px;
+
+  margin: 0 auto 25px;
+
+  line-height: 1.7;
+}
+
+
+.llamadaFinalDestinos button {
+
+  padding: 12px 28px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.llamadaFinalDestinos button:hover {
+
+  background-color: #082f70;
+}
+
+
+/*RESPONSIVE*/
+
+@media (max-width: 1000px) {
+
+  .destinosGrid {
+
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+
+
+  .tiposViajeGrid {
+
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .destinosHero {
+
+    flex-direction: column;
+
+  }
+
+
+  .destinosHeroImagen {
+
+    width: 100%;
+
+    height: 350px;
+
+    min-height: 0;
+
+  }
+
+
+  .destinosHeroContenido {
+
+    width: 100%;
+
+    padding: 50px 30px;
+
+  }
+
+
+  .destinosHeroContenido h1 {
+
+    font-size: 40px;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .destinosGrid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .tiposViajeGrid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .destinosSeccion,
+  .tiposViaje {
+
+    padding: 65px 20px;
+
+  }
+
+
+  .seccionTituloDestinos h2 {
+
+    font-size: 30px;
+
+  }
+
+
+  .destinosHeroContenido h1 {
+
+    font-size: 34px;
+
+  }
+
+
+  .destinoImagen {
+
+    height: 210px;
+
+  }
+
+
+  .llamadaFinalDestinos {
+
+    margin-bottom: 30px;
+
+    padding: 65px 20px;
+
+  }
+
+
+  .llamadaFinalDestinos h2 {
+
+    font-size: 30px;
+
+  }
+
+}
+/*MODAL DESTINO*/
+
+.modalDestinoOverlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    z-index: 9999;
+
+    overflow-y: auto;
+}
+
+
+.modalDestino {
+    position: relative;
+
+    width: 90%;
+    max-width: 600px;
+
+    max-height: 90vh;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    overflow-y: auto;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+
+    box-sizing: border-box;
+}
+
+
+/* IMAGEN */
+
+.modalDestinoImagen {
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* CONTENIDO */
+
+.modalDestinoContenido {
+    padding: 30px;
+
+    box-sizing: border-box;
+}
+
+
+.modalDestinoCategoria {
+    color: #1e88e5;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.modalDestinoContenido h2 {
+    margin: 10px 0 5px;
+
+    color: #0b3d91;
+
+    font-size: 32px;
+}
+
+
+.modalDestinoUbicacion {
+    margin-top: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.modalDestinoContenido p {
+    color: #555;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+.modalDestinoContenido h3 {
+    margin-top: 25px;
+
+    margin-bottom: 10px;
+
+    color: #0b3d91;
+
+    font-size: 20px;
+}
+
+
+/* INFORMACIÓN */
+
+.modalDestinoInfo {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+.modalDestinoInfo div {
+    padding: 15px;
+
+    background-color: #f4f8ff;
+
+    border: 1px solid #e2eaf7;
+
+    border-radius: 8px;
+
+    text-align: center;
+}
+
+
+.modalDestinoInfo strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #0b3d91;
+
+    font-size: 13px;
+}
+
+
+.modalDestinoInfo span {
+    color: #666;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* BOTÓN X */
+
+.cerrarModalDestino {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.95);
+
+    color: #555;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+
+    transition: 0.3s;
+}
+
+
+.cerrarModalDestino:hover {
+    background-color: white;
+
+    color: #d00000;
+}
+
+
+/* BOTÓN CERRAR */
+
+.btnCerrarDestino {
+    display: block;
+
+    margin: 25px auto 0;
+
+    padding: 11px 30px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #0b3d91;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.btnCerrarDestino:hover {
+    background-color: #082f70;
+}
+
+
+/*RESPONSIVE DEL MODAL*/
+
+@media (max-width: 600px) {
+
+    .modalDestinoOverlay {
+        padding: 15px;
+    }
+
+    .modalDestino {
+        width: 100%;
+
+        max-height: 90vh;
+
+        border-radius: 12px;
+    }
+
+    .modalDestinoImagen {
+        height: 180px;
+    }
+
+    .modalDestinoContenido {
+        padding: 25px 20px;
+    }
+
+    .modalDestinoContenido h2 {
+        font-size: 27px;
+    }
+
+    .modalDestinoInfo {
+        grid-template-columns: 1fr;
+    }
+
+}

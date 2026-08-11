@@ -66,7 +66,44 @@ function FormularioRegistro() {
             return
         }
 
-        alert("Registro exitoso")
+        fetch("/registrar", {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                correo,
+                edad,
+                telefono,
+                sexo,
+                contrasena
+            })
+
+        })
+        .then(respuesta => respuesta.text())
+
+        .then(respuesta => {
+            if (respuesta === "OK") {
+                alert("Registro exitoso")
+                setCorreo("")
+                setEdad("")
+                setTelefono("")
+                setSexo("")
+                setContrasena("")
+                setAceptaTerminos(false)
+            } else{
+                mostrarToast(respuesta)
+            }
+        })
+        .catch(() => {
+
+            mostrarToast(
+                "No fue posible conectar con el servidor."
+            )
+
+        })
     }
 
     return (

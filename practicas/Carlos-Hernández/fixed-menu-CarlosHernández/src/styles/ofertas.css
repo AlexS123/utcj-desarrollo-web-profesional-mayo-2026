@@ -1,0 +1,900 @@
+/*HERO*/
+
+.ofertasHero {
+  padding: 90px 7%;
+
+  min-height: 500px;
+
+  display: flex;
+
+  position: relative;
+
+  background-color: #f4f8ff;
+
+  overflow: hidden;
+}
+
+.ofertasHeroImagen {
+  width: 55%;
+
+  min-height: 500px;
+}
+
+.ofertasHeroImagen img {
+  width: 100%;
+  height: 100%;
+
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.ofertasHeroContenido {
+  width: 45%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  padding: 60px;
+
+  box-sizing: border-box;
+}
+
+.ofertasHeroContenido span,
+.seccionTitulo span,
+.llamadaFinalOfertas span {
+  color: #1e88e5;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  letter-spacing: 1.5px;
+}
+
+.ofertasHeroContenido h1 {
+  color: #0b3d91;
+
+  font-size: 52px;
+
+  line-height: 1.1;
+
+  margin: 18px 0;
+}
+
+.ofertasHeroContenido p {
+  color: #555;
+
+  font-size: 19px;
+
+  line-height: 1.7;
+
+  max-width: 550px;
+}
+
+
+/*TÍTULOS GENERALES*/
+
+.seccionTitulo {
+  text-align: center;
+
+  max-width: 750px;
+
+  margin: 0 auto 45px;
+}
+
+.seccionTitulo h2 {
+  color: #0b3d91;
+
+  font-size: 38px;
+
+  margin: 12px 0 15px;
+}
+
+.seccionTitulo p {
+  color: #666;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+/*OFERTAS DESTACADAS*/
+
+.ofertasSeccion {
+  padding: 90px 7%;
+
+  background-color: white;
+}
+.ofertaCard {
+  display: grid;
+  grid-template-columns: 45% 55%;
+
+  background-color: white;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.08);
+
+  min-height: 360px;
+}
+
+
+/*IMAGEN DE LA OFERTA*/
+
+.ofertaImagen {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 360px;
+
+  overflow: hidden;
+}
+
+.ofertaImagen img {
+  width: 100%;
+  height: 360px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* Etiqueta sobre la imagen */
+
+.ofertaImagen > span {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  padding: 7px 13px;
+
+  border-radius: 20px;
+
+  background-color: white;
+
+  color: #0b3d91;
+
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+
+/*CONTENIDO*/
+
+.ofertaContenido {
+  padding: 35px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+.ofertaEtiqueta {
+  color: #1e88e5;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+}
+
+.ofertaContenido h3 {
+  color: #0b3d91;
+
+  font-size: 25px;
+
+  margin: 15px 0 10px;
+}
+
+.ofertaContenido p {
+  color: #666;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  margin-bottom: 20px;
+}
+
+
+/*PRECIO*/
+
+.ofertaPrecio {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 7px;
+
+  margin-bottom: 10px;
+}
+
+.ofertaPrecio small {
+  color: #777;
+
+  font-size: 13px;
+}
+
+.ofertaPrecio strong {
+  color: #0b3d91;
+
+  font-size: 25px;
+}
+
+
+/*NOTA*/
+
+.notaOferta {
+  color: #888;
+
+  font-size: 12px;
+
+  margin-bottom: 20px;
+}
+
+
+/*BOTÓN*/
+
+.ofertaContenido button {
+  width: fit-content;
+
+  padding: 11px 24px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.ofertaContenido button:hover {
+  background-color: #082f70;
+}
+
+
+/*GRID DE OFERTAS*/
+
+.ofertasGrid {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 30px;
+}
+
+
+/*RESPONSIVO*/
+
+@media (max-width: 800px) {
+
+  .ofertaCard {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+  }
+
+  .ofertaImagen {
+    height: 260px;
+
+    min-height: 260px;
+  }
+
+  .ofertaContenido {
+    padding: 30px;
+  }
+
+}
+
+/*INFORMACIÓN*/
+
+.informacionOfertas {
+  padding: 90px 7%;
+
+  background-color: #f4f8ff;
+}
+
+.informacionOfertasGrid {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.informacionOferta {
+  padding: 30px;
+
+  background-color: white;
+
+  border-radius: 12px;
+
+  border: 1px solid #e2eaf7;
+
+  box-sizing: border-box;
+}
+
+.informacionOferta h3 {
+  color: #0b3d91;
+
+  margin-top: 0;
+
+  font-size: 20px;
+}
+
+.informacionOferta p {
+  color: #666;
+
+  line-height: 1.7;
+
+  font-size: 15px;
+}
+
+
+/*LLAMADA FINAL*/
+
+.llamadaFinalOfertas {
+  padding: 90px 20px;
+
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  background-color: #eaf3ff;
+
+  border-top: 1px solid #cddff7;
+
+  border-bottom: 1px solid #cddff7;
+}
+
+.llamadaFinalOfertas h2 {
+  color: #0b3d91;
+
+  font-size: 38px;
+
+  margin: 15px 0;
+}
+
+.llamadaFinalOfertas p {
+  color: #555;
+
+  font-size: 17px;
+
+  max-width: 600px;
+
+  margin: 0 auto 25px;
+
+  line-height: 1.7;
+}
+
+.llamadaFinalOfertas button {
+  padding: 12px 28px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.llamadaFinalOfertas button:hover {
+  background-color: #082f70;
+}
+
+@media (max-width: 600px) {
+
+  .ofertasSeccion {
+    padding: 65px 20px;
+  }
+
+  .ofertaImagen {
+    height: 220px;
+
+    min-height: 220px;
+  }
+
+  .ofertaContenido {
+    padding: 25px;
+  }
+
+  .ofertaContenido h3 {
+    font-size: 22px;
+  }
+
+  .ofertaPrecio strong {
+    font-size: 22px;
+  }
+
+  .ofertaContenido button {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .ofertasHero {
+    flex-direction: column;
+  }
+
+  .ofertasHeroImagen {
+    width: 100%;
+
+    height: 350px;
+
+    min-height: 0;
+  }
+
+  .ofertasHeroContenido {
+    width: 100%;
+
+    padding: 50px 30px;
+  }
+
+  .ofertasHeroContenido h1 {
+    font-size: 40px;
+  }
+
+  .informacionOfertasGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .ofertasGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ofertasHeroContenido h1 {
+    font-size: 36px;
+  }
+
+  .informacionOfertas {
+    padding: 65px 20px;
+  }
+
+  .seccionTitulo h2 {
+    font-size: 30px;
+  }
+
+  .llamadaFinalOfertas {
+    margin: 0px 0 20px;
+
+    padding: 65px 20px;
+  }
+
+  .llamadaFinalOfertas h2 {
+    font-size: 30px;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .ofertasHeroImagen {
+    height: 280px;
+  }
+
+  .ofertasHeroContenido {
+    padding: 40px 20px;
+  }
+
+  .ofertasHeroContenido h1 {
+    font-size: 32px;
+  }
+
+  .ofertasHeroContenido p {
+    font-size: 17px;
+  }
+
+}
+/*MODAL DE OFERTA*/
+
+.modalOfertaOverlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    z-index: 9999;
+
+    overflow-y: auto;
+}
+
+
+.modalOferta {
+    position: relative;
+
+    width: 100%;
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    overflow-y: auto;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Imagen */
+
+.modalOfertaImagen {
+    position: relative;
+
+    width: 100%;
+    height: 230px;
+
+    overflow: hidden;
+}
+
+
+.modalOfertaImagen img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.modalOfertaImagen span {
+    position: absolute;
+
+    bottom: 15px;
+    left: 20px;
+
+    padding: 6px 10px;
+
+    background-color: #0b3d91;
+
+    color: white;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* Botón cerrar */
+
+.cerrarModalOferta {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.95);
+
+    color: #555;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+
+    transition: 0.3s;
+}
+
+.cerrarModalOferta:hover {
+    color: #d00000;
+
+    background-color: #f1f1f1;
+}
+
+
+/* Contenido */
+
+.modalOfertaContenido {
+    padding: 30px;
+}
+
+
+.modalOfertaEtiqueta {
+    color: #1e88e5;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.modalOfertaContenido h2 {
+    margin: 8px 0 5px;
+
+    color: #0b3d91;
+
+    font-size: 30px;
+}
+
+
+.modalOfertaRuta {
+    margin-top: 0;
+
+    color: #555;
+
+    font-size: 16px;
+}
+
+
+/* Precio */
+
+.modalOfertaPrecio {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 20px 0;
+
+    padding: 18px;
+
+    background-color: #f4f8ff;
+
+    border-radius: 10px;
+
+    border: 1px solid #dce8f8;
+
+    text-align: center;
+}
+
+
+.modalOfertaPrecio small {
+    color: #666;
+
+    font-size: 13px;
+}
+
+
+.modalOfertaPrecio strong {
+    margin: 3px 0;
+
+    color: #0b3d91;
+
+    font-size: 27px;
+}
+
+
+.modalOfertaPrecio span {
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* Información */
+
+.modalOfertaContenido h3 {
+    margin: 20px 0 7px;
+
+    color: #0b3d91;
+
+    font-size: 17px;
+}
+
+
+.modalOfertaContenido > p {
+    margin: 0;
+
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* Nota */
+
+.modalOfertaNota {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 25px;
+
+    padding: 12px;
+
+    background-color: #fff8e5;
+
+    border: 1px solid #f0dfaa;
+
+    border-radius: 7px;
+
+    color: #765d16;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+/* Botones */
+
+.modalOfertaBotones {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+.btnExplorarOferta,
+.btnCerrarOferta {
+    padding: 11px 22px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.btnExplorarOferta {
+    border: none;
+
+    background-color: #0b3d91;
+
+    color: white;
+}
+
+
+.btnExplorarOferta:hover {
+    background-color: #082f70;
+}
+
+
+.btnCerrarOferta {
+    border: 1px solid #d5dce8;
+
+    background-color: #f1f1f1;
+
+    color: #444;
+}
+
+
+.btnCerrarOferta:hover {
+    background-color: #e2e2e2;
+}
+
+
+/* Modal Responsivo*/
+
+@media (max-width: 600px) {
+
+    .modalOfertaOverlay {
+        padding: 10px;
+    }
+
+
+    .modalOferta {
+        max-height: 92vh;
+
+        border-radius: 12px;
+    }
+
+
+    .modalOfertaImagen {
+        height: 180px;
+    }
+
+
+    .modalOfertaContenido {
+        padding: 25px 20px;
+    }
+
+
+    .modalOfertaContenido h2 {
+        font-size: 26px;
+    }
+
+
+    .modalOfertaPrecio strong {
+        font-size: 24px;
+    }
+
+
+    .modalOfertaBotones {
+        flex-direction: column;
+    }
+
+
+    .btnExplorarOferta,
+    .btnCerrarOferta {
+        width: 100%;
+    }
+
+}

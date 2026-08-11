@@ -1,0 +1,243 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Syne',sans-serif;
+    background:#09090f;
+    color:#fff;
+}
+
+a{
+    text-decoration:none;
+}
+
+/*======================
+        NAVBAR
+======================*/
+
+.fixed-nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 60px;
+    background:rgba(9,9,15,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    background:linear-gradient(90deg,#ffffff,#9b5cff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:15px;
+}
+
+.nav-links a{
+    color:#d4d4d8;
+    padding:10px 18px;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    background:#9b5cff25;
+    color:#fff;
+}
+
+.nav-cta{
+    background:#9b5cff;
+    color:white;
+    padding:12px 24px;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-cta:hover{
+    background:#7f3cff;
+}
+
+/*======================
+        CONTENIDO
+======================*/
+
+.content{
+    max-width:1200px;
+    margin:auto;
+    padding:0 25px;
+}
+
+/*======================
+        HERO
+======================*/
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding-top:100px;
+}
+
+.hero h1{
+    font-size:clamp(3rem,6vw,5rem);
+    font-weight:700;
+    line-height:1.15;
+    max-width:950px;
+    margin-bottom:30px;
+
+    background:linear-gradient(90deg,#ffffff,#9b5cff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:750px;
+    font-size:20px;
+    color:#cfcfd8;
+    line-height:1.8;
+}
+
+/*======================
+        SECCIONES
+======================*/
+
+.section{
+    padding:120px 0;
+    scroll-margin-top:90px;
+}
+
+.section h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:50px;
+}
+
+.section p{
+    color:#cfcfd8;
+    font-size:18px;
+    line-height:1.8;
+    max-width:850px;
+    margin:0 auto 20px;
+    text-align:center;
+}
+
+/*======================
+        TARJETAS
+======================*/
+
+.cards{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#141420;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:30px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#9b5cff;
+    box-shadow:0 15px 35px rgba(155,92,255,.25);
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.card p{
+    text-align:left;
+    font-size:16px;
+    margin:0;
+}
+
+/*======================
+        CONTACTO
+======================*/
+
+#contacto{
+    text-align:center;
+}
+
+/*======================
+        SCROLL
+======================*/
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#9b5cff;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#7f3cff;
+}
+
+/*======================
+      RESPONSIVE
+======================*/
+
+@media(max-width:768px){
+
+    .fixed-nav{
+        flex-direction:column;
+        justify-content:center;
+        height:auto;
+        padding:20px;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .section h2{
+        font-size:32px;
+    }
+
+}

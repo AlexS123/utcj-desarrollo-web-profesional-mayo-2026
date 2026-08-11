@@ -1,5 +1,8 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { guardarToken, obtenerUsuario } from "../logic/auth";
 import { validarFormulario } from "../logic/registroValidation";
 import "../styles/registro.css";
 import {
@@ -14,11 +17,15 @@ import {
 } from "react-icons/fa";
 
 function Registro() {
+
+  const navigate = useNavigate();
+
   const [mensajeExito, setMensajeExito] = useState("");
+  const [mensajeServidor, setMensajeServidor] = useState("");
   const [mostrarPassword, setMostrarPassword] = useState(false);
   const [form, setForm] = useState({
     nombre: "",
-    edad: "",
+    fechaNacimiento: "",
     email: "",
     telefono: "",
     password: "",
@@ -37,27 +44,71 @@ function Registro() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validacion = validarFormulario(form);
     setErrores(validacion);
 
-    if (Object.keys(validacion).length === 0) {
+    if (Object.keys(validacion).length > 0) {
+        return;
+    }
+    setMensajeServidor("");
+    try {
+      const respuesta = await fetch("http://127.0.0.1:5000/registrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(form)
+      });
+
+      if (!respuesta.ok) {
+        const error = await respuesta.json();
+        setErrores((prev) => ({
+            ...prev,
+            ...error.errores
+        }));
+        return;
+      }
+
+      const datos = await respuesta.json();
+
+      console.log("Registro exitoso:", datos);
+
+      // Guardar el JWT
+      guardarToken(datos.token);
+
+      // Obtener los datos del usuario desde el JWT
+      const usuario = obtenerUsuario();
+
+      console.log("Usuario registrado:", usuario);
+
+      // Guardar los datos del usuario
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+
       setMensajeExito("¡Cuenta creada correctamente! Bienvenido a AeroClima.");
+
       setTimeout(() => {
         setMensajeExito("");
-      }, 3000);
+        navigate("/");
+      }, 2000);
+
       setForm({
         nombre: "",
-        edad: "",
+        fechaNacimiento: "",
         email: "",
         telefono: "",
         password: "",
         genero: "",
         terminos: false
       });
+
+    } catch (err) {
+        console.log(err);
+        alert("Ocurrió un error al registrar el usuario.");
     }
+
   };
 
   return (
@@ -91,19 +142,30 @@ function Registro() {
             </div>
             {errores.nombre && <span className="errorText">{errores.nombre}</span>}
 
-            {/* EDAD */}
+            {/* FECHA DE NACIMIENTO */}
             <div className="inputGroup">
               <FaCalendarAlt />
+
               <input
-                type="number"
-                name="edad"
-                placeholder="Edad"
-                value={form.edad}
+                type="date"
+                name="fechaNacimiento"
+                value={form.fechaNacimiento}
                 onChange={handleChange}
+                onFocus={(e) => {
+                  if (e.target.showPicker) {
+                    e.target.showPicker();
+                  }
+                }}
+                max={new Date().toISOString().split("T")[0]}
                 required
               />
             </div>
-            {errores.edad && <span className="errorText">{errores.edad}</span>}
+
+            {errores.fechaNacimiento && (
+              <span className="errorText">
+                {errores.fechaNacimiento}
+              </span>
+            )}
 
             {/* EMAIL */}
             <div className="inputGroup">
@@ -193,10 +255,17 @@ function Registro() {
             <button type="submit">Registrarme</button>
 
           </form>
+          <p className="loginLink">
+            ¿Ya tienes una cuenta?{" "}
+            <Link to="/login">
+              Inicia sesión
+            </Link>
+          </p>
 
         </div>
 
       </div>
+      <Footer />
     </>
   );
 }
