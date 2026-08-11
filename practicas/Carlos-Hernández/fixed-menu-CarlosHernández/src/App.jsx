@@ -8,6 +8,8 @@ import Ofertas from "./pages/Ofertas";
 import Contacto from "./pages/Contacto";
 import Registro from "./pages/Registro";
 import Login from "./pages/Login";
+import RutaAdministrador from "./components/RutaAdministrador";
+import AdministrarUsuarios from "./pages/AdministrarUsuarios";
 import Error404 from "./pages/Error404";
 
 import RutaPublica from "./components/RutaPublica";
@@ -42,6 +44,15 @@ function App() {
               <Registro />
             </RutaPublica>
           }
+        />
+
+        <Route
+            path="/administrar-Usuarios"
+            element={
+                <RutaAdministrador>
+                    <AdministrarUsuarios />
+                </RutaAdministrador>
+            }
         />
 
         <Route path="*" element={<Error404 />} />

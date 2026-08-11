@@ -2,19 +2,23 @@ const jwt = require("jsonwebtoken");
 
 function verificarToken(req, res, next) {
 
-    const authorization = req.headers.authorization;
+    // Primero intenta obtener el JWT desde la cookie HTTP-only
+    let token = req.cookies?.token;
 
-    if (!authorization) {
-        return res.status(401).json({
-            mensaje: "No autorizado. Se requiere iniciar sesión."
-        });
+    // Si no existe cookie, también acepta Authorization Bearer
+    if (!token) {
+
+        const authorization = req.headers.authorization;
+
+        if (authorization) {
+            token = authorization.split(" ")[1];
+        }
     }
 
-    const token = authorization.split(" ")[1];
-
+    // No existe token
     if (!token) {
         return res.status(401).json({
-            mensaje: "Token no proporcionado."
+            mensaje: "Debes iniciar sesión."
         });
     }
 
@@ -31,11 +35,10 @@ function verificarToken(req, res, next) {
 
     } catch (error) {
 
-        console.error("Error al verificar token:", error);
-
         return res.status(401).json({
-            mensaje: "Token inválido o expirado."
+            mensaje: "La sesión ha expirado. Debes iniciar sesión nuevamente."
         });
+
     }
 }
 
@@ -45,14 +48,13 @@ function verificarAdministrador(req, res, next) {
     if (req.usuario.rol !== "admin") {
 
         return res.status(403).json({
-            mensaje: "Acceso denegado. Se requiere ser administrador."
+            mensaje: "No tienes permisos para acceder a esta sección."
         });
 
     }
 
     next();
 }
-
 
 module.exports = {
     verificarToken,

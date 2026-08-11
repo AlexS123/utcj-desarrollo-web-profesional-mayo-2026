@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { guardarToken, obtenerUsuario } from "../logic/auth";
+import { guardarUsuario } from "../logic/auth";
 import { validarFormulario } from "../logic/registroValidation";
 import "../styles/registro.css";
 import {
@@ -55,8 +55,9 @@ function Registro() {
     }
     setMensajeServidor("");
     try {
-      const respuesta = await fetch("http://127.0.0.1:5000/registrar", {
+      const respuesta = await fetch("http://localhost:5000/registrar", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json"
         },
@@ -76,16 +77,10 @@ function Registro() {
 
       console.log("Registro exitoso:", datos);
 
-      // Guardar el JWT
-      guardarToken(datos.token);
+      // Guardar solamente los datos del usuario
+      guardarUsuario(datos.usuario);
 
-      // Obtener los datos del usuario desde el JWT
-      const usuario = obtenerUsuario();
-
-      console.log("Usuario registrado:", usuario);
-
-      // Guardar los datos del usuario
-      localStorage.setItem("usuario", JSON.stringify(usuario));
+      console.log("Usuario registrado:", datos.usuario);
 
       setMensajeExito("¡Cuenta creada correctamente! Bienvenido a AeroClima.");
 

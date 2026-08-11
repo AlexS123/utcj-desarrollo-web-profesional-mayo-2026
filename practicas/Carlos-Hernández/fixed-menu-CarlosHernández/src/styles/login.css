@@ -200,3 +200,159 @@
 .registroLink a:hover {
   text-decoration: underline;
 }
+/*MODAL DE ACCESO*/
+
+.modalAccesoOverlay {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+
+.modalAcceso {
+
+    position: relative;
+
+    width: 90%;
+    max-width: 430px;
+
+    padding: 40px 30px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+
+    box-sizing: border-box;
+}
+
+
+.cerrarModalAcceso {
+
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+
+    background: none;
+
+    color: #555;
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+
+.modalAccesoIcono {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf3ff;
+    color: #0b3d91;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+.modalAcceso h2 {
+
+    color: #0b3d91;
+
+    margin: 0 0 15px;
+
+    font-size: 24px;
+}
+
+
+.modalAcceso p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+.btnModalAcceso {
+
+    padding: 11px 30px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #0b3d91;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+
+.btnModalAcceso:hover {
+
+    background-color: #082f70;
+}
+
+
+@media (max-width: 500px) {
+
+    .modalAcceso {
+
+        padding: 35px 20px;
+
+    }
+
+    .modalAcceso h2 {
+
+        font-size: 21px;
+
+    }
+
+    .modalAcceso p {
+
+        font-size: 14px;
+
+    }
+
+}

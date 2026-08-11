@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const {verificarToken, verificarAdministrador} = require('../middleware/authMiddleware');
 
 class Server {
@@ -15,14 +16,17 @@ class Server {
         this.routes();
         this.listen();
         this.UsersDatabase();
+
     }
     middlewares() {
         this.app.use(cors({
-            origin: "http://localhost:5173"
+            origin: "http://localhost:5173",
+            credentials: true
         }));
         this.app.use(express.static('public'));
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
+        this.app.use(cookieParser());
     }
     UsersDatabase() {
         mongoose.connect('mongodb://localhost:27017/Agencia_Viajes');
@@ -73,10 +77,17 @@ class Server {
                         const token = jwt.sign(userPayload, this.JWT_SECRET, {
                             expiresIn: '2h'
                         });
-                
+
+                        res.cookie("token", token, {
+                            httpOnly: true,
+                            secure: false,
+                            sameSite: "lax",
+                            maxAge: 2 * 60 * 60 * 1000
+                        });
+
                         return res.json({
                             mensaje: "Autenticación exitosa",
-                            token: token
+                            usuario: userPayload
                         });
                     }
                     return res.status(401).json({ mensaje: "Correo o contraseña incorrectos" });
@@ -89,6 +100,25 @@ class Server {
                     mensaje: "Error del servidor"
                 });
             }
+        });
+        this.app.get('/sesion', verificarToken, (req, res) => {
+            res.json({
+                autenticado: true,
+                usuario: req.usuario
+            });
+        });
+        this.app.post('/logout', (req, res) => {
+
+            res.clearCookie("token", {
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax"
+            });
+
+            res.json({
+                mensaje: "Sesión cerrada correctamente."
+            });
+
         });
         this.app.put('/cambiarRol/:id',verificarToken,verificarAdministrador,async (req, res) => {
 
@@ -218,9 +248,17 @@ class Server {
                             expiresIn: '2h'
                         });
 
+                        // Guardar JWT en cookie HTTP-only
+                        res.cookie("token", token, {
+                            httpOnly: true,
+                            secure: false,
+                            sameSite: "lax",
+                            maxAge: 2 * 60 * 60 * 1000
+                        });
+
                         res.status(201).json({
                             mensaje: "Usuario registrado correctamente",
-                            token: token
+                            usuario: userPayload
                         });
                     });
                 });
