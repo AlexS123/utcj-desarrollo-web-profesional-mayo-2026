@@ -267,6 +267,11 @@ class Server {
                 res.status(500).send("Error al registrar el usuario");
             }
         });
+        this.app.use((req, res) => {
+            res.sendFile(
+                require('path').join(__dirname, '../public/index.html')
+            );
+        });
     }
     listen() {
         this.app.listen(this.port, () => {

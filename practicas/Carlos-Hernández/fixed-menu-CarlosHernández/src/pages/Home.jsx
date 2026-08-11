@@ -21,18 +21,21 @@ function Home() {
 
   useEffect(() => {
 
-      if (location.state?.mensaje) {
+    if (location.state?.mensaje) {
 
-          setMensajeAcceso(location.state.mensaje);
-          setMostrarModalAcceso(true);
+        console.log(
+            "Mensaje recibido en Home:",
+            location.state.mensaje
+        );
 
-          // Eliminar el mensaje de la navegación
-          navigate(location.pathname, {
-              replace: true,
-              state: {}
-          });
-      }
+        setMensajeAcceso(location.state.mensaje);
+        setMostrarModalAcceso(true);
 
+        navigate(location.pathname, {
+            replace: true,
+            state: null
+        });
+    }
   }, [location, navigate]);
   return (
     <>

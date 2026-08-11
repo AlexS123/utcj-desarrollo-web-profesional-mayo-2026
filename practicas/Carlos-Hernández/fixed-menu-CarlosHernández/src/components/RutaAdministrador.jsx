@@ -12,7 +12,6 @@ function RutaAdministrador({ children }) {
     useEffect(() => {
 
         const verificarSesion = async () => {
-
             try {
 
                 const respuesta = await fetch(
@@ -51,8 +50,8 @@ function RutaAdministrador({ children }) {
                             to="/"
                             replace
                             state={{
-                                mensaje:
-                                    "No tienes permisos para acceder a la sección de administración."
+                                mensaje: datos.mensaje,
+                                tipo: "sinPermisos"
                             }}
                         />
                     );
@@ -64,8 +63,22 @@ function RutaAdministrador({ children }) {
                 // Sesión válida y administrador
                 if (respuesta.ok) {
 
-                    setAutorizado(true);
+                    if (datos.usuario.rol === "admin") {
 
+                        setAutorizado(true);
+
+                    } else {
+                        setRedireccion(
+                            <Navigate
+                                to="/"
+                                replace
+                                state={{
+                                    mensaje:
+                                        "No tienes permisos para acceder a la sección de administración."
+                                }}
+                            />
+                        );
+                    }
                 }
 
             } catch (error) {
