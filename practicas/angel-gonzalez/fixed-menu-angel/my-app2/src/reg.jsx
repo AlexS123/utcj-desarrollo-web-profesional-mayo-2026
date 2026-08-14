@@ -1,78 +1,92 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-function Reg() {
+function Register() {
   const [formData, setFormData] = useState({
     user: '',
     pass: '',
-    rol: 'User',
-  })
-  const [modal, setModal] = useState({ open: false, type: '', title: '', message: '' })
-  const [loading, setLoading] = useState(false)
+    rol: 'User'
+  });
+  const [loading, setLoading] = useState(false);
+  const [modal, setModal] = useState({ open: false, type: '', title: '', message: '' });
 
-  const openModal = (type, title, message) => {
-    setModal({ open: true, type, title, message })
-  }
+  useEffect(() => {
+    if (!modal.open) return;
+
+    const timer = window.setTimeout(() => {
+      setModal((prev) => ({ ...prev, open: false }));
+    }, 2200);
+
+    return () => window.clearTimeout(timer);
+  }, [modal.open]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const openModal = (type, title, message) => {
+    setModal({ open: true, type, title, message });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!formData.user.trim() || !formData.pass.trim() || !formData.rol) {
-      openModal('error', 'Falta completar', 'Completa usuario, contraseña y rol para continuar.')
-      return
+      openModal('error', 'Falta completar', 'Completa todos los campos antes de crear el usuario.');
+      return;
     }
 
-    setLoading(true)
+    setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/registrar', {
+      const response = await fetch('http://127.0.0.1:5000/registrar', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           user: formData.user.trim(),
           pass: formData.pass,
-          rol: formData.rol,
-        }),
-      })
+          rol: formData.rol
+        })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'No se pudo registrar el usuario')
+        throw new Error(data.error || 'No se pudo crear el usuario.');
       }
 
-      openModal('success', '¡Registro creado!', `Usuario ${data.user} registrado correctamente.`)
-      setFormData({ user: '', pass: '', rol: 'User' })
+      openModal('success', '¡Listo!', `Usuario creado correctamente: ${data.user}`);
+      setFormData({ user: '', pass: '', rol: 'User' });
     } catch (error) {
-      openModal('error', 'Error al enviar', error.message)
+      openModal('error', 'Error', error.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="register-shell">
+    <div className="register-page">
       <div className="register-card">
         <div className="register-panel register-panel--highlight">
           <div className="register-icon">✦</div>
-          <h1>Crear nuevo usuario</h1>
-          <p>Nueva interfaz con un flujo más claro y un manejo más sencillo del registro.</p>
+          <h1>Crea tu usuario</h1>
+          <p>
+            Nueva interfaz con un flujo más claro y un manejo más sencillo del registro.
+          </p>
           <div className="register-highlight-box">
-            <p className="register-highlight-title">Qué incluye</p>
+            <p className="register-highlight-title">¿Qué incluye?</p>
             <ul>
               <li>• Usuario y contraseña</li>
               <li>• Selección de rol</li>
-              <li>• Confirmación al completar</li>
+              <li>• Confirmación visual al guardar</li>
             </ul>
           </div>
         </div>
 
         <div className="register-panel register-panel--form">
-          <form className="register-form" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="register-form">
             <div className="register-field">
               <label htmlFor="user">Usuario</label>
               <input
@@ -81,7 +95,7 @@ function Reg() {
                 type="text"
                 value={formData.user}
                 onChange={handleChange}
-                placeholder="Ej. angel"
+                placeholder="Ej. Angel"
               />
             </div>
 
@@ -99,7 +113,12 @@ function Reg() {
 
             <div className="register-field">
               <label htmlFor="rol">Rol</label>
-              <select id="rol" name="rol" value={formData.rol} onChange={handleChange}>
+              <select
+                id="rol"
+                name="rol"
+                value={formData.rol}
+                onChange={handleChange}
+              >
                 <option value="User">Usuario</option>
                 <option value="Admin">Administrador</option>
               </select>
@@ -118,14 +137,14 @@ function Reg() {
             <div className="modal-icon">{modal.type === 'success' ? '✓' : '!'}</div>
             <h3>{modal.title}</h3>
             <p>{modal.message}</p>
-            <button type="button" onClick={() => setModal({ open: false, type: '', title: '', message: '' })}>
+            <button type="button" onClick={() => setModal((prev) => ({ ...prev, open: false }))}>
               Aceptar
             </button>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default Reg
+export default Register;
