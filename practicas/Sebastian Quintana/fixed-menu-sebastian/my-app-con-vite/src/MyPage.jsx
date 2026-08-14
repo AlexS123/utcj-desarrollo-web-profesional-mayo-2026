@@ -1,98 +1,213 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Layout from './components/Layout.jsx';
+import Icon from './components/Icon.jsx';
+import useCurrentUser from './useCurrentUser';
 
-// 1. Movemos los datos fuera del componente para limpiar el render
-const SERVICIOS = [
+const DESTACADOS = [
   {
-    id: 'software',
-    titulo: 'Desarrollo de Software',
-    descripcion: 'Creación de aplicaciones web y móviles con las últimas tecnologías.'
+    id: 'neon-drift',
+    titulo: 'Neon Drift Pro',
+    badges: ['Esports', 'Racing'],
+    score: '9.2',
+    descripcion:
+      'Siente la velocidad en circuitos cibernéticos y participa en torneos con recompensas exclusivas.',
+    visual: 'neon',
   },
   {
-    id: 'ciberseguridad',
-    titulo: 'Ciberseguridad',
-    descripcion: 'Protección de sistemas y datos contra amenazas cibernéticas.'
+    id: 'shadow-realm',
+    titulo: 'Echoes of Aethelgard',
+    badges: ['Indie', 'RPG'],
+    score: '8.8',
+    descripcion:
+      'Explora un mundo fracturado lleno de magia antigua y decisiones que cambian la historia.',
+    visual: 'fantasy',
   },
   {
-    id: 'nube',
-    titulo: 'Servicios en la Nube',
-    descripcion: 'Implementación y gestión de soluciones en la nube para optimizar la infraestructura.'
-  }
+    id: 'void-vanguard',
+    titulo: 'Void Vanguard',
+    badges: ['Gaming', 'Shooter'],
+    score: '9.0',
+    descripcion:
+      'Acción táctica por equipos en estaciones espaciales abandonadas con coordinación total.',
+    visual: 'sci-fi',
+  },
 ];
 
-const ERRORES = [
-  { code: '400', nombre: 'Solicitud Inválida' },
-  { code: '403', nombre: 'Acceso Prohibido' },
-  { code: '404', nombre: 'No Encontrado' },
-  { code: '500', nombre: 'Error del Servidor' },
-  { code: '503', nombre: 'Servicio No Disponible' }
+const VENTAJAS = [
+  {
+    icon: 'trophy',
+    tone: 'card-icon--amber',
+    titulo: 'Torneos cada semana',
+    texto: 'Compite en brackets abiertos y sube en la tabla de posiciones de la comunidad.',
+  },
+  {
+    icon: 'bolt',
+    tone: '',
+    titulo: 'Recomendaciones al instante',
+    texto: 'Tu biblioteca aprende de lo que juegas y te sugiere el siguiente título.',
+  },
+  {
+    icon: 'users',
+    tone: 'card-icon--violet',
+    titulo: 'Escuadras activas',
+    texto: 'Encuentra equipo por horario, región y estilo de juego en segundos.',
+  },
 ];
 
 function MyPage() {
+  const { name } = useCurrentUser();
+
   return (
-    <div className="page-container">
-      {/* Usamos <header> en lugar de un <div> genérico para mejorar el SEO y la accesibilidad */}
-      <header className="fixed-menu">
-        <nav>
-          <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-            <li><Link to="/register">Registro</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/404">Ver Error 404</Link></li>
+    <Layout>
+      <section className="hero-section">
+        <div className="hero-copy">
+          <span className="eyebrow">
+            <Icon name="gamepad" size={14} />
+            Gaming • Indie • Esports
+          </span>
+          <h1>
+            Vorti<span className="accent">Tech</span>
+          </h1>
+          {name && <p className="hero-welcome">Bienvenid@ de vuelta, {name}.</p>}
+          <p className="hero-subtitle">
+            Tu espacio para descubrir videojuegos, explorar nuevas historias y vivir la emoción
+            del mundo gamer con una comunidad que juega en serio.
+          </p>
+          <div className="hero-actions">
+            <Link className="btn btn-primary" to="/portfolio">
+              <Icon name="gamepad" size={17} />
+              Ver destacados
+            </Link>
+            <Link className="btn btn-secondary" to="/services">
+              <Icon name="layers" size={17} />
+              Conocer servicios
+            </Link>
+          </div>
+        </div>
+
+        <aside className="hero-card">
+          <h2>
+            <Icon name="bolt" size={16} /> Esta semana
+          </h2>
+          <ul className="bullet-list">
+            <li>Nuevo capítulo de Neon Drift</li>
+            <li>Torneos semanales de velocidad</li>
+            <li>Recomendaciones exclusivas para ti</li>
+            <li>Reseñas de la comunidad indie</li>
           </ul>
-        </nav>
-      </header>
-      
-      {/* <main> le dice al navegador dónde está el contenido fuerte de la página */}
-      <main className="page-content">
-        
-        <section id="inicio" className="hero-section">
-          <h1>Mi Página</h1>
-          <p className="hero-subtitle">Esta es mi primera página con React.</p>
-          {/* Eliminé el estilo en línea (inline style) para mantener todo el diseño en el CSS */}
-          <p className="hero-potential">Si te gusta mi página, ayúdame a desbloquear mi potencial.</p>
-        </section>
-
-        <section id="servicios" className="content-section">
-          <h2>Servicios</h2>
-          {/* Contenedor Grid para ordenar las tarjetas de forma horizontal en PC */}
-          <div className="services-grid">
-            {SERVICIOS.map((servicio) => (
-              <article key={servicio.id} className="service-card">
-                <h3>{servicio.titulo}</h3>
-                <p>{servicio.descripcion}</p>
-              </article>
-            ))}
+          <div className="card-footer">
+            <Link className="link-inline" to="/contact">
+              Unirme a la comunidad <Icon name="arrowUp" size={15} style={{ transform: 'rotate(90deg)' }} />
+            </Link>
           </div>
-        </section>
+        </aside>
+      </section>
 
-        <section id="contacto" className="content-section">
-          <h2>Contacto</h2>
-          <div className="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:Sebastian@utcj.edu.mx">Sebastian@utcj.edu.mx</a></p>
-            <p><strong>Teléfono:</strong> <a href="tel:+34123456789">+34 123 456 789</a></p>
-            <p><strong>Dirección:</strong> Calle Toros Bravos, 656</p>
+      <section className="section">
+        <div className="section-heading section-heading--row">
+          <div>
+            <h2>Destacados del momento</h2>
+            <p>Experiencias que marcan la diferencia esta temporada.</p>
           </div>
-        </section>
+          <Link className="link-inline" to="/portfolio">
+            Ver catálogo completo
+          </Link>
+        </div>
 
-        <section className="content-section">
-          <h2>Páginas de Error (para pruebas)</h2>
-          <div className="services-grid">
-            {ERRORES.map((error) => (
-              <Link key={error.code} to={`/error/${error.code}`} style={{ textDecoration: 'none' }}>
-                <article className="service-card" style={{ cursor: 'pointer' }}>
-                  <h3>Error {error.code}</h3>
-                  <p>{error.nombre}</p>
-                </article>
+        <div className="grid grid-3">
+          {DESTACADOS.map((juego) => (
+            <article key={juego.id} className="card game-card">
+              <div className={`game-visual game-visual--${juego.visual}`}>
+                <span className="game-visual-score">★ {juego.score}</span>
+              </div>
+              <div className="game-content">
+                <div className="chip-row">
+                  {juego.badges.map((badge) => (
+                    <span key={badge} className="chip">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+                <h3>{juego.titulo}</h3>
+                <p>{juego.descripcion}</p>
+                <div className="card-footer">
+                  <Link className="link-inline" to="/portfolio">
+                    Ver detalles →
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading">
+          <h2>¿Por qué VortiTech?</h2>
+          <p>Todo lo que necesitas para jugar acompañado y no perderte nada.</p>
+        </div>
+        <div className="grid grid-3">
+          {VENTAJAS.map((item) => (
+            <article key={item.titulo} className="card">
+              <span className={`card-icon ${item.tone}`}>
+                <Icon name={item.icon} size={20} />
+              </span>
+              <h3>{item.titulo}</h3>
+              <p>{item.texto}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="split-panel">
+          <div>
+            <h2>Conecta con la comunidad</h2>
+            <p className="text-muted mt-1">
+              Comparte tus partidas, descubre recomendaciones y forma parte de la siguiente
+              generación gamer.
+            </p>
+            <div className="hero-actions">
+              <Link className="btn btn-secondary btn-sm" to="/contact">
+                <Icon name="chat" size={16} />
+                Escríbenos
               </Link>
-            ))}
+            </div>
           </div>
-        </section>
+          <div className="stats-grid">
+            <div className="stat-card">
+              <strong>24/7</strong>
+              <span>Actualizaciones</span>
+            </div>
+            <div className="stat-card">
+              <strong>+120</strong>
+              <span>Jugadores activos</span>
+            </div>
+            <div className="stat-card">
+              <strong>3</strong>
+              <span>Eventos mensuales</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      </main>
-    </div>
+      <section className="cta-panel">
+        <div>
+          <h2>¿Listo para tu siguiente partida?</h2>
+          <p>Explora el catálogo y arma tu escuadra hoy mismo.</p>
+        </div>
+        <div className="row">
+          <Link className="btn btn-primary" to="/portfolio">
+            <Icon name="rocket" size={17} />
+            Explorar juegos
+          </Link>
+          <Link className="btn btn-secondary" to="/about">
+            Conocer el proyecto
+          </Link>
+        </div>
+      </section>
+    </Layout>
   );
 }
 
