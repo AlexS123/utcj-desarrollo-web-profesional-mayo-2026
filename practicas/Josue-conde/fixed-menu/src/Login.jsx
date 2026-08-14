@@ -51,7 +51,7 @@ function Login() {
                 localStorage.setItem("token", data.token);
 
                 setTipoMensaje("success");
-                setMensaje("Inicio de sesión correcto.");
+                setMensaje("Autenticacion exitosa");
 
                 setUser("");
                 setPass("");
