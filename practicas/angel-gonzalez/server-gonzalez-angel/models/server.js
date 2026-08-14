@@ -20,7 +20,6 @@ class Server {
             process.env.MONGO_URI ||
             'mongodb://localhost:27017/mayo2026_web_prof';
 
-        // Orígenes permitidos del frontend (Vite).
         this.ORIGENES_PERMITIDOS = [
             "http://localhost:5173",
             "http://127.0.0.1:5173"
@@ -28,31 +27,79 @@ class Server {
 
         this.middlewares();
 
-        // La base de datos se prepara antes de las rutas
-        // para que this.userModel ya exista.
         this.UsersDatabase();
 
         this.routes();
+
         this.listen();
 
     }
 
 
     // ==========================================
-    // MIDDLEWARE PARA VALIDAR JWT
+    // VALIDAR JWT
     // ==========================================
 
     verificarToken = (req, res, next) => {
 
-        const token = req.cookies.token;
+        let token = null;
+
+
+        // ======================================
+        // BUSCAR TOKEN EN COOKIE
+        // ======================================
+
+        if (
+            req.cookies &&
+            req.cookies.token
+        ) {
+
+            token = req.cookies.token;
+
+        }
+
+
+        // ======================================
+        // BUSCAR TOKEN EN AUTHORIZATION
+        // ======================================
+
+        if (!token) {
+
+            const authHeader =
+                req.headers.authorization;
+
+            if (
+                authHeader &&
+                authHeader.startsWith('Bearer ')
+            ) {
+
+                token =
+                    authHeader.split(' ')[1];
+
+            }
+
+        }
+
+
+        // ======================================
+        // SI NO EXISTE TOKEN
+        // ======================================
 
         if (!token) {
 
             return res.status(401).json({
-                mensaje: "No hay token. Debes iniciar sesión."
+
+                mensaje:
+                    "No hay token. Debes iniciar sesión."
+
             });
 
         }
+
+
+        // ======================================
+        // VALIDAR TOKEN
+        // ======================================
 
         jwt.verify(
             token,
@@ -62,10 +109,14 @@ class Server {
                 if (err) {
 
                     return res.status(403).json({
-                        mensaje: "Token inválido o expirado."
+
+                        mensaje:
+                            "Token inválido o expirado."
+
                     });
 
                 }
+
 
                 req.user = user;
 
@@ -78,7 +129,7 @@ class Server {
 
 
     // ==========================================
-    // VALIDAR QUE SEA ADMIN
+    // VALIDAR ADMIN
     // ==========================================
 
     verificarAdmin = (req, res, next) => {
@@ -86,24 +137,32 @@ class Server {
         if (!req.user) {
 
             return res.status(401).json({
-                mensaje: "Usuario no autenticado."
+
+                mensaje:
+                    "Usuario no autenticado."
+
             });
 
         }
 
-        // Comparación sin distinguir mayúsculas:
-        // "Admin", "admin" y "ADMIN" son válidos.
 
         const rol =
-            String(req.user.rol || "").toLowerCase();
+            String(
+                req.user.rol || ""
+            ).toLowerCase();
+
 
         if (rol !== "admin") {
 
             return res.status(403).json({
-                mensaje: "Acceso denegado. Solo administradores."
+
+                mensaje:
+                    "Acceso denegado. Solo administradores."
+
             });
 
         }
+
 
         next();
 
@@ -116,9 +175,15 @@ class Server {
 
     middlewares() {
 
-        this.app.use(express.static('public'));
+        this.app.use(
+            express.static('public')
+        );
 
-        this.app.use(express.json());
+
+        this.app.use(
+            express.json()
+        );
+
 
         this.app.use(
             express.urlencoded({
@@ -126,74 +191,95 @@ class Server {
             })
         );
 
-        // Cookie Parser
-        this.app.use(cookieParser());
 
+        this.app.use(
+            cookieParser()
+        );
+
+
+        // ======================================
         // CORS
-        this.app.use((req, res, next) => {
+        // ======================================
 
-            const origin = req.headers.origin;
+        this.app.use(
+            (req, res, next) => {
 
-            // Con cookies no se puede usar "*":
-            // hay que responder el origen exacto.
+                const origin =
+                    req.headers.origin;
 
-            if (
-                this.ORIGENES_PERMITIDOS.includes(origin)
-            ) {
+
+                if (
+                    this.ORIGENES_PERMITIDOS
+                        .includes(origin)
+                ) {
+
+                    res.header(
+                        "Access-Control-Allow-Origin",
+                        origin
+                    );
+
+                }
+                else {
+
+                    res.header(
+                        "Access-Control-Allow-Origin",
+                        this.ORIGENES_PERMITIDOS[0]
+                    );
+
+                }
+
 
                 res.header(
-                    "Access-Control-Allow-Origin",
-                    origin
+                    "Access-Control-Allow-Credentials",
+                    "true"
                 );
 
-            }
-            else {
 
                 res.header(
-                    "Access-Control-Allow-Origin",
-                    this.ORIGENES_PERMITIDOS[0]
+                    "Access-Control-Allow-Headers",
+                    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
                 );
 
+
+                res.header(
+                    "Access-Control-Allow-Methods",
+                    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+                );
+
+
+                res.header(
+                    "Vary",
+                    "Origin"
+                );
+
+
+                if (
+                    req.method === "OPTIONS"
+                ) {
+
+                    return res.sendStatus(200);
+
+                }
+
+
+                next();
+
             }
-
-            res.header(
-                "Access-Control-Allow-Credentials",
-                "true"
-            );
-
-            res.header(
-                "Access-Control-Allow-Headers",
-                "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-            );
-
-            res.header(
-                "Access-Control-Allow-Methods",
-                "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-            );
-
-            res.header("Vary", "Origin");
-
-            // Responder de inmediato al preflight
-            if (req.method === "OPTIONS") {
-
-                return res.sendStatus(200);
-
-            }
-
-            next();
-
-        });
+        );
 
     }
 
 
     // ==========================================
-    // CONEXIÓN A MONGODB
+    // MONGODB
     // ==========================================
 
     UsersDatabase() {
 
-        mongoose.connect(this.MONGO_URI)
+        mongoose.connect(
+            this.MONGO_URI
+        )
+
         .then(() => {
 
             console.log(
@@ -202,6 +288,7 @@ class Server {
             );
 
         })
+
         .catch((error) => {
 
             console.log(
@@ -210,24 +297,26 @@ class Server {
             );
 
             console.log(
-                "Revisa que el servicio de MongoDB esté iniciado."
+                "Revisa que MongoDB esté iniciado."
             );
 
         });
 
 
-        const Schema = mongoose.Schema;
+        const Schema =
+            mongoose.Schema;
 
 
-        const userSchema = new Schema({
+        const userSchema =
+            new Schema({
 
-            user: String,
+                user: String,
 
-            pass: String,
+                pass: String,
 
-            rol: String
+                rol: String
 
-        });
+            });
 
 
         this.userModel =
@@ -262,7 +351,9 @@ class Server {
                     } = req.body;
 
 
-                    // Buscar usuario
+                    // ==============================
+                    // BUSCAR USUARIO
+                    // ==============================
 
                     const consulta =
                         await this.userModel.find({
@@ -270,7 +361,9 @@ class Server {
                         });
 
 
-                    if (consulta.length === 0) {
+                    if (
+                        consulta.length === 0
+                    ) {
 
                         return res.status(401).json({
 
@@ -282,10 +375,13 @@ class Server {
                     }
 
 
-                    const usuario = consulta[0];
+                    const usuario =
+                        consulta[0];
 
 
-                    // Comparar contraseña
+                    // ==============================
+                    // COMPARAR PASSWORD
+                    // ==============================
 
                     const passwordCorrecta =
                         bcrypt.compareSync(
@@ -306,20 +402,27 @@ class Server {
                     }
 
 
-                    // ==================================
-                    // CREAR JWT
-                    // ==================================
+                    // ==============================
+                    // PAYLOAD JWT
+                    // ==============================
 
                     const userPayload = {
 
-                        id: usuario._id,
+                        id:
+                            usuario._id,
 
-                        user: usuario.user,
+                        user:
+                            usuario.user,
 
-                        rol: usuario.rol
+                        rol:
+                            usuario.rol
 
                     };
 
+
+                    // ==============================
+                    // CREAR JWT
+                    // ==============================
 
                     const token =
                         jwt.sign(
@@ -331,14 +434,21 @@ class Server {
                         );
 
 
-                    // ==================================
-                    // GUARDAR JWT EN COOKIE
-                    // ==================================
+                    console.log(
+                        "JWT generado para:",
+                        usuario.user
+                    );
+
+
+                    // ==============================
+                    // COOKIE
+                    // ==============================
 
                     res.cookie(
                         'token',
                         token,
                         {
+
                             httpOnly: true,
 
                             secure: false,
@@ -346,19 +456,32 @@ class Server {
                             sameSite: 'lax',
 
                             maxAge:
-                                2 * 60 * 60 * 1000
+                                2 *
+                                60 *
+                                60 *
+                                1000
+
                         }
                     );
 
 
-                    // ==================================
+                    // ==============================
                     // RESPUESTA
-                    // ==================================
+                    // ==============================
 
                     return res.json({
 
                         mensaje:
                             "Autenticación exitosa.",
+
+
+                        // IMPORTANTE:
+                        // Enviamos el JWT
+                        // al frontend.
+
+                        token:
+                            token,
+
 
                         usuario: {
 
@@ -373,11 +496,12 @@ class Server {
                     });
 
                 }
+
                 catch (error) {
 
                     console.error(error);
 
-                    res.status(500).json({
+                    return res.status(500).json({
 
                         mensaje:
                             "Error en el servidor."
@@ -391,7 +515,7 @@ class Server {
 
 
         // ======================================
-        // RUTA PARA VERIFICAR SESIÓN
+        // VERIFICAR SESIÓN
         // ======================================
 
         this.app.get(
@@ -401,9 +525,11 @@ class Server {
 
                 res.json({
 
-                    autenticado: true,
+                    autenticado:
+                        true,
 
-                    usuario: req.user
+                    usuario:
+                        req.user
 
                 });
 
@@ -412,7 +538,7 @@ class Server {
 
 
         // ======================================
-        // RUTA SEGURA SOLO PARA ADMIN
+        // RUTA SOLO ADMIN
         // ======================================
 
         this.app.get(
@@ -449,11 +575,13 @@ class Server {
                 res.clearCookie(
                     'token',
                     {
+
                         httpOnly: true,
 
                         secure: false,
 
                         sameSite: 'lax'
+
                     }
                 );
 
@@ -471,7 +599,7 @@ class Server {
 
         // ======================================
         // CONSULTAR USUARIOS
-        // PROTEGIDA
+        // SOLO ADMIN
         // ======================================
 
         this.app.get(
@@ -490,10 +618,16 @@ class Server {
                             }
                         );
 
-                    res.json(usuarios);
+
+                    res.json(
+                        usuarios
+                    );
 
                 }
+
                 catch (error) {
+
+                    console.error(error);
 
                     res.status(500).json({
 
@@ -541,7 +675,9 @@ class Server {
                     }
 
 
-                    // Verificar si existe
+                    // ==============================
+                    // VERIFICAR EXISTENCIA
+                    // ==============================
 
                     const existe =
                         await this.userModel.findOne({
@@ -561,7 +697,9 @@ class Server {
                     }
 
 
-                    // Encriptar contraseña
+                    // ==============================
+                    // ENCRIPTAR PASSWORD
+                    // ==============================
 
                     const hash =
                         await bcrypt.hash(
@@ -570,16 +708,21 @@ class Server {
                         );
 
 
-                    // Crear usuario
+                    // ==============================
+                    // CREAR USUARIO
+                    // ==============================
 
                     const nuevoUsuario =
                         new this.userModel({
 
-                            user: user,
+                            user:
+                                user,
 
-                            pass: hash,
+                            pass:
+                                hash,
 
-                            rol: rol
+                            rol:
+                                rol
 
                         });
 
@@ -592,13 +735,16 @@ class Server {
                         mensaje:
                             "Usuario creado correctamente.",
 
-                        user: user,
+                        user:
+                            user,
 
-                        rol: rol
+                        rol:
+                            rol
 
                     });
 
                 }
+
                 catch (error) {
 
                     console.error(error);
@@ -627,6 +773,10 @@ class Server {
         this.app.listen(
             this.port,
             () => {
+
+                console.log(
+                    "Servidor ejecutándose en:"
+                );
 
                 console.log(
                     "http://127.0.0.1:" +
