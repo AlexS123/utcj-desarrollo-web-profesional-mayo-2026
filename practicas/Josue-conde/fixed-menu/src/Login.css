@@ -10,7 +10,7 @@ html{
 
 body{
     font-family:'Syne',sans-serif;
-    background:linear-gradient(135deg,#09090f,#111827,#1e1b4b);
+    background:#f8fafc;
     min-height:100vh;
 }
 
@@ -27,15 +27,15 @@ body{
     width:100%;
     max-width:450px;
 
-    background:rgba(255,255,255,.96);
+    background:#ffffff;
 
     border-radius:22px;
 
     padding:45px;
 
-    box-shadow:0 25px 60px rgba(0,0,0,.35);
+    border:1px solid #e2e8f0;
 
-    backdrop-filter:blur(20px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
 
 }
 
@@ -54,11 +54,11 @@ body{
 
     font-size:42px;
 
-    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
 
     color:white;
 
-    box-shadow:0 10px 30px rgba(99,102,241,.35);
+    box-shadow:0 10px 25px rgba(37,99,235,.25);
 
 }
 
@@ -68,7 +68,7 @@ body{
 
     font-size:38px;
 
-    color:#1e1b4b;
+    color:#0f172a;
 
     margin-bottom:10px;
 
@@ -111,7 +111,7 @@ body{
 
     font-weight:600;
 
-    color:#334155;
+    color:#1e293b;
 
 }
 
@@ -124,15 +124,15 @@ body{
 
     border-radius:12px;
 
-    border:2px solid #e2e8f0;
+    border:1px solid #cbd5e1;
 
     outline:none;
 
-    background:#f8fafc;
+    background:#ffffff;
 
-    color:#111827;
+    color:#1e293b;
 
-    caret-color:#111827;
+    caret-color:#1e293b;
 
     font-size:15px;
 
@@ -142,19 +142,19 @@ body{
 
 .input-group input::placeholder{
 
-    color:#6b7280;
+    color:#94a3b8;
 
 }
 
 .input-group input:focus{
 
-    border-color:#6366f1;
+    border-color:#2563eb;
 
-    background:white;
+    background:#ffffff;
 
-    color:#111827;
+    color:#1e293b;
 
-    box-shadow:0 0 15px rgba(99,102,241,.25);
+    box-shadow:0 0 12px rgba(37,99,235,.20);
 
 }
 
@@ -176,7 +176,7 @@ body{
 
     font-weight:700;
 
-    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    background:#2563eb;
 
     transition:.3s;
 
@@ -184,9 +184,11 @@ body{
 
 .btn-login:hover{
 
-    transform:translateY(-3px);
+    background:#1d4ed8;
 
-    box-shadow:0 15px 30px rgba(99,102,241,.35);
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(37,99,235,.25);
 
 }
 
@@ -238,7 +240,7 @@ body{
 
     margin-top:20px;
 
-    color:#6366f1;
+    color:#2563eb;
 
     font-weight:600;
 
@@ -250,9 +252,7 @@ body{
 
 .volver:hover{
 
-    color:#312e81;
-
-    transform:translateX(-3px);
+    color:#1d4ed8;
 
 }
 
