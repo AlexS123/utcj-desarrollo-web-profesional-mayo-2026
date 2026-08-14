@@ -6,6 +6,10 @@
   background: var(--rosa-suave, #ffe1f0);
   flex-wrap: wrap;
   gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .logoLink {

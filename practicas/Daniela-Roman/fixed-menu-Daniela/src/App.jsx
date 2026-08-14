@@ -24,7 +24,12 @@ function App() {
         <Route path="/itinerario" element={<Itinerario />} />
         <Route path="/lugares" element={<Lugares />} />
         <Route path="/recomendaciones" element={<Recomendaciones />} />
-        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/contacto" element={
+            <RutaAdministrador>
+              <Contacto />
+            </RutaAdministrador>
+          }
+        />
 
         <Route
           path="/login"

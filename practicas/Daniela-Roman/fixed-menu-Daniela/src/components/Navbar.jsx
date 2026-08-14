@@ -28,7 +28,7 @@ function Navbar() {
   return (
     <nav className="menuSuperior">
       <Link to="/" className="logoLink">
-        <h2 className="logo">🌵 CDMX 2026</h2>
+        <h2 className="logo">CDMX 2026</h2>
       </Link>
 
       <div className="opcionesMenu">
@@ -36,12 +36,12 @@ function Navbar() {
         <Link to="/itinerario"><button>Itinerario</button></Link>
         <Link to="/lugares"><button>Lugares</button></Link>
         <Link to="/recomendaciones"><button>Recomendaciones</button></Link>
-        <Link to="/contacto"><button>Contacto</button></Link>
 
         {usuario && usuario.rol === "admin" && (
-          <Link to="/administrar-usuarios">
-            <button>Admin</button>
-          </Link>
+          <>
+            <Link to="/contacto"><button>Mensajes</button></Link>
+            <Link to="/administrar-usuarios"><button>Admin</button></Link>
+          </>
         )}
 
         {usuario ? (
