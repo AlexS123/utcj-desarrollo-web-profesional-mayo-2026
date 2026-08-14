@@ -1,35 +1,934 @@
-.principal {
-  height: 150vh;
+/*HERO PRINCIPAL */
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.hero {
+  width: 100%;
+  min-height: 650px;
 
-  text-align: center;
+  padding: 120px 60px 70px;
 
   background-color: #f4f8ff;
 
-  padding: 20px;
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
 }
 
-.principal h1 {
-  font-size: 50px;
+
+.heroContenido {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: 60px;
+}
+
+
+.heroTexto {
+  text-align: left;
+}
+
+
+.heroEtiqueta,
+.seccionTitulo span,
+.llamadaFinal span {
+  color: #1e88e5;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  letter-spacing: 1.5px;
+}
+
+
+.heroTexto h1 {
+  margin: 15px 0 20px;
+
+  color: #0b3d91;
+
+  font-size: 54px;
+  line-height: 1.1;
+}
+
+
+.heroTexto p {
+  max-width: 550px;
+
+  margin-bottom: 30px;
+
+  color: #555;
+
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+
+.heroBotones {
+  display: flex;
+  gap: 15px;
+}
+.heroBotones a {
+  text-decoration: none;
+}
+
+
+.heroBotones button,
+.llamadaFinal button,
+.destinoContenido button,
+.ofertaContenido button {
+  padding: 12px 24px;
+
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.btnPrincipal {
+  border: 2px solid #0b3d91;
+
+  background-color: #0b3d91;
+
+  color: white;
+}
+
+
+.btnPrincipal:hover {
+  background-color: #082f70;
+}
+
+
+.btnSecundario {
+  border: 2px solid #0b3d91;
+
+  background-color: transparent;
+
   color: #0b3d91;
 }
 
-.principal p {
-  font-size: 20px;
-  max-width: 500px;
+
+.btnSecundario:hover {
+  background-color: #e5efff;
 }
 
-@media (max-width: 768px) {
 
-  .principal h1 {
-    font-size: 35px;
+.heroImagen {
+  width: 100%;
+  height: 400px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.heroImagen img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/* TITULOS DE SECCIONES */
+
+.seccionTitulo {
+  max-width: 700px;
+
+  margin: 0 auto 50px;
+
+  text-align: center;
+}
+
+
+.seccionTitulo h2 {
+  margin: 12px 0 15px;
+
+  color: #0b3d91;
+
+  font-size: 38px;
+}
+
+
+.seccionTitulo p {
+  color: #666;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+/* BENEFICIOS */
+
+.beneficios {
+  width: 100%;
+
+  padding: 90px 60px;
+
+  background-color: white;
+
+  box-sizing: border-box;
+}
+
+
+.beneficiosGrid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+.beneficio {
+  padding: 30px;
+
+  border: 1px solid #e0e8f5;
+
+  border-radius: 12px;
+
+  background-color: #f8fbff;
+
+  text-align: center;
+
+  transition: 0.3s;
+}
+
+
+.beneficio:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.beneficio h3 {
+  margin-top: 0;
+
+  color: #0b3d91;
+
+  font-size: 21px;
+}
+
+
+.beneficio p {
+  color: #666;
+
+  line-height: 1.6;
+}
+
+/* DESTINOS */
+
+.destinos {
+  width: 100%;
+
+  padding: 90px 60px;
+
+  background-color: #f4f8ff;
+
+  box-sizing: border-box;
+}
+
+
+.destinosGrid {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+
+.destinoCard {
+  overflow: hidden;
+
+  background-color: white;
+
+  border-radius: 12px;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+
+.destinoCard:hover {
+  transform: translateY(-5px);
+}
+
+
+.destinoCard img {
+  width: 100%;
+  height: 220px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+.destinoContenido {
+  padding: 25px;
+
+  text-align: left;
+}
+.destinoContenido a,
+.ofertaContenido a {
+  text-decoration: none;
+}
+
+.destinoContenido h3 {
+  margin-top: 0;
+
+  color: #0b3d91;
+
+  font-size: 25px;
+}
+
+
+.destinoContenido p {
+  color: #666;
+
+  line-height: 1.6;
+
+  margin-bottom: 20px;
+}
+
+
+.destinoContenido button {
+  border: none;
+
+  background-color: #0b3d91;
+
+  color: white;
+}
+
+
+.destinoContenido button:hover {
+  background-color: #082f70;
+}
+
+/* OFERTAS */
+
+.ofertas {
+  width: 100%;
+
+  padding: 90px 60px;
+
+  background-color: white;
+
+  box-sizing: border-box;
+}
+
+
+.ofertasGrid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 30px;
+}
+
+
+.ofertaCard {
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-columns: 45% 55%;
+
+  background-color: #f4f8ff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+.ofertaCard img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+
+}
+
+
+.ofertaContenido {
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  text-align: left;
+}
+
+
+.ofertaEtiqueta {
+  color: #1e88e5;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+}
+
+
+.ofertaContenido h3 {
+  margin: 12px 0;
+
+  color: #0b3d91;
+
+  font-size: 21px;
+}
+
+
+.ofertaContenido p {
+  margin: 0 0 10px;
+
+  color: #666;
+}
+
+
+.ofertaContenido strong {
+  margin-bottom: 10px;
+
+  color: #0b3d91;
+
+  font-size: 22px;
+}
+
+
+.ofertaContenido small {
+  margin-bottom: 20px;
+
+  color: #777;
+
+  line-height: 1.4;
+}
+
+
+.ofertaContenido button {
+  border: none;
+
+  background-color: #0b3d91;
+
+  color: white;
+}
+
+
+.ofertaContenido button:hover {
+  background-color: #082f70;
+}
+
+/* LLAMADA FINAL */
+
+.llamadaFinal {
+  width: 100%;
+
+  padding: 90px 30px;
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  text-align: center;
+
+  box-sizing: border-box;
+  margin: 0 0 20px;
+}
+
+
+.llamadaFinal div {
+  max-width: 700px;
+
+  margin: 0 auto;
+}
+
+
+.llamadaFinal span {
+  color: #bcd8ff;
+}
+
+
+.llamadaFinal h2 {
+  margin: 15px 0;
+
+  color: white;
+
+  font-size: 38px;
+}
+
+
+.llamadaFinal p {
+  margin-bottom: 30px;
+
+  color: #e5edff;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+
+.llamadaFinal button {
+  border: none;
+
+  background-color: white;
+
+  color: #0b3d91;
+}
+
+
+.llamadaFinal button:hover {
+  background-color: #e8f0ff;
+}
+
+
+/*RESPONSIVO*/
+
+@media (max-width: 1000px) {
+
+  .hero {
+    padding: 110px 40px 60px;
   }
 
-  .principal p {
-    font-size: 18px;
+  .heroContenido {
+    gap: 40px;
   }
+
+  .heroTexto h1 {
+    font-size: 46px;
+  }
+
+  .beneficios,
+  .destinos,
+  .ofertas {
+    padding: 75px 40px;
+  }
+
+  .beneficiosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .destinosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ofertasGrid {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+
+}
+
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+
+  .hero {
+    padding: 110px 30px 60px;
+  }
+
+  .heroContenido {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .heroTexto {
+    text-align: center;
+  }
+
+  .heroTexto p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroBotones {
+    justify-content: center;
+  }
+
+  .heroImagen {
+    height: 380px;
+  }
+
+  .beneficios,
+  .destinos,
+  .ofertas {
+    padding: 70px 30px;
+  }
+
+  .beneficiosGrid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .destinosGrid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+}
+
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+
+  .hero {
+    padding: 95px 20px 50px;
+  }
+
+  .heroContenido {
+    gap: 30px;
+  }
+
+  .heroTexto h1 {
+    font-size: 38px;
+  }
+
+  .heroTexto p {
+    font-size: 16px;
+  }
+
+  .heroEtiqueta,
+  .seccionTitulo span,
+  .llamadaFinal span {
+    font-size: 12px;
+  }
+
+  .heroBotones {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .heroBotones a {
+    width: 100%;
+  }
+
+  .heroBotones button {
+    width: 100%;
+  }
+
+  .heroImagen {
+    height: 270px;
+    border-radius: 14px;
+  }
+
+
+  /* TÍTULOS */
+
+  .seccionTitulo {
+    margin-bottom: 35px;
+  }
+
+  .seccionTitulo h2 {
+    font-size: 29px;
+  }
+
+  .seccionTitulo p {
+    font-size: 16px;
+  }
+
+
+  /* SECCIONES */
+
+  .beneficios,
+  .destinos,
+  .ofertas {
+    padding: 60px 20px;
+  }
+
+
+  /* BENEFICIOS */
+
+  .beneficio {
+    padding: 25px 20px;
+  }
+
+
+  /* DESTINOS */
+
+  .destinoCard img {
+    height: 210px;
+  }
+
+  .destinoContenido {
+    padding: 22px;
+  }
+
+  .destinoContenido h3 {
+    font-size: 23px;
+  }
+
+  .destinoContenido a {
+    display: block;
+    width: 100%;
+  }
+
+  .destinoContenido button {
+    width: 100%;
+  }
+
+
+  /* OFERTAS */
+
+  .ofertaCard {
+    grid-template-columns: 1fr;
+  }
+
+  .ofertaCard img {
+    height: 230px;
+    min-height: 0;
+  }
+
+  .ofertaContenido {
+    padding: 25px;
+  }
+
+  .ofertaContenido a {
+    width: 100%;
+  }
+
+  .ofertaContenido button {
+    width: 100%;
+  }
+
+
+  /* LLAMADA FINAL */
+
+  .llamadaFinal {
+    padding: 60px 20px;
+    margin: 0 0 20px;
+  }
+
+  .llamadaFinal h2 {
+    font-size: 29px;
+  }
+
+  .llamadaFinal p {
+    font-size: 16px;
+  }
+
+  .llamadaFinal button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+}
+
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media (max-width: 400px) {
+
+  .heroTexto h1 {
+    font-size: 33px;
+  }
+
+  .heroImagen {
+    height: 230px;
+  }
+
+  .seccionTitulo h2 {
+    font-size: 26px;
+  }
+
+  .destinoCard img {
+    height: 190px;
+  }
+
+  .ofertaCard img {
+    height: 200px;
+  }
+
+}
+/*MODAL DE ACCESO*/
+
+.modalAccesoOverlay {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+
+.modalAcceso {
+
+    position: relative;
+
+    width: 90%;
+    max-width: 430px;
+
+    padding: 40px 30px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+
+    box-sizing: border-box;
+}
+
+
+.cerrarModalAcceso {
+
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+
+    background: none;
+
+    color: #555;
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+
+.modalAccesoIcono {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf3ff;
+    color: #0b3d91;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+.modalAcceso h2 {
+
+    color: #0b3d91;
+
+    margin: 0 0 15px;
+
+    font-size: 24px;
+}
+
+
+.modalAcceso p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+.btnModalAcceso {
+
+    padding: 11px 30px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #0b3d91;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+
+.btnModalAcceso:hover {
+
+    background-color: #082f70;
+}
+
+
+@media (max-width: 500px) {
+
+    .modalAcceso {
+
+        padding: 35px 20px;
+
+    }
+
+    .modalAcceso h2 {
+
+        font-size: 21px;
+
+    }
+
+    .modalAcceso p {
+
+        font-size: 14px;
+
+    }
+
 }

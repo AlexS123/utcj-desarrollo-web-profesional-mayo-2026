@@ -1,4 +1,5 @@
-.error {
+/* PÁGINA 404 */
+.error{
   min-height: 100vh;
 
   display: flex;
@@ -8,10 +9,11 @@
   background: linear-gradient(to bottom, #eaf3ff, #dbe9ff);
 
   padding: 20px;
+
   box-sizing: border-box;
 }
 
-.errorCaja {
+.errorCaja{
   background-color: white;
 
   width: 100%;
@@ -23,34 +25,43 @@
 
   text-align: center;
 
-  box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
+ box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
 }
 
-.error h1 {
+.error h1{
   font-size: 110px;
+
   color: #0b3d91;
 
-  margin: 0 0 25px 0;
-  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 25px;
+
+ line-height: 1;
 }
 
-.error h2 {
+.error h2{
   font-size: 32px;
+
   color: #222;
 
+  margin-top: 0;
   margin-bottom: 25px;
+
+  line-height: 1.3;
 }
 
-.error p {
-  font-size: 18px;
+.error p{
+font-size: 18px;
+
   color: #555;
 
-  line-height: 1.8;
+line-height: 1.8;
 
-  margin-bottom: 35px;
+margin-top: 0;
+margin-bottom: 35px;
 }
 
-.error button {
+.error button{
   padding: 12px 25px;
 
   border: none;
@@ -67,44 +78,53 @@
   transition: 0.3s;
 }
 
-.error button:hover {
-  background-color: #1565c0;
-}
+/* RESPONSIVO */
 
-@media (max-width: 768px) {
+@media (max-width: 768px){
 
-  .errorCaja {
-    padding: 40px 25px;
+  .errorCaja{
+  padding: 40px 25px;
   }
 
-  .error h1 {
-    font-size: 80px;
+  .error h1{
+  font-size: 80px;
+
+  margin-bottom: 20px;
+
   }
 
-  .error h2 {
+  .error h2{
     font-size: 26px;
+
+    margin-bottom: 20px;
+
   }
 
-  .error p {
+  .error p{
     font-size: 16px;
-  }
+
+    margin-bottom: 30px;
+
+    }
+
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px){
 
-  .error h1 {
+  .error h1{
     font-size: 65px;
   }
 
-  .error h2 {
+  .error h2{
     font-size: 22px;
   }
 
-  .error p {
+  .error p{
     font-size: 15px;
   }
 
-  .error button {
+  .error button{
     width: 100%;
   }
+
 }

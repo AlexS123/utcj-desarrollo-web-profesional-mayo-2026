@@ -1,0 +1,97 @@
+:root {
+  --rosa: #ffb6d9;
+  --rosa-suave: #ffe1f0;
+  --lila: #d9c2ff;
+  --menta: #baf0d8;
+  --texto: #4a3b52;
+  --blanco: #fffaf9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  background: var(--blanco);
+  color: var(--texto);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  background: var(--rosa);
+  color: var(--texto);
+  font-weight: 600;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: var(--lila);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.toastExito,
+.toastError {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.toastExito {
+  background: var(--menta);
+  color: #1f5c3f;
+}
+
+.toastError {
+  background: #ffc9c9;
+  color: #7a1f1f;
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--rosa-suave);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--texto);
+  font-family: inherit;
+}
+
+.iconoPassword {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.errorText {
+  color: #c23b6a;
+  font-size: 0.85rem;
+  margin: -4px 0 10px 6px;
+  display: block;
+}

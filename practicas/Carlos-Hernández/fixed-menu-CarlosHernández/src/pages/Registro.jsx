@@ -1,5 +1,8 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { guardarUsuario } from "../logic/auth";
 import { validarFormulario } from "../logic/registroValidation";
 import "../styles/registro.css";
 import {
@@ -14,6 +17,9 @@ import {
 } from "react-icons/fa";
 
 function Registro() {
+
+  const navigate = useNavigate();
+
   const [mensajeExito, setMensajeExito] = useState("");
   const [mensajeServidor, setMensajeServidor] = useState("");
   const [mostrarPassword, setMostrarPassword] = useState(false);
@@ -49,8 +55,9 @@ function Registro() {
     }
     setMensajeServidor("");
     try {
-      const respuesta = await fetch("http://127.0.0.1:5000/registrar", {
+      const respuesta = await fetch("http://localhost:5000/registrar", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json"
         },
@@ -68,13 +75,19 @@ function Registro() {
 
       const datos = await respuesta.json();
 
-      console.log(datos);
+      console.log("Registro exitoso:", datos);
+
+      // Guardar solamente los datos del usuario
+      guardarUsuario(datos.usuario);
+
+      console.log("Usuario registrado:", datos.usuario);
 
       setMensajeExito("¡Cuenta creada correctamente! Bienvenido a AeroClima.");
 
       setTimeout(() => {
         setMensajeExito("");
-      }, 3000);
+        navigate("/");
+      }, 2000);
 
       setForm({
         nombre: "",
@@ -237,10 +250,17 @@ function Registro() {
             <button type="submit">Registrarme</button>
 
           </form>
+          <p className="loginLink">
+            ¿Ya tienes una cuenta?{" "}
+            <Link to="/login">
+              Inicia sesión
+            </Link>
+          </p>
 
         </div>
 
       </div>
+      <Footer />
     </>
   );
 }

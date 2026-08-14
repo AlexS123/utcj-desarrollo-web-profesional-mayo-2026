@@ -1,0 +1,101 @@
+.administrarUsuarios {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.usuariosSeccion {
+  background: var(--rosa-suave, #ffe1f0);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.usuariosTitulo h2 {
+  margin: 0 0 4px;
+  color: #6a3fa0;
+}
+
+.tablaUsuarios {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #f1d9e8;
+}
+
+th {
+  background: #ffd7ea;
+  color: #6a3fa0;
+}
+
+.btnCambiarRol {
+  background: #ffb6d9;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.mensajeUsuarios, .errorUsuarios {
+  text-align: center;
+  padding: 20px;
+}
+
+.errorUsuarios {
+  color: #c23b6a;
+}
+
+.modalAdminOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalAdmin {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 360px;
+  text-align: center;
+  position: relative;
+}
+
+.modalAdminIcono {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #baf0d8;
+  color: #1f5c3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-weight: 700;
+}
+
+.cerrarModalAdmin {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: #999;
+  padding: 4px 10px;
+}
+
+.btnModalAdmin {
+  margin-top: 12px;
+  background: #ffb6d9;
+}

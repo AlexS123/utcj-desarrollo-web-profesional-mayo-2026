@@ -3,40 +3,63 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 class Server {
-    constructor() {
+    constructor(){
         this.app = express();
-        this.port = process.env.PORT || 5000;
-
+        this.port = process.env.PORT   
+        this.JWT_SECRET = "mi_clave_secreta_super_segura"; // Guardar siempre en variables de entorno (.env)
+        
         this.middlewares();
-        this.usersDatabase();
         this.routes();
         this.listen();
+        this.UsersDatabase();
     }
-
-    middlewares() {
+    middlewares(){
         this.app.use(express.static('public'));
         this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: true }));
+        this.app.use(express.urlencoded({extended: true}));
     }
-
-    usersDatabase() {
+    UsersDatabase(){
         mongoose.connect('mongodb://localhost:27017/Mayo2026_web_prof');
         let Schema = mongoose.Schema;
+        //Las claves y tipos de datos coinciden con la BD
         const userSchema = new Schema({
             user: String,
             pass: String,
             rol: String
         });
-
+        //Colección usuario singular de usuarios.
         this.userModel = mongoose.model('user', userSchema);
     }
+    routes(){
+        this.app.post('/login', async(req, res) => {
+            const { username, password } = req.body;
+            // Validación simulada de usuario (En producción usar Base de Datos + Bcrypt)
+            let consulta = await this.userModel.find({user: username});
+            if(consulta.length > 0){
+                if(bcrypt.compareSync(password, consulta[0].pass)){
+                //console.log(consulta);
+        
+                    // Datos que se guardarán dentro del JWT
+                    const userPayload = {
+                        id: 1,
+                        username: username,
+                        role: "administrator"
+                    };
 
-    routes() {
-        this.app.post('/login', (req, res) =>{
-            
-        })
+                    // 2. Generar el Token (Expira en 2 horas)
+                    const token = jwt.sign(userPayload, this.JWT_SECRET, { expiresIn: '2h' });
+
+                    return res.json({
+                        mensaje: "Autenticación exitosa",
+                        token: token
+                    });
+                }
+                return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
+            }
+            return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
+        });
+
         this.app.get('/consultarUsuarios', (req, res) => {
             res.json({
                 user: 'Cristian',

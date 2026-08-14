@@ -1,3 +1,4 @@
+import "../styles/error404.css";
 function Error404() {
   return (
     <section className="error">

@@ -1,0 +1,358 @@
+.loginContainer {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #eaf3ff, #dbe9ff);
+
+  padding-top: 80px;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 15px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  text-align: center;
+}
+
+.loginCard h1 {
+  margin-bottom: 10px;
+
+  color: #0b3d91;
+
+  font-size: 40px;
+}
+
+.loginCard p {
+  margin-bottom: 20px;
+
+  font-size: 13px;
+
+  color: #666;
+}
+
+.loginCard form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.loginCard .inputGroup {
+  display: flex;
+
+  align-items: center;
+
+  border: 1px solid #ccc;
+
+  border-radius: 8px;
+
+  padding: 10px;
+
+  gap: 8px;
+
+  background: white;
+}
+
+.loginCard .inputGroup svg {
+  color: #0b3d91;
+
+  font-size: 18px;
+
+  min-width: 20px;
+}
+
+.loginCard .inputGroup input {
+  border: none;
+
+  outline: none;
+
+  flex: 1;
+
+  font-size: 14px;
+
+  background-color: white;
+
+  color: #333;
+}
+
+.loginCard .iconoPassword {
+  color: #0b3d91;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+.loginCard button {
+  padding: 12px;
+
+  background: #0b3d91;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.loginCard button:hover {
+  background: #062a66;
+}
+
+.toastExito {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: #198754;
+  color: white;
+
+  padding: 18px 30px;
+
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+  z-index: 9999;
+
+  animation: aparecer 0.3s ease;
+}
+
+.toastError {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: #c62828;
+  color: white;
+
+  padding: 18px 30px;
+
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+  z-index: 9999;
+
+  animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.registroLink {
+  margin-top: 20px;
+
+  margin-bottom: 0 !important;
+
+  font-size: 14px !important;
+
+  color: #555;
+}
+
+.registroLink a {
+  color: #0b3d91;
+
+  font-weight: bold;
+
+  text-decoration: none;
+
+  margin-left: 5px;
+}
+
+.registroLink a:hover {
+  text-decoration: underline;
+}
+/*MODAL DE ACCESO*/
+
+.modalAccesoOverlay {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+}
+
+
+.modalAcceso {
+
+    position: relative;
+
+    width: 90%;
+    max-width: 430px;
+
+    padding: 40px 30px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+
+    box-sizing: border-box;
+}
+
+
+.cerrarModalAcceso {
+
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+
+    background: none;
+
+    color: #555;
+
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+
+.modalAccesoIcono {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #eaf3ff;
+    color: #0b3d91;
+
+    font-size: 28px;
+
+    font-weight: bold;
+}
+
+.modalAcceso h2 {
+
+    color: #0b3d91;
+
+    margin: 0 0 15px;
+
+    font-size: 24px;
+}
+
+
+.modalAcceso p {
+
+    color: #666;
+
+    line-height: 1.7;
+
+    margin-bottom: 25px;
+}
+
+
+.btnModalAcceso {
+
+    padding: 11px 30px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #0b3d91;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+
+.btnModalAcceso:hover {
+
+    background-color: #082f70;
+}
+
+
+@media (max-width: 500px) {
+
+    .modalAcceso {
+
+        padding: 35px 20px;
+
+    }
+
+    .modalAcceso h2 {
+
+        font-size: 21px;
+
+    }
+
+    .modalAcceso p {
+
+        font-size: 14px;
+
+    }
+
+}

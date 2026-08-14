@@ -1,0 +1,30 @@
+.recomendacionesPagina {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.recomendacionesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.recomendacionTarjeta {
+  background: var(--rosa-suave, #ffe1f0);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.recomendacionTarjeta h3 {
+  margin: 0 0 10px;
+  color: #6a3fa0;
+}
+
+.recomendacionTarjeta ul {
+  padding-left: 18px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

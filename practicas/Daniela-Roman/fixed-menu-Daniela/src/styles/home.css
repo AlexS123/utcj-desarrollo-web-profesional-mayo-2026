@@ -1,0 +1,60 @@
+.hero {
+  text-align: center;
+  padding: 80px 24px 48px;
+  background: linear-gradient(180deg, #ffe1f0 0%, #fffaf9 100%);
+}
+
+.heroEtiqueta {
+  display: inline-block;
+  background: var(--menta, #baf0d8);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin: 0 0 16px;
+  color: #b3407a;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 24px;
+  font-size: 1.05rem;
+}
+
+.heroBotones {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnSecundario {
+  background: white !important;
+  border: 2px solid var(--rosa, #ffb6d9) !important;
+}
+
+.resumenViaje {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.resumenTarjeta {
+  background: var(--rosa-suave, #ffe1f0);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.resumenTarjeta h3 {
+  margin: 0 0 8px;
+}

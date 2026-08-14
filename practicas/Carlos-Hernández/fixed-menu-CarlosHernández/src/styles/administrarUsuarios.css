@@ -1,0 +1,329 @@
+/*CONTENEDOR PRINCIPAL */
+
+.administrarUsuarios {
+background-color: white;
+}
+
+/*HERO / ENCABEZADO */
+
+.adminUsuariosHero {
+padding: 80px 7%;
+background-color: #f4f8ff;
+text-align: center;
+border-bottom: 1px solid #e2eaf7;
+}
+
+.adminUsuariosHero span {
+color: #1e88e5;
+font-size: 14px;
+font-weight: bold;
+letter-spacing: 1.5px;
+}
+
+.adminUsuariosHero h1 {
+color: #0b3d91;
+font-size: 42px;
+margin: 15px 0;
+}
+
+.adminUsuariosHero p {
+max-width: 700px;
+margin: 0 auto;
+color: #666;
+font-size: 17px;
+line-height: 1.7;
+}
+
+/* SECCIÓN DE USUARIOS*/
+
+.usuariosSeccion {
+padding: 80px 7%;
+background-color: white;
+}
+
+.usuariosTitulo {
+text-align: center;
+margin-bottom: 40px;
+}
+
+.usuariosTitulo h2 {
+color: #0b3d91;
+font-size: 32px;
+margin: 0 0 12px;
+}
+
+.usuariosTitulo p {
+color: #666;
+font-size: 16px;
+margin: 0;
+}
+
+/*TABLA*/
+
+.tablaUsuarios {
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+overflow-x: auto;
+background-color: white;
+border: 1px solid #e2eaf7;
+border-radius: 12px;
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.tablaUsuarios table {
+width: 100%;
+min-width: 800px;
+border-collapse: collapse;
+}
+
+.tablaUsuarios th {
+padding: 16px;
+background-color: #0b3d91;
+color: white;
+font-size: 14px;
+text-align: center;
+}
+
+.tablaUsuarios td {
+padding: 15px 16px;
+border-bottom: 1px solid #e2eaf7;
+color: #444;
+font-size: 14px;
+}
+
+.tablaUsuarios tbody tr:last-child td {
+border-bottom: none;
+}
+
+.tablaUsuarios tbody tr:hover {
+background-color: #f8fbff;
+}
+
+/*SELECT DE ROL */
+
+.tablaUsuarios select {
+padding: 8px 30px 8px 10px;
+border: 1px solid #d5dce8;
+border-radius: 6px;
+background-color: white;
+color: #333;
+font-size: 14px;
+cursor: pointer;
+outline: none;
+}
+
+.tablaUsuarios select:focus {
+border-color: #1e88e5;
+box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.12);
+}
+
+/*BOTÓN CAMBIAR ROL */
+
+.btnCambiarRol {
+padding: 9px 18px;
+border: none;
+border-radius: 6px;
+background-color: #0b3d91;
+color: white;
+font-size: 13px;
+cursor: pointer;
+transition: 0.3s;
+white-space: nowrap;
+}
+
+.btnCambiarRol:hover {
+background-color: #082f70;
+transform: translateY(-1px);
+}
+
+/*MENSAJES*/
+
+.mensajeUsuarios {
+text-align: center;
+color: #666;
+font-size: 16px;
+padding: 40px 20px;
+}
+
+.errorUsuarios {
+max-width: 700px;
+margin: 0 auto;
+padding: 15px 20px;
+border-radius: 8px;
+background-color: #fff0f0;
+border: 1px solid #f0caca;
+color: #c62828;
+text-align: center;
+font-size: 15px;
+}
+
+/*MODAL */
+
+.modalAdminOverlay {
+position: fixed;
+top: 0;
+left: 0;
+
+width: 100%;
+height: 100%;
+
+background-color: rgba(0, 0, 0, 0.55);
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+padding: 20px;
+box-sizing: border-box;
+
+z-index: 9999;
+}
+
+.modalAdmin {
+position: relative;
+
+width: 90%;
+max-width: 450px;
+
+padding: 40px 30px;
+
+background-color: white;
+
+border-radius: 15px;
+
+text-align: center;
+
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+box-sizing: border-box;
+}
+
+.cerrarModalAdmin {
+position: absolute;
+
+top: 10px;
+right: 15px;
+
+border: none;
+background: none;
+
+color: #555;
+
+font-size: 25px;
+
+cursor: pointer;
+}
+
+.cerrarModalAdmin:hover {
+color: #0b3d91;
+}
+
+/*ICONO DEL MODAL */
+
+.modalAdminIcono {
+width: 55px;
+height: 55px;
+
+margin: 0 auto 20px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+border-radius: 50%;
+
+background-color: #eaf3ff;
+color: #0b3d91;
+
+font-size: 28px;
+font-weight: bold;
+}
+
+.modalAdmin h2 {
+color: #0b3d91;
+margin: 0 0 15px;
+}
+
+.modalAdmin p {
+color: #666;
+line-height: 1.7;
+margin-bottom: 25px;
+}
+
+/*BOTÓN DEL MODAL*/
+
+.btnModalAdmin {
+padding: 11px 30px;
+
+border: none;
+border-radius: 7px;
+
+background-color: #0b3d91;
+color: white;
+
+cursor: pointer;
+
+font-size: 15px;
+
+transition: 0.3s;
+}
+
+.btnModalAdmin:hover {
+background-color: #082f70;
+}
+
+/*RESPONSIVE= */
+
+@media (max-width: 900px) {
+
+.adminUsuariosHero {
+padding: 70px 5%;
+}
+
+.adminUsuariosHero h1 {
+font-size: 36px;
+}
+
+.usuariosSeccion {
+padding: 70px 5%;
+}
+
+}
+
+@media (max-width: 600px) {
+
+    .adminUsuariosHero {
+    padding: 60px 20px;
+    }
+
+    .adminUsuariosHero h1 {
+    font-size: 30px;
+    }
+
+    .adminUsuariosHero p {
+    font-size: 15px;
+    }
+
+    .usuariosSeccion {
+    padding: 60px 20px;
+    }
+
+    .usuariosTitulo h2 {
+    font-size: 27px;
+    }
+
+    .usuariosTitulo p {
+    font-size: 14px;
+    line-height: 1.6;
+    }
+
+    .tablaUsuarios {
+    border-radius: 10px;
+    }
+
+    .modalAdmin {
+    padding: 35px 22px;
+    }
+
+}

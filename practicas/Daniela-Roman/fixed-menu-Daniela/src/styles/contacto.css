@@ -1,0 +1,18 @@
+.contactoPagina {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.contactoForm {
+  background: var(--rosa-suave, #ffe1f0);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactoForm button {
+  align-self: center;
+  margin-top: 8px;
+}

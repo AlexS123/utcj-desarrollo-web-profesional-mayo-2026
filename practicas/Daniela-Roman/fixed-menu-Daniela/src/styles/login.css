@@ -1,0 +1,97 @@
+.loginContainer {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffe1f0, #f4e3ff);
+  padding: 60px 20px;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.loginCard h1 {
+  color: #b3407a;
+  margin-bottom: 6px;
+}
+
+.loginCard p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.loginCard form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loginCard button[type="submit"] {
+  margin-top: 8px;
+  background: #ffb6d9;
+}
+
+.registroLink {
+  margin-top: 16px;
+  font-size: 0.85rem;
+}
+
+.registroLink a {
+  color: #b3407a;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.modalAccesoOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalAcceso {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 360px;
+  text-align: center;
+  position: relative;
+}
+
+.modalAccesoIcono {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffe1f0;
+  color: #b3407a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-weight: 700;
+}
+
+.cerrarModalAcceso {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: #999;
+  padding: 4px 10px;
+}
+
+.btnModalAcceso {
+  margin-top: 12px;
+  background: #ffb6d9;
+}

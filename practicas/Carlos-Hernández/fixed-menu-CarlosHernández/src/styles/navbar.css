@@ -1,36 +1,508 @@
+/*NAVBAR*/
+
 .menuSuperior {
+
   position: fixed;
+
   top: 0;
   left: 0;
+
+  z-index: 1000;
 
   width: 100%;
 
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   padding: 15px 30px;
 
   background-color: #0b3d91;
+
   box-sizing: border-box;
+
 }
+
 
 .logo {
+
   color: white;
+
   margin: 0;
+
+  white-space: nowrap;
+
 }
+
 
 .opcionesMenu {
+
   display: flex;
+
+  align-items: center;
+
   gap: 15px;
+
 }
 
+
+.opcionesMenu a {
+
+  text-decoration: none;
+
+}
+
+
 .opcionesMenu button {
+
   background: none;
+
   border: none;
 
   color: white;
+
   font-size: 16px;
 
   cursor: pointer;
+
+  white-space: nowrap;
+
+}
+
+
+/*REGISTRARSE / INICIAR SESIÓN*/
+
+.btnRegistro {
+
+  padding: 9px 15px !important;
+
+  border: 1px solid white !important;
+
+  border-radius: 6px;
+
+  transition: 0.3s;
+
+}
+
+
+.btnRegistro:hover {
+
+  background-color: white !important;
+
+  color: #0b3d91 !important;
+
+}
+
+
+/*USUARIO*/
+
+.usuarioSesion {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+
+.datosUsuario {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: white;
+
+  font-size: 16px;
+
+  white-space: nowrap;
+
+}
+
+
+/*CERRAR SESIÓN*/
+
+.btnCerrarSesion {
+
+  background: none !important;
+
+  border: none !important;
+
+  color: white !important;
+
+  font-size: 20px !important;
+
+  cursor: pointer;
+
+  padding: 5px !important;
+
+  display: flex;
+
+  align-items: center;
+
+}
+
+
+.btnCerrarSesion:hover {
+
+  transform: scale(1.1);
+
+}
+
+
+/*BOTÓN HAMBURGUESA*/
+
+.btnMenuMovil {
+
+  display: none;
+
+  background: none;
+
+  border: none;
+
+  color: white;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  padding: 5px;
+
+}
+
+
+/*MODAL*/
+
+.modalOverlay {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 9999;
+
+}
+
+
+.modalCerrarSesion {
+
+  position: relative;
+
+  width: 400px;
+
+  max-width: 90%;
+
+  background-color: white;
+
+  padding: 30px;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+
+  box-sizing: border-box;
+
+}
+
+
+.modalCerrarSesion h2 {
+
+  margin-top: 10px;
+
+  margin-bottom: 10px;
+
+  color: #0b3d91;
+
+}
+
+
+.modalCerrarSesion p {
+
+  margin-bottom: 25px;
+
+  color: #555;
+
+}
+
+
+.btnCerrarModal {
+
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  background: none;
+
+  border: none;
+
+  font-size: 20px;
+
+  color: #555;
+
+  cursor: pointer;
+
+}
+
+
+.btnCerrarModal:hover {
+
+  color: #d00000;
+
+}
+
+
+/*BOTONES DEL MODAL*/
+
+.botonesModal {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+}
+
+
+.btnCancelar,
+.btnAceptar {
+
+  padding: 9px 20px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+}
+
+
+.btnCancelar {
+
+  background-color: #e5e5e5;
+
+  border: none;
+
+}
+
+
+.btnAceptar {
+
+  background-color: #0b3d91;
+
+  color: white;
+
+  border: none;
+
+}
+
+
+.btnCancelar:hover {
+
+  background-color: #d5d5d5;
+
+}
+
+
+.btnAceptar:hover {
+
+  background-color: #082f70;
+
+}
+/*TABLET*/
+
+@media (max-width: 1100px) {
+
+  .menuSuperior {
+
+    padding: 15px 20px;
+
+  }
+
+  .opcionesMenu {
+
+    gap: 8px;
+
+  }
+
+  .opcionesMenu button {
+
+    font-size: 14px;
+
+  }
+
+  .btnRegistro {
+
+    padding: 8px 10px !important;
+
+  }
+
+}
+/*CELULAR*/
+
+@media (max-width: 800px) {
+
+  .menuSuperior {
+
+    padding: 15px 20px;
+
+  }
+
+
+  /* Mostrar hamburguesa */
+
+  .btnMenuMovil {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+  }
+
+
+  /* Ocultar menú */
+
+  .opcionesMenu {
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
+    width: 100%;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 10px 20px 20px;
+
+    background-color: #0b3d91;
+
+    box-sizing: border-box;
+
+    box-shadow:
+      0 8px 15px rgba(0, 0, 0, 0.15);
+
+  }
+
+
+  /* Mostrar menú */
+
+  .opcionesMenu.menuAbierto {
+
+    display: flex;
+
+  }
+
+
+  /* Enlaces */
+
+  .opcionesMenu a {
+
+    width: 100%;
+
+  }
+
+
+  .opcionesMenu a button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    text-align: left;
+
+    border-radius: 6px;
+
+  }
+
+
+  .opcionesMenu a button:hover {
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+  }
+
+
+  /* Botón de registro */
+
+  .opcionesMenu .btnRegistro {
+
+    margin-top: 5px;
+
+    border: 1px solid white !important;
+
+    text-align: center;
+
+  }
+
+
+  /* Usuario */
+
+  .usuarioSesion {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 5px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    box-sizing: border-box;
+
+    justify-content: space-between;
+
+  }
+
+
+  .datosUsuario {
+
+    font-size: 15px;
+
+  }
+
+}
+.btnAdministracion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: #0b3d91;
+  font-weight: bold;
+}
+
+.btnAdministracion svg {
+  font-size: 14px;
 }

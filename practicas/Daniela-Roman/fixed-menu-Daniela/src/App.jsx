@@ -1,35 +1,62 @@
-function MyPage() {
-    return (
-        <>
-            <section className="itinerary-intro">
-                <h1>Itinerario CDMX</h1>
-                <p>Un itinerario para mi viaje en julio-agosto</p>
-            </section>
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-            <section id="lugares" className="itinerary-section">
-                <h2>Lugares</h2>
-                <ul>
-                    <li>Zócalo, Catedral y Centro Histórico</li>
-                    <li>Barrio de la Roma o Condesa para pasear</li>
-                </ul>
-            </section>
+import Home from './pages/Home';
+import Itinerario from './pages/Itinerario';
+import Lugares from './pages/Lugares';
+import Recomendaciones from './pages/Recomendaciones';
+import Contacto from './pages/Contacto';
+import Login from './pages/Login';
+import Registro from './pages/Registro';
+import AdministrarUsuarios from './pages/AdministrarUsuarios';
+import Error404 from './pages/Error404';
 
-            <section id="actividades" className="itinerary-section">
-                <h2>Actividades</h2>
-                <ul>
-                    <li>Caminar por el Bosque de Chapultepec y ver el Castillo</li>
-                    <li>Atardecer en el monumento a la Revolución</li>
-                </ul>
-            </section>
+import RutaPublica from './components/RutaPublica';
+import RutaAdministrador from './components/RutaAdministrador';
 
-            <section id="outfits" className="itinerary-section">
-                <h2>Outfits</h2>
-                <ul>
-                    <li>Ropa cómoda para caminar: tenis, pantalones y playera</li>
-                    <li>Abrigo ligero o chamarra para la noche</li>
-                </ul>
-            </section>
-        </>
-    )
+import './styles/global.css';
+import './styles/error404.css';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/itinerario" element={<Itinerario />} />
+        <Route path="/lugares" element={<Lugares />} />
+        <Route path="/recomendaciones" element={<Recomendaciones />} />
+        <Route path="/contacto" element={<Contacto />} />
+
+        <Route
+          path="/login"
+          element={
+            <RutaPublica>
+              <Login />
+            </RutaPublica>
+          }
+        />
+
+        <Route
+          path="/registro"
+          element={
+            <RutaPublica>
+              <Registro />
+            </RutaPublica>
+          }
+        />
+
+        <Route
+          path="/administrar-usuarios"
+          element={
+            <RutaAdministrador>
+              <AdministrarUsuarios />
+            </RutaAdministrador>
+          }
+        />
+
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-export default MyPage
+
+export default App;
