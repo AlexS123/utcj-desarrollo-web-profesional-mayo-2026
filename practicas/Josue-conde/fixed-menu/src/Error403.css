@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.error403{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+
+    background:#f5f6fa;
+
+    font-family:'Syne',sans-serif;
+}
+
+.error403-card{
+    width:100%;
+    max-width:500px;
+
+    padding:50px 40px;
+
+    background:#ffffff;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(15,23,42,.08);
+}
+
+.error403-icon{
+    width:80px;
+    height:80px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#fee2e2;
+
+    border-radius:50%;
+
+    font-size:35px;
+}
+
+.error403-code{
+    color:#6366f1;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+}
+
+.error403-card h1{
+    margin:12px 0;
+
+    color:#1e293b;
+
+    font-size:38px;
+}
+
+.error403-card p{
+    color:#64748b;
+
+    line-height:1.7;
+
+    margin-bottom:30px;
+}
+
+.error403-buttons{
+    display:flex;
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.error403-login,
+.error403-home{
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.error403-login{
+    background:#6366f1;
+    color:white;
+}
+
+.error403-login:hover{
+    background:#4f46e5;
+
+    transform:translateY(-2px);
+}
+
+.error403-home{
+    background:#eef2ff;
+    color:#4f46e5;
+}
+
+.error403-home:hover{
+    background:#e0e7ff;
+}
+
+@media(max-width:500px){
+
+    .error403-card{
+        padding:40px 25px;
+    }
+
+    .error403-card h1{
+        font-size:30px;
+    }
+
+}

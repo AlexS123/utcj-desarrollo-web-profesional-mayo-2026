@@ -2,7 +2,9 @@ import './MyPage.css';
 import { Link } from "react-router-dom";
 
 function MyPage() {
+
     return (
+
         <>
             <nav className="fixed-nav">
 
@@ -10,163 +12,152 @@ function MyPage() {
                     MiSitio
                 </div>
 
-                <ul className="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
+                <div className="nav-actions">
 
-                <div style={{display:"flex",gap:"10px"}}>
+                    <Link to="/login" className="btn-login-nav">
+                        Iniciar sesión
+                    </Link>
 
-    <Link to="/login" className="nav-cta">
+                    <Link to="/registro" className="btn-register-nav">
+                        Registrarse
+                    </Link>
 
-        Iniciar Sesión
-
-    </Link>
-
-    <Link to="/registro" className="nav-cta">
-
-        Registrarse
-
-    </Link>
-
-</div>
+                </div>
 
             </nav>
 
-            <main className="content">
 
-                <section id="inicio" className="hero">
+            <main className="welcome-page">
 
-                    <h1>Bienvenido a MiSitio</h1>
+                <section className="welcome-hero">
 
-                    <p>
-                        Descubre nuestros productos y servicios de alta calidad.
-                        Trabajamos para ofrecer soluciones innovadoras y una excelente
-                        experiencia para todos nuestros clientes.
-                    </p>
+                    <div className="welcome-content">
 
-                </section>
+                        <span className="welcome-tag">
+                            BIENVENIDO A MISITIO
+                        </span>
 
-                <section id="productos" className="section">
+                        <h1>
+                            Soluciones simples para una mejor experiencia
+                        </h1>
 
-                    <h2>Nuestros Productos</h2>
+                        <p>
+                            Descubre nuestros productos, servicios y contenido
+                            pensado para ofrecerte una experiencia moderna,
+                            sencilla y confiable.
+                        </p>
 
-                    <div className="cards">
+                        <div className="welcome-buttons">
 
-                        <div className="card">
+                            <Link
+                                to="/registro"
+                                className="btn-primary"
+                            >
+                                Crear una cuenta
+                            </Link>
 
-                            <h3>Producto Uno</h3>
-
-                            <p>
-                                Este producto ofrece un excelente rendimiento y está
-                                diseñado para brindar calidad, confianza y una experiencia
-                                satisfactoria.
-                            </p>
-
-                        </div>
-
-                        <div className="card">
-
-                            <h3>Producto Dos</h3>
-
-                            <p>
-                                Una opción ideal para quienes buscan innovación,
-                                funcionalidad y un diseño moderno que se adapte a tus
-                                necesidades.
-                            </p>
-
-                        </div>
-
-                        <div className="card">
-
-                            <h3>Producto Tres</h3>
-
-                            <p>
-                                Fabricado con materiales de alta calidad para garantizar
-                                durabilidad, eficiencia y un desempeño excepcional.
-                            </p>
+                            <Link
+                                to="/login"
+                                className="btn-secondary"
+                            >
+                                Ya tengo una cuenta
+                            </Link>
 
                         </div>
 
                     </div>
 
-                </section>
 
-                <section id="nosotros" className="section">
+                    <div className="welcome-box">
 
-                    <h2>Nosotros</h2>
-
-                    <p>
-                        Somos una empresa comprometida con la innovación y el desarrollo
-                        de soluciones tecnológicas que aportan valor a nuestros clientes.
-                    </p>
-
-                    <p>
-                        Nuestro equipo trabaja con profesionalismo, responsabilidad y
-                        pasión para ofrecer productos y servicios de la más alta calidad.
-                    </p>
-
-                </section>
-
-                <section id="blog" className="section">
-
-                    <h2>Blog</h2>
-
-                    <div className="cards">
-
-                        <div className="card">
-
-                            <h3>Novedades</h3>
-
-                            <p>
-                                Mantente informado sobre nuestras últimas noticias,
-                                lanzamientos y actualizaciones.
-                            </p>
-
+                        <div className="box-icon">
+                            ✦
                         </div>
 
-                        <div className="card">
+                        <h2>
+                            Todo comienza aquí
+                        </h2>
 
-                            <h3>Tecnología</h3>
-
-                            <p>
-                                Descubre tendencias, herramientas y consejos sobre el
-                                mundo de la tecnología.
-                            </p>
-
-                        </div>
-
-                        <div className="card">
-
-                            <h3>Consejos</h3>
-
-                            <p>
-                                Aprende buenas prácticas para aprovechar nuestros
-                                productos y servicios al máximo.
-                            </p>
-
-                        </div>
+                        <p>
+                            Regístrate o inicia sesión para acceder a tu espacio
+                            personal dentro de MiSitio.
+                        </p>
 
                     </div>
 
                 </section>
 
-                <section id="contacto" className="section">
 
-                    <h2>Contáctanos</h2>
+                <section className="welcome-info">
+
+                    <div className="info-item">
+
+                        <div className="info-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            Fácil de usar
+                        </h3>
+
+                        <p>
+                            Una experiencia sencilla y accesible.
+                        </p>
+
+                    </div>
+
+
+                    <div className="info-item">
+
+                        <div className="info-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Innovación
+                        </h3>
+
+                        <p>
+                            Soluciones modernas pensadas para ti.
+                        </p>
+
+                    </div>
+
+
+                    <div className="info-item">
+
+                        <div className="info-icon">
+                            ★
+                        </div>
+
+                        <h3>
+                            Calidad
+                        </h3>
+
+                        <p>
+                            Trabajamos para ofrecer una mejor experiencia.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section className="welcome-cta">
+
+                    <h2>
+                        ¿Listo para comenzar?
+                    </h2>
 
                     <p>
-                        ¿Tienes alguna duda o deseas más información?
-                        Nuestro equipo estará encantado de ayudarte.
+                        Crea tu cuenta y conoce todo lo que MiSitio tiene para ti.
                     </p>
 
-                    <br />
-
-                    <Link to="/registro" className="nav-cta">
-                        Crear una cuenta
+                    <Link
+                        to="/registro"
+                        className="btn-primary"
+                    >
+                        Comenzar ahora
                     </Link>
 
                 </section>
@@ -174,7 +165,9 @@ function MyPage() {
             </main>
 
         </>
+
     );
+
 }
 
 export default MyPage;
