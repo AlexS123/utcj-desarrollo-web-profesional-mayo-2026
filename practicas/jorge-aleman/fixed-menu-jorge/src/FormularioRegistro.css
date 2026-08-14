@@ -20,14 +20,8 @@
     margin-bottom: 25px;
 }
 
-.formulario input,
-.formulario select{
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #a3cef1;
-    border-radius: 8px;
-    box-sizing: border-box;
+.grupo-checkbox input{
+    width: auto;
 }
 
 .formulario button{
@@ -62,4 +56,102 @@
 .toast-error p{
     white-space: pre-line;
     text-align: left;
+}
+
+.campo-formulario{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #a3cef1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: white;
+    color: #6096ba;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo-formulario:focus-within{
+    /* border-color: #274c77; */
+    border: 1.5px solid #5d96d6;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(148, 174, 204, 0.603);
+}
+
+.campo-formulario svg{
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+.campo-formulario input,
+.campo-formulario select{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.campo-con-error{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.mensaje-error{
+    margin: 5px 0 0 5px;
+    color: #d32f2f;
+    font-size: 13px;
+    line-height: 1.3;
+}
+.politicas-contrasena p{
+    margin: 3px 0;
+    font-size: 13px;
+    line-height: 1.3;
+}
+.politica-invalida{
+    margin: 5px 0 0 5px;
+    color: #d32f2f;
+    font-size: 13px;
+    line-height: 1.3;
+}
+.politica-valida{
+    margin: 5px 0 0 5px;
+    font-size: 13px;
+    line-height: 1.3;
+    color: #2e7d32;
+}
+.campo-contrasena{
+    margin-bottom: 15px;
+}
+.campo-contrasena .campo-formulario{
+    margin-bottom: 0;
+}
+
+.correo-autocompletar{
+    position: relative;
+}
+.sugerencias-correo{
+    position: absolute;
+    top: calc(100% + 3px);
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #a3cef1;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.12);
+    z-index: 10;
+    overflow: hidden;
+}
+.sugerencia-correo{
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #274c77;
+    background-color: white;
+}
+.sugerencia-correo:hover,
+.sugerencia-correo.seleccionada{
+    background-color: #e7ecef;
+    color: #274c77;
 }

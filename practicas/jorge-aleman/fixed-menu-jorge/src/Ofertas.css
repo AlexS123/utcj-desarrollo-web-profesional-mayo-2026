@@ -1,0 +1,296 @@
+.pagina-ofertas{
+    padding-top: 70px;
+}
+
+.hero-ofertas{
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 70px 9%;
+    box-sizing: border-box;
+    background: linear-gradient(135deg,#e7ecef 0%,#d7e5ee 55%,#b9d0df 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-ofertas::before{
+    content: "";
+    width: 320px;
+    height: 320px;
+    position: absolute;
+    top: -150px;
+    right: 10%;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.35);
+}
+
+.hero-ofertas::after{
+    content: "";
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    bottom: -130px;
+    left: 5%;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.hero-ofertas-contenido{
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
+}
+
+.etiqueta-ofertas{
+    display: inline-block;
+    color: #274c77;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero-ofertas h1{
+    margin: 0;
+    color: #172a3a;
+    font-size: clamp(38px,5vw,64px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
+
+.hero-ofertas h1 span{
+    color: #274c77;
+}
+
+.hero-ofertas p{
+    max-width: 570px;
+    margin: 25px 0;
+    color: #4d5d6a;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.boton-ofertas{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 25px;
+    background-color: #274c77;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 5px 14px rgba(39,76,119,0.25);
+    transition: background-color 0.3s ease,transform 0.3s ease,box-shadow 0.3s ease;
+}
+
+.boton-ofertas:hover{
+    background-color: #6096ba;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(39,76,119,0.3);
+}
+
+.oferta-visual{
+    width: 330px;
+    height: 330px;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.circulo-oferta{
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circulo-grande{
+    width: 300px;
+    height: 300px;
+    background-color: #274c77;
+    opacity: 0.95;
+    box-shadow: 0 20px 45px rgba(39,76,119,0.25);
+}
+
+.circulo-mediano{
+    width: 220px;
+    height: 220px;
+    background-color: #6096ba;
+    border: 12px solid #e7ecef;
+}
+
+.oferta-porcentaje{
+    width: 155px;
+    height: 155px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+    transform: rotate(-5deg);
+    transition: transform 0.4s ease;
+}
+
+.oferta-visual:hover .oferta-porcentaje{
+    transform: rotate(0deg) scale(1.06);
+}
+
+.oferta-porcentaje strong{
+    color: #274c77;
+    font-size: 40px;
+    line-height: 1;
+}
+
+.oferta-porcentaje span{
+    margin-top: 7px;
+    color: #666666;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.beneficios-ofertas{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 30px;
+    box-sizing: border-box;
+}
+
+.beneficio{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e7ecef;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease,box-shadow 0.3s ease;
+}
+
+.beneficio:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.beneficio-icono{
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #e7ecef;
+    color: #274c77;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.beneficio strong{
+    display: block;
+    margin-bottom: 5px;
+    color: #274c77;
+    font-size: 15px;
+}
+
+.beneficio p{
+    margin: 0;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.catalogo-ofertas{
+    background-color: #f7f9fa;
+    padding-top: 1px;
+}
+
+.catalogo-ofertas .pagina-catalogo{
+    padding-top: 0;
+}
+
+@media (max-width: 900px){
+
+    .hero-ofertas{
+        padding: 60px 6%;
+    }
+
+    .oferta-visual{
+        width: 270px;
+        height: 270px;
+    }
+
+    .circulo-grande{
+        width: 250px;
+        height: 250px;
+    }
+
+    .circulo-mediano{
+        width: 185px;
+        height: 185px;
+    }
+
+    .beneficios-ofertas{
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 700px){
+
+    .hero-ofertas{
+        flex-direction: column;
+        text-align: center;
+        padding: 55px 25px;
+    }
+
+    .hero-ofertas p{
+        text-align: center;
+    }
+
+    .hero-ofertas h1{
+        font-size: 40px;
+    }
+
+    .oferta-visual{
+        width: 250px;
+        height: 250px;
+    }
+
+    .circulo-grande{
+        width: 230px;
+        height: 230px;
+    }
+
+    .circulo-mediano{
+        width: 170px;
+        height: 170px;
+    }
+
+    .oferta-porcentaje{
+        width: 135px;
+        height: 135px;
+    }
+
+    .oferta-porcentaje strong{
+        font-size: 34px;
+    }
+
+    .beneficios-ofertas{
+        padding: 25px 18px;
+    }
+
+}

@@ -1,0 +1,254 @@
+.pagina-login{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#e7ecef;
+    box-sizing:border-box;
+    padding:90px 20px 30px;
+}
+
+.login-contenedor{
+    width:100%;
+    display:flex;
+    justify-content:center;
+}
+
+.formulario-login{
+    width:450px;
+    background-color:#ffffff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.15);
+    box-sizing:border-box;
+}
+
+.login-icono{
+    width:60px;
+    height:60px;
+    margin:0 auto 15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background-color:#e7ecef;
+    color:#274c77;
+}
+
+.formulario-login h1{
+    text-align:center;
+    color:#274c77;
+    margin:0 0 10px;
+}
+
+.login-descripcion{
+    text-align:center;
+    color:#777777;
+    margin:0 0 25px;
+    line-height:1.5;
+}
+
+.campo-login{
+    display:flex;
+    align-items:center;
+    width:100%;
+    margin-bottom:15px;
+    border:1px solid #a3cef1;
+    border-radius:8px;
+    box-sizing:border-box;
+    background-color:#ffffff;
+    color:#6096ba;
+    transition:border-color .2s,box-shadow .2s;
+}
+
+.campo-login:focus-within{
+    border:1.5px solid #5d96d6;
+    outline:none;
+    box-shadow:0 0 0 2px rgba(148,174,204,.603);
+}
+
+.campo-login svg{
+    margin-left:12px;
+    flex-shrink:0;
+}
+
+.campo-login input{
+    width:100%;
+    padding:12px;
+    margin-bottom:0;
+    border:none;
+    outline:none;
+    background-color:transparent;
+    box-sizing:border-box;
+    font-size:15px;
+}
+
+.boton-login{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:none;
+    border-radius:8px;
+    background-color:#6096ba;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:background-color .3s ease,transform .3s ease;
+}
+
+.boton-login:hover{
+    background-color:#274c77;
+    transform:translateY(-1px);
+}
+
+.login-registro{
+    margin-top:22px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    font-size:14px;
+    color:#777777;
+}
+
+.login-registro a{
+    color:#274c77;
+    font-weight:600;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.login-registro a:hover{
+    color:#6096ba;
+    text-decoration:underline;
+}
+
+
+/* ==================== */
+/* MODAL DE REGISTRO */
+/* ==================== */
+
+.modal-registro{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.modal-registro-fondo{
+    position:absolute;
+    inset:0;
+    background-color:rgba(0,0,0,.55);
+    animation:aparecer-fondo .3s ease forwards;
+}
+
+.modal-registro-contenido{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:450px;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:15px;
+    animation:entrar-modal .35s ease forwards;
+}
+
+.modal-registro-cerrar{
+    position:absolute;
+    top:12px;
+    right:12px;
+    z-index:10;
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    border-radius:50%;
+    background-color:#ffffff;
+    color:#274c77;
+    cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.18);
+    transition:background-color .3s ease,color .3s ease,transform .3s ease;
+}
+
+.modal-registro-cerrar:hover{
+    background-color:#274c77;
+    color:#ffffff;
+    transform:rotate(90deg);
+}
+
+.modal-registro-contenido .contenedor-formulario{
+    min-height:auto;
+    background-color:transparent;
+}
+
+.modal-registro-contenido .formulario{
+    width:100%;
+    max-width:450px;
+    box-sizing:border-box;
+}
+
+@keyframes aparecer-fondo{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes entrar-modal{
+
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+
+/* ==================== */
+/* RESPONSIVE */
+/* ==================== */
+
+@media(max-width:600px){
+
+    .pagina-login{
+        padding:90px 15px 25px;
+    }
+
+    .formulario-login{
+        padding:28px 22px;
+    }
+
+    .login-registro{
+        flex-direction:column;
+        gap:3px;
+    }
+
+    .modal-registro{
+        padding:10px;
+    }
+
+    .modal-registro-contenido{
+        max-height:95vh;
+    }
+
+}
