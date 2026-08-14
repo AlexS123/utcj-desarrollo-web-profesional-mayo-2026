@@ -14,6 +14,18 @@ class Server {
         this.listen();
         this.UsersDatabase();
     }
+    verificarToken(req, res,next) {
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1];
+
+        if (!token) return res.status(403).json({mensaje:"token requerido"});
+
+            jwt.verify(token, this.JWT_SECRET, (err, user) => {
+                if (err) return res.status (403).json({ mensaje:"token invalido o expirado"});
+                    req.user = user; 
+                next();
+            })
+    }
     middlewares(){
         this.app.use(express.static('public'));
         this.app.use(express.json());
@@ -60,7 +72,7 @@ class Server {
             return res.status(401).json({ mensaje: "Usuario o contraseña incorrectos" });
         });
         
-        this.app.get('/consultarUsuarios', (req, res) => {
+        this.app.get('/consultarUsuarios', this.verificarToken , (req, res) => {
             res.json({
                 user: 'Alex',
                 pass: '12345',
