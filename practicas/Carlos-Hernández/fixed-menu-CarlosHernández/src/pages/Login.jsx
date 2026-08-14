@@ -1,209 +1,326 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/login.css";
-import { guardarToken, obtenerUsuario } from "../logic/auth";
+import { guardarUsuario } from "../logic/auth";
 
 import {
-  FaEnvelope,
-  FaLock,
-  FaEye,
-  FaEyeSlash
+    FaEnvelope,
+    FaLock,
+    FaEye,
+    FaEyeSlash
 } from "react-icons/fa";
 
 function Login() {
-  const [mensajeExito, setMensajeExito] = useState("");
-  const [mensajeError, setMensajeError] = useState("");
 
-  const navigate = useNavigate();
+    const location = useLocation();
+    const navigate = useNavigate();
 
-  const [mostrarPassword, setMostrarPassword] = useState(false);
+    const [mostrarModalAcceso, setMostrarModalAcceso] = useState(false);
+    const [mensajeAcceso, setMensajeAcceso] = useState("");
+    const [tipoMensaje, setTipoMensaje] = useState("");
 
-  const [form, setForm] = useState({
-    email: "",
-    password: ""
-  });
+    useEffect(() => {
 
-  const handleChange = (e) => {
+        if (location.state?.mensaje) {
 
-    const { name, value } = e.target;
+            setMensajeAcceso(location.state.mensaje);
+            setTipoMensaje(location.state.tipo || "");
+            setMostrarModalAcceso(true);
 
-    setForm({
-      ...form,
-      [name]: value
+            navigate(location.pathname, {
+                replace: true,
+                state: {}
+            });
+        }
+
+    }, [location, navigate]);
+
+
+    const [mensajeExito, setMensajeExito] = useState("");
+    const [mensajeError, setMensajeError] = useState("");
+
+    const [mostrarPassword, setMostrarPassword] = useState(false);
+
+    const [form, setForm] = useState({
+        email: "",
+        password: ""
     });
 
-  };
 
-  const decodificarToken = (token) => {
-  const partePayload = token.split(".")[1];
+    const handleChange = (e) => {
 
-  const payload = partePayload
-      .replace(/-/g, "+")
-      .replace(/_/g, "/");
+        const { name, value } = e.target;
 
-  return JSON.parse(atob(payload));
-  };
+        setForm({
+            ...form,
+            [name]: value
+        });
+
+    };
 
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
 
-    setMensajeError(""); 
-    setMensajeExito("");
-    e.preventDefault();
+        e.preventDefault();
 
-    try {
-
-      const respuesta = await fetch("http://127.0.0.1:5000/login", {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify(form)
-      });
-
-      const datos = await respuesta.json();
-
-      if (!respuesta.ok) {
-
-        setMensajeError("Correo o contraseña incorrectos."); 
-        setTimeout(() => {
-            setMensajeError(""); 
-        }, 3000);
-
-        return;
-      }
-
-      console.log("Login exitoso:", datos);
-
-      guardarToken(datos.token);
-
-      const usuario = obtenerUsuario();
-
-      console.log("Usuario:", usuario);
-
-      localStorage.setItem("usuario", JSON.stringify(usuario));
-      setMensajeExito("Sesión iniciada correctamente."); 
-      setTimeout(() => {
-        setMensajeExito("");
-        navigate("/"); 
-      }, 2000);
-
-    } catch (error) {
-
-      console.error("Error al iniciar sesión:", error);
-
-      setMensajeError("No se pudo conectar con el servidor.");
-
-      setTimeout(() => {
         setMensajeError("");
-      }, 3000);
+        setMensajeExito("");
 
-    }
+        try {
 
-  };
+            const respuesta = await fetch(
+                "http://localhost:5000/login",
+                {
+                    method: "POST",
 
-  return (
-    <>
-        {mensajeExito && (
-        <div className="toastExito">
-            {mensajeExito}
-        </div>
-        )}
+                    credentials: "include",
 
-        {mensajeError && (
-        <div className="toastError">
-            {mensajeError}
-        </div>
-        )}
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
 
-      <Navbar />
+                    body: JSON.stringify(form)
+                }
+            );
 
-      <div className="loginContainer">
 
-        <div className="loginCard">
+            const datos = await respuesta.json();
 
-          <h1>Iniciar sesión</h1>
 
-          <p>
-            Ingresa tus datos para acceder a AeroClima
-          </p>
+            if (!respuesta.ok) {
 
-          <form onSubmit={handleSubmit}>
+                setMensajeError(
+                    datos.mensaje ||
+                    "Correo o contraseña incorrectos."
+                );
 
-            {/* CORREO */}
-            <div className="inputGroup">
+                setTimeout(() => {
+                    setMensajeError("");
+                }, 3000);
 
-              <FaEnvelope />
+                return;
+            }
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Correo electrónico"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
+
+            console.log("Login exitoso:", datos);
+
+            guardarUsuario(datos.usuario);
+
+            setMensajeExito(
+                "Sesión iniciada correctamente."
+            );
+
+
+            setTimeout(() => {
+
+                setMensajeExito("");
+
+                navigate("/");
+
+            }, 2000);
+
+
+        } catch (error) {
+
+            console.error(
+                "Error al iniciar sesión:",
+                error
+            );
+
+            setMensajeError(
+                "No se pudo conectar con el servidor."
+            );
+
+            setTimeout(() => {
+
+                setMensajeError("");
+
+            }, 3000);
+
+        }
+
+    };
+
+
+    return (
+        <>
+
+            {mensajeExito && (
+
+                <div className="toastExito">
+                    {mensajeExito}
+                </div>
+
+            )}
+
+
+            {mensajeError && (
+
+                <div className="toastError">
+                    {mensajeError}
+                </div>
+
+            )}
+
+
+            <Navbar />
+
+
+            <div className="loginContainer">
+
+                <div className="loginCard">
+
+                    <h1>
+                        Iniciar sesión
+                    </h1>
+
+
+                    <p>
+                        Ingresa tus datos para acceder a AeroClima
+                    </p>
+
+
+                    <form onSubmit={handleSubmit}>
+
+                        {/* CORREO */}
+
+                        <div className="inputGroup">
+
+                            <FaEnvelope />
+
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Correo electrónico"
+                                value={form.email}
+                                onChange={handleChange}
+                                required
+                            />
+
+                        </div>
+
+
+                        {/* CONTRASEÑA */}
+
+                        <div className="inputGroup">
+
+                            <FaLock />
+
+                            <input
+                                type={
+                                    mostrarPassword
+                                        ? "text"
+                                        : "password"
+                                }
+                                name="password"
+                                placeholder="Contraseña"
+                                value={form.password}
+                                onChange={handleChange}
+                                required
+                            />
+
+
+                            {mostrarPassword ? (
+
+                                <FaEyeSlash
+                                    className="iconoPassword"
+                                    onClick={() =>
+                                        setMostrarPassword(false)
+                                    }
+                                />
+
+                            ) : (
+
+                                <FaEye
+                                    className="iconoPassword"
+                                    onClick={() =>
+                                        setMostrarPassword(true)
+                                    }
+                                />
+
+                            )}
+
+                        </div>
+
+
+                        <button type="submit">
+                            Iniciar sesión
+                        </button>
+
+                    </form>
+
+
+                    <p className="registroLink">
+
+                        ¿No tienes una cuenta?
+
+                        <Link to="/registro">
+                            Crea una
+                        </Link>
+
+                    </p>
+
+                </div>
 
             </div>
 
-            {/* CONTRASEÑA */}
-            <div className="inputGroup">
 
-              <FaLock />
+            <Footer />
 
-              <input
-                type={mostrarPassword ? "text" : "password"}
-                name="password"
-                placeholder="Contraseña"
-                value={form.password}
-                onChange={handleChange}
-                required
-              />
 
-              {mostrarPassword ? (
+            {/* MODAL ACCESO */}
 
-                <FaEyeSlash
-                  className="iconoPassword"
-                  onClick={() => setMostrarPassword(false)}
-                />
+            {mostrarModalAcceso && (
 
-              ) : (
+                <div className="modalAccesoOverlay">
 
-                <FaEye
-                  className="iconoPassword"
-                  onClick={() => setMostrarPassword(true)}
-                />
+                    <div className="modalAcceso">
 
-              )}
+                        <button
+                            className="cerrarModalAcceso"
+                            onClick={() =>
+                                setMostrarModalAcceso(false)
+                            }
+                        >
+                            ×
+                        </button>
 
-            </div>
 
-            <button type="submit">
-              Iniciar sesión
-            </button>
+                        <div className="modalAccesoIcono">
+                            !
+                        </div>
 
-          </form>
 
-          <p className="registroLink">
+                        <h2>
+                            {tipoMensaje === "logout"
+                                ? "Sesión cerrada"
+                                : "Inicia sesión"}
+                        </h2>
 
-            ¿No tienes una cuenta?
+                        <p>
+                            {mensajeAcceso}
+                        </p>
 
-            <Link to="/registro">
-              Crea una
-            </Link>
 
-          </p>
+                        <button
+                            className="btnModalAcceso"
+                            onClick={() =>
+                                setMostrarModalAcceso(false)
+                            }
+                        >
+                            Aceptar
+                        </button>
 
-        </div>
+                    </div>
 
-      </div>
-      <Footer />
-    </>
-  );
+                </div>
+
+            )}
+
+        </>
+    );
 }
 
 export default Login;

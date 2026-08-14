@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/home.css";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import heroAvion from "../images/hero-avion.jpg";
 import destinoCancun from "../images/destino-cancun.jpg";
@@ -10,6 +13,30 @@ import destinoParis from "../images/destino-paris.jpg";
 import ofertaCancun from "../images/oferta-cancun.jpg";
 import ofertaMadrid from "../images/oferta-madrid.jpg";
 function Home() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [mostrarModalAcceso, setMostrarModalAcceso] = useState(false);
+  const [mensajeAcceso, setMensajeAcceso] = useState("");
+
+  useEffect(() => {
+
+    if (location.state?.mensaje) {
+
+        console.log(
+            "Mensaje recibido en Home:",
+            location.state.mensaje
+        );
+
+        setMensajeAcceso(location.state.mensaje);
+        setMostrarModalAcceso(true);
+
+        navigate(location.pathname, {
+            replace: true,
+            state: null
+        });
+    }
+  }, [location, navigate]);
   return (
     <>
       <Navbar />
@@ -368,6 +395,44 @@ function Home() {
       </main>
 
       <Footer />
+
+      {mostrarModalAcceso && (
+
+        <div className="modalAccesoOverlay">
+
+            <div className="modalAcceso">
+
+                <button
+                    className="cerrarModalAcceso"
+                    onClick={() => setMostrarModalAcceso(false)}
+                >
+                    ×
+                </button>
+
+                <div className="modalAccesoIcono">
+                    !
+                </div>
+
+                <h2>
+                    Acceso no autorizado
+                </h2>
+
+                <p>
+                    {mensajeAcceso}
+                </p>
+
+                <button
+                  className="btnModalAcceso"
+                  onClick={() => setMostrarModalAcceso(false)}
+                >
+                  Aceptar
+                </button>
+
+            </div>
+
+        </div>
+
+      )}
 
     </>
   );
