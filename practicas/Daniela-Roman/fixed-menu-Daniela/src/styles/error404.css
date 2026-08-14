@@ -5,14 +5,14 @@
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(to bottom, #eaf3ff, #dbe9ff);
+  background: linear-gradient(to bottom, #ffe1f0, #f4e3ff);
 
   padding: 20px;
   box-sizing: border-box;
 }
 
 .errorCaja {
-  background-color: white;
+  background-color: #4a3b52;
 
   width: 100%;
   max-width: 500px;
@@ -28,7 +28,7 @@
 
 .error h1 {
   font-size: 110px;
-  color: #0b3d91;
+  color: #b3407a;
 
   margin: 0 0 25px 0;
   line-height: 1;
@@ -60,9 +60,9 @@
   border: none;
   border-radius: 8px;
 
-  background-color: #1e88e5;
+  background-color: #ffb6d9;
 
-  color: white;
+  color: #4a3b52;
 
   font-size: 16px;
 
@@ -72,7 +72,7 @@
 }
 
 .error button:hover {
-  background-color: #1565c0;
+  background-color: #f28ab8;
 }
 
 @media (max-width: 768px) {

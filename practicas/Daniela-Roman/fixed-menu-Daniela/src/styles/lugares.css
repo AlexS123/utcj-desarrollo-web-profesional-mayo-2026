@@ -1,0 +1,32 @@
+.lugaresPagina {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.lugaresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.lugarTarjeta {
+  background: var(--rosa-suave, #ffe1f0);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.lugarCategoria {
+  display: inline-block;
+  background: var(--lila, #d9c2ff);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.lugarTarjeta h3 {
+  margin: 0 0 8px;
+  color: #6a3fa0;
+}

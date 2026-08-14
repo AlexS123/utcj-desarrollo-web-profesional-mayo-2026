@@ -1,28 +1,23 @@
-import Navbar from "../components/Navbar";
 import { useState } from "react";
-import {
-  FaUser,
-  FaLock,
-  FaEye,
-  FaEyeSlash,
-  FaUserShield
-} from "react-icons/fa";
+import { useNavigate, Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { validarFormulario } from "../logic/registroValidation";
+import { guardarUsuario } from "../logic/auth";
 import "../styles/registro.css";
 
-const API_URL = "http://localhost:5000/registrarUsuario";
+const API_URL = "http://localhost:5000/registrar";
 
 function Registro() {
+  const navigate = useNavigate();
+
   const [mensajeExito, setMensajeExito] = useState("");
   const [mensajeError, setMensajeError] = useState("");
   const [mostrarPassword, setMostrarPassword] = useState(false);
   const [cargando, setCargando] = useState(false);
 
-  const [form, setForm] = useState({
-    user: "",
-    pass: "",
-    rol: ""
-  });
-
+  const [form, setForm] = useState({ nombre: "", email: "", password: "" });
   const [errores, setErrores] = useState({});
 
   const handleChange = (e) => {
@@ -31,20 +26,12 @@ function Registro() {
     setErrores({ ...errores, [name]: "" });
   };
 
-  const validar = () => {
-    const nuevosErrores = {};
-    if (!form.user.trim()) nuevosErrores.user = "El usuario es requerido";
-    if (form.pass.length < 6) nuevosErrores.pass = "La contraseña debe tener al menos 6 caracteres";
-    if (!form.rol) nuevosErrores.rol = "Selecciona un rol";
-    return nuevosErrores;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMensajeExito("");
     setMensajeError("");
 
-    const validacion = validar();
+    const validacion = validarFormulario(form);
     if (Object.keys(validacion).length > 0) {
       setErrores(validacion);
       return;
@@ -54,18 +41,24 @@ function Registro() {
     try {
       const respuesta = await fetch(API_URL, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
       });
 
       const datos = await respuesta.json();
 
-      if (datos.ok) {
-        setMensajeExito(datos.msg);
-        setForm({ user: "", pass: "", rol: "" });
-        setTimeout(() => setMensajeExito(""), 4000);
+      if (respuesta.ok) {
+        guardarUsuario(datos.usuario);
+        setMensajeExito(datos.mensaje || "¡Cuenta creada correctamente!");
+        setTimeout(() => {
+          setMensajeExito("");
+          navigate("/");
+        }, 1500);
+      } else if (datos.errores) {
+        setErrores(datos.errores);
       } else {
-        setMensajeError(datos.msg);
+        setMensajeError(datos.mensaje || "No fue posible crear la cuenta.");
         setTimeout(() => setMensajeError(""), 4000);
       }
     } catch (error) {
@@ -85,75 +78,66 @@ function Registro() {
 
       <div className="registroContainer">
         <div className="registroCard">
-
-          <h1>Crear cuenta</h1>
-          <p>Completa los datos para registrarte</p>
+          <h1>Únete al viaje</h1>
+          <p>Crea tu cuenta para ver y editar el itinerario de CDMX</p>
 
           <form onSubmit={handleSubmit}>
-
-            {/* USUARIO */}
             <div className="inputGroup">
               <FaUser />
               <input
                 type="text"
-                name="user"
-                placeholder="Nombre de usuario"
-                value={form.user}
+                name="nombre"
+                placeholder="Tu nombre"
+                value={form.nombre}
                 onChange={handleChange}
                 required
               />
             </div>
-            {errores.user && <span className="errorText">{errores.user}</span>}
+            {errores.nombre && <span className="errorText">{errores.nombre}</span>}
 
-            {/* CONTRASEÑA */}
+            <div className="inputGroup">
+              <FaEnvelope />
+              <input
+                type="email"
+                name="email"
+                placeholder="Correo electrónico"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            {errores.email && <span className="errorText">{errores.email}</span>}
+
             <div className="inputGroup">
               <FaLock />
               <input
                 type={mostrarPassword ? "text" : "password"}
-                name="pass"
+                name="password"
                 placeholder="Contraseña"
-                value={form.pass}
+                value={form.password}
                 onChange={handleChange}
                 required
               />
               {mostrarPassword ? (
-                <FaEyeSlash
-                  className="iconoPassword"
-                  onClick={() => setMostrarPassword(false)}
-                />
+                <FaEyeSlash className="iconoPassword" onClick={() => setMostrarPassword(false)} />
               ) : (
-                <FaEye
-                  className="iconoPassword"
-                  onClick={() => setMostrarPassword(true)}
-                />
+                <FaEye className="iconoPassword" onClick={() => setMostrarPassword(true)} />
               )}
             </div>
-            {errores.pass && <span className="errorText">{errores.pass}</span>}
-
-            {/* ROL */}
-            <div className="inputGroup">
-              <FaUserShield />
-              <select
-                name="rol"
-                value={form.rol}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Selecciona un rol</option>
-                <option value="admin">Administrador</option>
-                <option value="user">Usuario</option>
-              </select>
-            </div>
-            {errores.rol && <span className="errorText">{errores.rol}</span>}
+            {errores.password && <span className="errorText">{errores.password}</span>}
 
             <button type="submit" disabled={cargando}>
-              {cargando ? "Registrando..." : "Registrarme"}
+              {cargando ? "Creando cuenta..." : "Registrarme"}
             </button>
-
           </form>
 
+          <p className="registroLink">
+            ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
+          </p>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

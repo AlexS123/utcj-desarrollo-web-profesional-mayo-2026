@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(135deg, #eaf3ff, #dbe9ff);
+  background: linear-gradient(135deg, #ffe1f0, #f4e3ff);
   padding-top: 80px;
   padding-bottom: 40px;
   box-sizing: border-box;
@@ -24,7 +24,7 @@
 
 .registroCard h1 {
   margin-bottom: 10px;
-  color: #0b3d91;
+  color: #b3407a;
   font-size: 36px;
 }
 
@@ -53,7 +53,7 @@ form {
 }
 
 .inputGroup svg {
-  color: #0b3d91;
+  color: #b3407a;
   font-size: 18px;
   min-width: 20px;
 }
@@ -75,14 +75,14 @@ form {
 }
 
 .iconoPassword {
-  color: #0b3d91;
+  color: #b3407a;
   cursor: pointer;
   font-size: 18px;
 }
 
 button[type="submit"] {
   padding: 12px;
-  background: #0b3d91;
+  background: #b3407a;
   color: white;
 
   border: none;
@@ -94,11 +94,11 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover:not(:disabled) {
-  background: #062a66;
+  background: #8a2e5c;
 }
 
 button[type="submit"]:disabled {
-  background: #7a9fd4;
+  background: #f2a6c9;
   cursor: not-allowed;
 }
 

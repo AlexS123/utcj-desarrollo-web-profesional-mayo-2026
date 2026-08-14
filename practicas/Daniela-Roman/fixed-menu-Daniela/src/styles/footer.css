@@ -1,0 +1,35 @@
+.footer {
+  background: #f4e3ff;
+  margin-top: 40px;
+  padding: 40px 32px 16px;
+}
+
+.footerContenido {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footerSeccion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 200px;
+}
+
+.footerSeccion h2, .footerSeccion h3 {
+  margin: 0 0 6px;
+  color: #6a3fa0;
+}
+
+.footerInferior {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px solid #e2c9ff;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

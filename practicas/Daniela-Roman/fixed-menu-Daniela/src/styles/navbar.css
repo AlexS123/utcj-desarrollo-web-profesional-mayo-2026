@@ -1,60 +1,34 @@
 .menuSuperior {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--rosa-suave, #ffe1f0);
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
-  padding: 15px 30px;
-
-  background-color: #0b3d91;
-  box-sizing: border-box;
+.logoLink {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-  color: white;
   margin: 0;
+  color: #b3407a;
 }
 
 .opcionesMenu {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .opcionesMenu button {
-  background: none;
-  border: none;
-
-  color: white;
-  font-size: 16px;
-
-  cursor: pointer;
+  background: white;
 }
 
 .btnRegistro {
-  background-color: white !important;
-  color: #0b3d91 !important;
-  border-radius: 8px !important;
-  padding: 6px 14px !important;
-  font-weight: bold !important;
-}
-
-.btnRegistro:hover {
-  background-color: #e0eaff !important;
-}
-
-@media (max-width: 768px) {
-  .menuSuperior {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .opcionesMenu {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  background: #ffb6d9 !important;
 }
