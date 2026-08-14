@@ -225,6 +225,17 @@ p {
   cursor: wait;
 }
 
+/* Botón secundario (crear cuenta / volver) */
+.register-form button.button-secondary {
+  background: #fff;
+  color: #4c1d95;
+  border: 1px solid #ddd6fe;
+}
+
+.register-form button.button-secondary:hover {
+  background: #f5f3ff;
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -300,6 +311,169 @@ p {
   .register-panel {
     padding: 20px;
   }
+}
+
+/* ==================================================
+   PANEL DE ADMINISTRADOR (/admin)
+   ================================================== */
+
+.admin-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 40px 24px 60px;
+  background: linear-gradient(135deg, #07111f, #12304a);
+  color: #fff;
+  text-align: left;
+}
+
+.admin-container {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+}
+
+.admin-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.admin-title {
+  color: #fff;
+  margin: 0;
+  font-size: 34px;
+  letter-spacing: -0.5px;
+}
+
+.admin-subtitle {
+  color: #b9c8d8;
+  margin-top: 6px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  background: #00bfff;
+  color: #04202e;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-button--ghost {
+  background: rgba(0, 191, 255, 0.14);
+  border: 1px solid #00bfff;
+  color: #00bfff;
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.admin-card {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(0, 191, 255, 0.25);
+}
+
+.admin-card strong {
+  display: block;
+  font-size: 30px;
+  color: #00bfff;
+  line-height: 1.1;
+}
+
+.admin-card span {
+  color: #b9c8d8;
+  font-size: 14px;
+}
+
+.admin-panel {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8ea4b8;
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 14px 18px;
+  color: #dbe6f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-rol {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-rol--admin {
+  background: rgba(0, 191, 255, 0.16);
+  color: #00bfff;
+  border: 1px solid rgba(0, 191, 255, 0.45);
+}
+
+.admin-rol--user {
+  background: rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+.admin-id {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: #8ea4b8;
+}
+
+.admin-message {
+  padding: 22px;
+  border-radius: 14px;
+  background: rgba(229, 57, 53, 0.12);
+  border: 1px solid rgba(229, 57, 53, 0.45);
+  color: #ffd7d5;
+}
+
+.admin-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #b9c8d8;
 }
 
 code,

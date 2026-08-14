@@ -74,7 +74,7 @@ function Register() {
 
     try {
 
-      const response = await fetch('http://127.0.0.1:5000/registrar', {
+      const response = await fetch('http://localhost:5000/registrar', {
 
         method: 'POST',
 
@@ -130,23 +130,31 @@ function Register() {
 
   return (
 
-    <div className="register-container">
+    <div className="register-shell">
 
-      <div className="register-panel register-panel--info">
+     <div className="register-card">
 
-        <h1>✦ Crea tu usuario</h1>
+      <div className="register-panel register-panel--highlight">
+
+        <div className="register-icon">✦</div>
+
+        <h1>Crea tu usuario</h1>
 
         <p>
           Nueva interfaz con un flujo más claro y un manejo más sencillo del registro.
         </p>
 
-        <h3>¿Qué incluye?</h3>
+        <div className="register-highlight-box">
 
-        <ul>
-          <li>• Usuario y contraseña</li>
-          <li>• Selección de rol</li>
-          <li>• Confirmación visual al guardar</li>
-        </ul>
+          <p className="register-highlight-title">¿Qué incluye?</p>
+
+          <ul>
+            <li>• Usuario y contraseña</li>
+            <li>• Selección de rol</li>
+            <li>• Confirmación visual al guardar</li>
+          </ul>
+
+        </div>
 
       </div>
 
@@ -206,7 +214,7 @@ function Register() {
 
           <button
             type="button"
-            className="register-button"
+            className="button-secondary"
             onClick={() => navigate('/')}
           >
             Volver al inicio de sesión
@@ -215,6 +223,8 @@ function Register() {
         </form>
 
       </div>
+
+     </div>
 
       {modal.open && (
 

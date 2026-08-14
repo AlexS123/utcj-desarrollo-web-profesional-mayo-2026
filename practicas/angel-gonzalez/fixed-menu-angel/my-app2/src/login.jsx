@@ -177,12 +177,18 @@ function Login() {
 
   return (
 
-    <div className="register-container">
+    <div className="register-shell">
 
-      <div className="register-panel register-panel--info">
+     <div className="register-card">
+
+      <div className="register-panel register-panel--highlight">
+
+        <div className="register-icon">
+          🔐
+        </div>
 
         <h1>
-          🔐 Iniciar sesión
+          Iniciar sesión
         </h1>
 
         <p>
@@ -190,25 +196,29 @@ function Login() {
           para acceder al sistema.
         </p>
 
-        <h3>
-          ¿Qué incluye?
-        </h3>
+        <div className="register-highlight-box">
 
-        <ul>
+          <p className="register-highlight-title">
+            ¿Qué incluye?
+          </p>
 
-          <li>
-            • Autenticación mediante JWT
-          </li>
+          <ul>
 
-          <li>
-            • Validación de usuario
-          </li>
+            <li>
+              • Autenticación mediante JWT
+            </li>
 
-          <li>
-            • Protección de rutas
-          </li>
+            <li>
+              • Validación de usuario
+            </li>
 
-        </ul>
+            <li>
+              • Protección de rutas
+            </li>
+
+          </ul>
+
+        </div>
 
       </div>
 
@@ -268,7 +278,7 @@ function Login() {
 
           <button
             type="button"
-            className="register-button"
+            className="button-secondary"
             onClick={() => navigate('/reg')}
           >
 
@@ -279,6 +289,8 @@ function Login() {
         </form>
 
       </div>
+
+     </div>
 
 
       {modal.open && (

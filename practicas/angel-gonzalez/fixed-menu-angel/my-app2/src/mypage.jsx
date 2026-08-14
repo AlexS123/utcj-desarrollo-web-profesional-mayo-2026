@@ -504,7 +504,7 @@ function MyPage() {
               RUTA ADMINISTRADOR
               ================================== */}
 
-          {rol === "Admin" && (
+          {String(rol).toLowerCase() === "admin" && (
 
             <li>
 

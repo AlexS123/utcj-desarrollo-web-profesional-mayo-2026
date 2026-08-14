@@ -12,12 +12,28 @@ class Server {
 
         this.port = process.env.PORT || 5000;
 
-        this.JWT_SECRET = "mi_clave_secreta_super_segura";
+        this.JWT_SECRET =
+            process.env.JWT_SECRET ||
+            "mi_clave_secreta_super_segura";
+
+        this.MONGO_URI =
+            process.env.MONGO_URI ||
+            'mongodb://localhost:27017/mayo2026_web_prof';
+
+        // Orígenes permitidos del frontend (Vite).
+        this.ORIGENES_PERMITIDOS = [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173"
+        ];
 
         this.middlewares();
+
+        // La base de datos se prepara antes de las rutas
+        // para que this.userModel ya exista.
+        this.UsersDatabase();
+
         this.routes();
         this.listen();
-        this.UsersDatabase();
 
     }
 
@@ -75,7 +91,13 @@ class Server {
 
         }
 
-        if (req.user.rol !== "Admin") {
+        // Comparación sin distinguir mayúsculas:
+        // "Admin", "admin" y "ADMIN" son válidos.
+
+        const rol =
+            String(req.user.rol || "").toLowerCase();
+
+        if (rol !== "admin") {
 
             return res.status(403).json({
                 mensaje: "Acceso denegado. Solo administradores."
@@ -110,10 +132,29 @@ class Server {
         // CORS
         this.app.use((req, res, next) => {
 
-            res.header(
-                "Access-Control-Allow-Origin",
-                "http://localhost:5173"
-            );
+            const origin = req.headers.origin;
+
+            // Con cookies no se puede usar "*":
+            // hay que responder el origen exacto.
+
+            if (
+                this.ORIGENES_PERMITIDOS.includes(origin)
+            ) {
+
+                res.header(
+                    "Access-Control-Allow-Origin",
+                    origin
+                );
+
+            }
+            else {
+
+                res.header(
+                    "Access-Control-Allow-Origin",
+                    this.ORIGENES_PERMITIDOS[0]
+                );
+
+            }
 
             res.header(
                 "Access-Control-Allow-Credentials",
@@ -122,13 +163,22 @@ class Server {
 
             res.header(
                 "Access-Control-Allow-Headers",
-                "Origin, X-Requested-With, Content-Type, Accept"
+                "Origin, X-Requested-With, Content-Type, Accept, Authorization"
             );
 
             res.header(
                 "Access-Control-Allow-Methods",
-                "GET, POST, PUT, DELETE, OPTIONS"
+                "GET, POST, PUT, PATCH, DELETE, OPTIONS"
             );
+
+            res.header("Vary", "Origin");
+
+            // Responder de inmediato al preflight
+            if (req.method === "OPTIONS") {
+
+                return res.sendStatus(200);
+
+            }
 
             next();
 
@@ -143,19 +193,24 @@ class Server {
 
     UsersDatabase() {
 
-        mongoose.connect(
-            'mongodb://localhost:27017/mayo2026_web_prof'
-        )
+        mongoose.connect(this.MONGO_URI)
         .then(() => {
 
-            console.log("MongoDB conectado correctamente");
+            console.log(
+                "MongoDB conectado correctamente:",
+                this.MONGO_URI
+            );
 
         })
         .catch((error) => {
 
             console.log(
                 "Error conectando a MongoDB:",
-                error
+                error.message
+            );
+
+            console.log(
+                "Revisa que el servicio de MongoDB esté iniciado."
             );
 
         });

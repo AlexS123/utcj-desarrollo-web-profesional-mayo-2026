@@ -8,6 +8,7 @@ import Reg from './reg.jsx'
 import MyPage from './mypage.jsx'
 import ErrorPage from './ErrorPage.jsx'
 import Login from './login.jsx'
+import Admin from './admin.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -24,6 +25,9 @@ createRoot(document.getElementById('root')).render(
 
         {/* Página principal */}
         <Route path="/mypage" element={<MyPage />} />
+
+        {/* Panel solo para rol Admin */}
+        <Route path="/admin" element={<Admin />} />
 
         {/* Página de error */}
         <Route path="*" element={<ErrorPage />} />
