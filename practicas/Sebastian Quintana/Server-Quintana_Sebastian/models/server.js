@@ -31,8 +31,10 @@ class Server {
     middlewares() {
         this.app.use((req, res, next) => {
             res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+            // Authorization es indispensable para enviar el token JWT desde el navegador.
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+            res.header('Access-Control-Max-Age', '600');
 
             if (req.method === 'OPTIONS') {
                 return res.sendStatus(200);
@@ -75,6 +77,38 @@ class Server {
         });
     }
 
+    // Extrae y verifica el JWT enviado en el header Authorization.
+    getUserFromRequest(req) {
+        const authHeader = req.headers.authorization;
+        const token = authHeader && authHeader.split(' ')[1];
+        if (!token) return null;
+
+        try {
+            return jwt.verify(token, this.JWT_SECRET);
+        } catch (err) {
+            return null;
+        }
+    }
+
+    // Middleware: exige token válido con rol admin o root (sin distinguir mayúsculas).
+    requireAdmin() {
+        return (req, res, next) => {
+            const usuario = this.getUserFromRequest(req);
+
+            if (!usuario) {
+                return res.status(401).json({ mensaje: 'No autorizado. Token faltante o inválido.' });
+            }
+
+            const rol = String(usuario.role || usuario.rol || '').toLowerCase();
+            if (rol !== 'root' && rol !== 'admin') {
+                return res.status(403).json({ mensaje: 'Permisos insuficientes. Se requiere rol admin o root.' });
+            }
+
+            req.usuario = usuario;
+            next();
+        };
+    }
+
     routes() {
         this.app.post('/login', async (req, res) => {
             try {
@@ -82,17 +116,20 @@ class Server {
                 const { username, password } = body;
 
                 if (!username || !password) {
-                    return res.status(400).json({ error: 'Los campos username y password son obligatorios.' });
+                    console.log('Login fallido: faltan datos');
+                    return res.status(400).json({ mensaje: 'Login incorrecto. Faltan usuario o contraseña.' });
                 }
 
                 const userRecord = await User.findOne({ user: username });
                 if (!userRecord) {
-                    return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' });
+                    console.log(`Login fallido: usuario no encontrado -> ${username}`);
+                    return res.status(401).json({ mensaje: 'Login incorrecto. Usuario no encontrado.' });
                 }
 
                 const passwordMatches = await bcrypt.compare(password, userRecord.pass);
                 if (!passwordMatches) {
-                    return res.status(401).json({ mensaje: 'Usuario o contraseña incorrectos' });
+                    console.log(`Login fallido: contraseña incorrecta para -> ${username}`);
+                    return res.status(401).json({ mensaje: 'Login incorrecto. Contraseña incorrecta.' });
                 }
 
                 const userPayload = {
@@ -102,23 +139,76 @@ class Server {
                 };
 
                 const token = jwt.sign(userPayload, this.JWT_SECRET, { expiresIn: '2h' });
+                console.log(`JWT generado correctamente para: ${userRecord.user}`);
 
                 return res.json({
-                    mensaje: 'Autenticación exitosa',
+                    mensaje: 'Correcto',
                     token,
                 });
             } catch (error) {
                 console.error('Error en login:', error);
+                return res.status(500).json({ mensaje: 'Login incorrecto. Error del servidor.' });
+            }
+        });
+
+        this.app.get('/verify-token', (req, res) => {
+            const authHeader = req.headers.authorization;
+            const token = authHeader && authHeader.split(' ')[1];
+
+            if (!token) {
+                return res.status(401).json({ mensaje: 'Token no proporcionado' });
+            }
+
+            jwt.verify(token, this.JWT_SECRET, (err, decoded) => {
+                if (err) {
+                    return res.status(401).json({ mensaje: 'Token inválido o expirado' });
+                }
+
+                return res.json({
+                    mensaje: 'Token válido',
+                    usuario: decoded
+                });
+            });
+        });
+
+        // Padrón de usuarios: lo consume /admin y /admin/config (solo admin o root).
+        this.app.get('/consultarUsuarios', this.requireAdmin(), async (req, res) => {
+            try {
+                const users = await User.find({}, 'user rol createdAt updatedAt').sort({ createdAt: -1 });
+                return res.json(users);
+            } catch (error) {
+                console.error('Error al obtener usuarios:', error);
                 return res.status(500).json({ error: 'Error interno del servidor.' });
             }
         });
 
-        this.app.get('/consultarUsuarios', async (req, res) => {
+        // Cambiar rol de un usuario (solo root/admin)
+        this.app.put('/users/:id/role', this.requireAdmin(), async (req, res) => {
             try {
-                const users = await User.find({}, 'user rol createdAt updatedAt');
-                return res.json(users);
+                const { id } = req.params;
+                const { rol } = req.body || {};
+                if (!rol) return res.status(400).json({ mensaje: 'Falta rol' });
+
+                const updated = await User.findByIdAndUpdate(id, { rol }, { new: true, fields: 'user rol createdAt updatedAt' });
+                if (!updated) return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+
+                return res.json({ mensaje: 'Rol actualizado', usuario: updated });
             } catch (error) {
-                console.error('Error al obtener usuarios:', error);
+                console.error('Error al actualizar rol:', error);
+                return res.status(500).json({ error: 'Error interno del servidor.' });
+            }
+        });
+
+        // Eliminar usuario (solo root/admin)
+        this.app.delete('/users/:id', this.requireAdmin(), async (req, res) => {
+            try {
+                const { id } = req.params;
+                const deleted = await User.findByIdAndDelete(id);
+                if (!deleted) return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+
+                return res.json({ mensaje: 'Usuario eliminado' });
+            } catch (error) {
+                console.error('Error al eliminar usuario:', error);
                 return res.status(500).json({ error: 'Error interno del servidor.' });
             }
         });
