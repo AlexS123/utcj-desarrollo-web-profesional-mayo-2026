@@ -7,10 +7,10 @@ function Footer() {
       <div className="footerContenido">
 
         <div className="footerSeccion">
-          <h2>CDMX 2026 🌸</h2>
+          <h2>CDMX 2026</h2>
           <p>
             El itinerario del viaje del grupo a la Ciudad de México,
-            del 30 de julio al 5 de agosto: lugares, actividades y
+            del 30 de julio al 6 de agosto: lugares, actividades y
             todo lo que no nos podemos perder.
           </p>
         </div>
@@ -33,7 +33,7 @@ function Footer() {
       </div>
 
       <div className="footerInferior">
-        <p>Hecho con 💗 para el viaje del grupo · 2026</p>
+        <p>El viaje del grupo · 2026</p>
       </div>
     </footer>
   );

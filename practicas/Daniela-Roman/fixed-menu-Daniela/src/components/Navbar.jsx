@@ -45,9 +45,12 @@ function Navbar() {
         )}
 
         {usuario ? (
-          <button className="btnRegistro" onClick={handleLogout}>
-            Cerrar sesión
-          </button>
+          <div className="usuarioSesion">
+            <span className="nombreUsuario">Hola, {usuario.nombre}</span>
+            <button className="btnRegistro" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+          </div>
         ) : (
           <Link to="/login">
             <button className="btnRegistro">Entrar</button>

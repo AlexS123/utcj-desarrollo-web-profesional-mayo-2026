@@ -32,3 +32,15 @@
 .btnRegistro {
   background: #ffb6d9 !important;
 }
+
+.usuarioSesion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nombreUsuario {
+  font-weight: 600;
+  color: #b3407a;
+  font-size: 0.9rem;
+}

@@ -78,7 +78,7 @@ function Itinerario() {
           <h1>Día a día en CDMX</h1>
           <p>
             Toca cada día para ver los planes. Las tardes casi siempre
-            terminan en bar crawl, así que trae zapatos cómodos. ✨
+            terminan en bar crawl, así que trae zapatos cómodos. 
           </p>
         </section>
 
