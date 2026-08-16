@@ -1,14 +1,544 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-app-vite</title>
-    <script type="module" crossorigin src="/assets/index-BMUowoKr.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BXs5q6ht.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <!-- Icono que ya existía en el proyecto -->
+    <link rel="icon"
+          type="image/svg+xml"
+          href="/favicon.svg">
+
+    <title>ASTRA SPACE</title>
+
+    <!-- Nuestro archivo CSS -->
+    <link rel="stylesheet"
+          href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         BARRA DE NAVEGACIÓN
+    =========================================== -->
+    <nav class="navbar">
+
+        <!-- Nombre de nuestra agencia -->
+        <div class="logo">
+            🚀 ASTRA SPACE
+        </div>
+
+
+        <!-- Menús principales -->
+        <ul class="nav-links">
+
+            <!-- MENÚ 1 -->
+            <li>
+                <a href="#inicio">
+                    Inicio
+                </a>
+            </li>
+
+
+            <!-- MENÚ 2 -->
+            <li class="dropdown">
+
+                <a href="#">
+                    Misiones ▾
+                </a>
+
+                <!-- Menú desplegable -->
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <a href="#misiones">
+                            Próximas misiones
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#completadas">
+                            Misiones completadas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#vehiculos">
+                            Vehículos espaciales
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- MENÚ 3 -->
+            <li>
+                <a href="#exploracion">
+                    Exploración
+                </a>
+            </li>
+
+
+            <!-- MENÚ 4 -->
+            <li>
+                <a href="#agencia">
+                    Agencia
+                </a>
+            </li>
+            <!-- MENÚ PARA CONSULTAR USUARIOS -->
+            <li>
+                <a href="#usuarios" id="usersLink">
+                    Usuarios
+                </a>
+            </li>
+
+        </ul>
+
+
+        <!-- ==========================================
+             INFORMACIÓN DEL USUARIO
+        =========================================== -->
+        <div class="user-area">
+
+            <!-- Nombre del usuario actual -->
+         <span id="userName">
+                Invitado
+            </span>
+
+            <!-- Se muestra cuando NO existe una sesión -->
+         <button id="loginButton">
+                Iniciar sesión
+            </button>
+
+            <!--
+                Se muestra cuando existe una sesión.
+                Al principio permanece oculto.
+            -->
+         <button id="logoutButton">
+                Cerrar sesión
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==========================================
+         PÁGINA PRINCIPAL
+    =========================================== -->
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <p class="hero-small">
+                    AGENCIA DE EXPLORACIÓN ESPACIAL
+                </p>
+
+
+                <h1>
+                    Explora más allá
+                    <span>
+                        de nuestro mundo
+                    </span>
+                </h1>
+
+
+                <p class="hero-description">
+
+                    ASTRA SPACE desarrolla tecnología,
+                    investigación y misiones destinadas
+                    a descubrir los secretos del universo.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a href="#misiones"
+                       class="btn-primary">
+
+                        Explorar misiones
+
+                    </a>
+
+
+                    <a href="#agencia"
+                       class="btn-secondary">
+
+                        Conocer la agencia
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             MISIONES
+        =========================================== -->
+        <section class="section"
+                 id="misiones">
+
+            <h2>
+                Nuestras misiones
+            </h2>
+
+
+            <p class="section-description">
+
+                Exploramos nuevos mundos mediante
+                investigación, ciencia y tecnología.
+
+            </p>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🌙
+                    </div>
+
+                    <h3>
+                        Misión Lunar
+                    </h3>
+
+                    <p>
+                        Investigación de la superficie lunar
+                        y preparación de futuras misiones.
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🔴
+                    </div>
+
+                    <h3>
+                        Misión Marte
+                    </h3>
+
+                    <p>
+                        Exploración y estudio de las
+                        condiciones del planeta rojo.
+                    </p>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🛰️
+                    </div>
+
+                    <h3>
+                        Satélites ASTRA
+                    </h3>
+
+                    <p>
+                        Tecnología orbital destinada a
+                        investigación y comunicaciones.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             EXPLORACIÓN
+        =========================================== -->
+        <section class="section dark-section"
+                 id="exploracion">
+
+            <h2>
+                Exploración espacial
+            </h2>
+
+            <p>
+                Nuestra misión es llevar la ciencia,
+                investigación y tecnología más allá
+                de nuestro planeta.
+            </p>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             AGENCIA
+        =========================================== -->
+        <section class="section"
+                 id="agencia">
+
+            <h2>
+                ASTRA SPACE
+            </h2>
+
+            <p>
+                Agencia dedicada al desarrollo de
+                tecnología y proyectos de exploración
+                espacial.
+            </p>
+
+        </section>
+
+        <!-- ==========================================
+     CONSULTAR USUARIOS
+=========================================== -->
+<section class="section users-section" id="usuarios">
+
+    <p class="section-label">
+        SISTEMA DE ADMINISTRACIÓN
+    </p>
+
+    <h2>
+        Consultar usuarios
+    </h2>
+
+    <p class="section-description">
+        Esta sección se encuentra protegida y solamente
+        puede ser consultada por un administrador.
+    </p>
+
+
+    <!-- Botón que realizará la consulta -->
+    <button id="consultUsersButton" class="consult-button">
+        Consultar registros
+    </button>
+
+
+    <!--
+        Aquí mostraremos mensajes como:
+        - Necesitas iniciar sesión
+        - Necesitas permisos de administrador
+        - Usuarios encontrados
+    -->
+    <div id="usersMessage" class="users-message">
+
+        Selecciona "Consultar registros" para acceder
+        a la información.
+
+    </div>
+
+
+    <!--
+        Aquí aparecerá el JSON obtenido desde MongoDB.
+        Por defecto permanecerá oculto.
+    -->
+    <div id="jsonContainer" class="json-container">
+
+        <div class="json-header">
+
+            <span>
+                MongoDB / Mayo2026_web_prof / users
+            </span>
+
+            <span class="json-status">
+                JSON
+            </span>
+
+        </div>
+
+        <pre id="usersJson"></pre>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <!-- ==========================================
+         PIE DE PÁGINA
+    =========================================== -->
+    <footer>
+
+        <p>
+            ASTRA SPACE © 2026
+        </p>
+
+        <p>
+            Desarrollo Web Profesional
+        </p>
+
+    </footer>
+
+    <!-- ==================================================
+     MODAL DE INICIO DE SESIÓN
+================================================== -->
+<div class="modal" id="loginModal">
+
+    <div class="modal-content">
+
+        <!-- Botón para cerrar el modal -->
+        <span class="close-modal" id="closeLogin">&times;</span>
+
+        <div class="login-logo">
+            🚀
+        </div>
+
+        <h2>Iniciar sesión</h2>
+
+        <p class="login-subtitle">
+            Accede a tu cuenta de ASTRA SPACE
+        </p>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="username">
+                    Usuario
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Ingresa tu usuario"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Ingresa tu contraseña"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-submit"
+            >
+                Iniciar sesión
+            </button>
+
+        </form>
+
+
+        <!-- Aquí mostraremos errores o mensajes -->
+        <p id="loginMessage"></p>
+
+
+        <p class="register-text">
+            ¿No tienes una cuenta?
+            <a href="#" id="registerLink">
+                Registrarse
+            </a>
+        </p>
+
+    </div>
+
+</div>
+<!-- ==================================================
+     MODAL DE REGISTRO
+================================================== -->
+<div class="modal" id="registerModal">
+
+    <div class="modal-content">
+
+        <span class="close-modal" id="closeRegister">&times;</span>
+
+        <div class="login-logo">
+            👨‍🚀
+        </div>
+
+        <h2>Crear cuenta</h2>
+
+        <p class="login-subtitle">
+            Regístrate como miembro de ASTRA SPACE
+        </p>
+
+        <form id="registerForm">
+
+            <div class="form-group">
+                <label for="registerUser">Usuario</label>
+
+                <input
+                    type="text"
+                    id="registerUser"
+                    placeholder="Ingresa un usuario"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="registerPass">Contraseña</label>
+
+                <input
+                    type="password"
+                    id="registerPass"
+                    placeholder="Ingresa una contraseña"
+                    required
+                >
+            </div>
+
+            <!-- El usuario registrado será usuario general -->
+            <input
+                type="hidden"
+                id="registerRole"
+                value="estudiante"
+            >
+
+            <button
+                type="submit"
+                class="login-submit"
+            >
+                Crear cuenta
+            </button>
+
+        </form>
+
+        <p id="registerMessage"></p>
+
+        <p class="register-text">
+            ¿Ya tienes una cuenta?
+            <a href="#" id="backToLogin">
+                Iniciar sesión
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+    <!-- Nuestro archivo JavaScript -->
+    <script src="/js/app.js"></script>
+
+</body>
 </html>
